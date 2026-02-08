@@ -589,6 +589,53 @@ defmodule ParkBench.Accounts do
   end
 
   # ──────────────────────────────────────────────
+  # Bench Streak & Last Seen
+  # ──────────────────────────────────────────────
+
+  def record_daily_activity(user_id) do
+    today = Date.utc_today()
+
+    case get_or_create_profile(user_id) do
+      {:ok, profile} ->
+        cond do
+          profile.last_active_date == today ->
+            {:ok, profile}
+
+          profile.last_active_date == Date.add(today, -1) ->
+            profile
+            |> Ecto.Changeset.change(
+              bench_streak: (profile.bench_streak || 0) + 1,
+              last_active_date: today
+            )
+            |> Repo.update()
+
+          true ->
+            profile
+            |> Ecto.Changeset.change(bench_streak: 1, last_active_date: today)
+            |> Repo.update()
+        end
+
+      error ->
+        error
+    end
+  end
+
+  def get_bench_streak(user_id) do
+    case get_profile(user_id) do
+      nil -> 0
+      profile -> profile.bench_streak || 0
+    end
+  end
+
+  def update_last_seen(user_id) do
+    now = DateTime.utc_now() |> DateTime.truncate(:second)
+
+    User
+    |> where([u], u.id == ^user_id)
+    |> Repo.update_all(set: [last_seen_at: now])
+  end
+
+  # ──────────────────────────────────────────────
   # Onboarding
   # ──────────────────────────────────────────────
 

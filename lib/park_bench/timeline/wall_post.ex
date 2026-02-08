@@ -5,16 +5,36 @@ defmodule ParkBench.Timeline.WallPost do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
+  @valid_post_types ["story", "journal", "wellness", "pet", "playground"]
+  @valid_moods [
+    "happy",
+    "reflective",
+    "grateful",
+    "energetic",
+    "calm",
+    "proud",
+    "silly",
+    "loving"
+  ]
+
   schema "wall_posts" do
     field :body, :string
     field :ai_detection_status, :string, default: "pending"
     field :ai_detection_score, :float
     field :content_hash, :string
     field :photo_url, :string
+    field :post_type, :string, default: "story"
+    field :mood, :string
     field :deleted_at, :utc_datetime
 
     belongs_to :author, ParkBench.Accounts.User
     belongs_to :wall_owner, ParkBench.Accounts.User
+
+    has_one :wellness_embed, ParkBench.Timeline.WellnessEmbed
+    has_many :pet_embeds, ParkBench.Timeline.PetEmbed
+    has_many :kid_embeds, ParkBench.Timeline.KidEmbed
+    has_many :bookmarks, ParkBench.Timeline.Bookmark
+    has_many :shares, ParkBench.Timeline.Share
 
     timestamps(type: :utc_datetime)
   end
@@ -26,9 +46,13 @@ defmodule ParkBench.Timeline.WallPost do
       :wall_owner_id,
       :body,
       :photo_url,
+      :post_type,
+      :mood,
       :ai_detection_status,
       :ai_detection_score
     ])
+    |> validate_inclusion(:post_type, @valid_post_types)
+    |> validate_inclusion(:mood, @valid_moods ++ [nil])
     |> validate_required([:author_id, :wall_owner_id])
     |> validate_body_or_photo()
     |> validate_length(:body, max: 5000)

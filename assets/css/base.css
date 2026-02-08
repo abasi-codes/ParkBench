@@ -245,3 +245,28 @@ pre {
 .text-left {
   text-align: left;
 }
+
+/* ==========================================================================
+   Animations — parkbench_6 redesign
+   Keyframes for story cards, floating elements, and typing indicators.
+   ========================================================================== */
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(10deg); }
+}
+
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+/* Staggered story card entry animations */
+.story-card:nth-child(2) { animation-delay: 0.1s; }
+.story-card:nth-child(3) { animation-delay: 0.2s; }
+.story-card:nth-child(4) { animation-delay: 0.3s; }

@@ -25,6 +25,7 @@ defmodule ParkBenchWeb.CoreComponents do
   attr :user, :map, required: true
   attr :photo_url, :string, default: nil
   attr :size, :integer, default: 50
+  attr :class, :string, default: nil
 
   def profile_thumbnail(assigns) do
     assigns = assign(assigns, :avatar_src, avatar_src(assigns))
@@ -33,7 +34,7 @@ defmodule ParkBenchWeb.CoreComponents do
     <img
       src={@avatar_src}
       alt={@user.display_name}
-      class={"avatar avatar-#{@size}"}
+      class={["avatar avatar-#{@size}", @class]}
       width={@size}
       height={@size}
     />

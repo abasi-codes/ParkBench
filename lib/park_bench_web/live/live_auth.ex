@@ -2,7 +2,7 @@ defmodule ParkBenchWeb.LiveAuth do
   @moduledoc "LiveView on_mount hooks for authentication"
   import Phoenix.LiveView
   import Phoenix.Component
-  alias ParkBench.Accounts
+  alias ParkBench.{Accounts, Social, Companions, Timeline, AIDetection, Weather}
 
   def on_mount(:ensure_authenticated, _params, session, socket) do
     case session["session_token"] do
@@ -16,7 +16,9 @@ defmodule ParkBenchWeb.LiveAuth do
 
           user ->
             recent_notifs = ParkBench.Notifications.list_notifications(user.id, per_page: 5)
-            pending_reqs = ParkBench.Social.list_pending_requests_for(user.id)
+            pending_reqs = Social.list_pending_requests_for(user.id)
+            Accounts.record_daily_activity(user.id)
+            Accounts.update_last_seen(user.id)
 
             socket =
               socket
@@ -25,13 +27,25 @@ defmodule ParkBenchWeb.LiveAuth do
               |> assign(:unread_messages, ParkBench.Messaging.count_unread(user.id))
               |> assign(
                 :pending_friend_requests,
-                ParkBench.Social.count_pending_requests(user.id)
+                Social.count_pending_requests(user.id)
               )
-              |> assign(:pending_pokes, ParkBench.Social.list_pending_pokes(user.id))
+              |> assign(:pending_pokes, Social.list_pending_pokes(user.id))
               |> assign(:recent_notifications, recent_notifs)
               |> assign(:pending_requests_list, Enum.take(pending_reqs, 5))
               |> assign(:show_notif_dropdown, false)
               |> assign(:show_friends_dropdown, false)
+              # Sidebar widget data
+              |> assign(:bench_streak, Accounts.get_bench_streak(user.id))
+              |> assign(:friend_count, Social.count_friends(user.id))
+              |> assign(:online_friends, Social.online_friends(user.id))
+              |> assign(:online_count, Social.online_friend_count(user.id))
+              |> assign(:pulse, AIDetection.public_stats())
+              |> assign(:weather, Weather.current())
+              |> assign(:wellness_today, Timeline.wellness_today(user.id))
+              |> assign(:pets, Companions.list_pets(user.id))
+              |> assign(:kids, Companions.list_kids(user.id))
+              |> assign(:trending, Timeline.trending_posts(5))
+              |> assign(:nav_active, nil)
 
             if connected?(socket) do
               Phoenix.PubSub.subscribe(ParkBench.PubSub, "user:#{user.id}")
@@ -59,7 +73,7 @@ defmodule ParkBenchWeb.LiveAuth do
 
                 {:friend_request, _}, socket ->
                   reqs =
-                    ParkBench.Social.list_pending_requests_for(socket.assigns.current_user.id)
+                    Social.list_pending_requests_for(socket.assigns.current_user.id)
 
                   {:cont,
                    socket
@@ -74,7 +88,7 @@ defmodule ParkBenchWeb.LiveAuth do
                    |> push_event("show_toast", %{message: "Friend request accepted!"})}
 
                 {:poked, _}, socket ->
-                  pokes = ParkBench.Social.list_pending_pokes(socket.assigns.current_user.id)
+                  pokes = Social.list_pending_pokes(socket.assigns.current_user.id)
 
                   {:cont,
                    socket
@@ -109,15 +123,15 @@ defmodule ParkBenchWeb.LiveAuth do
                     |> assign(:show_friends_dropdown, false)}}
 
                 "accept_request_dropdown", %{"id" => request_id}, socket ->
-                  ParkBench.Social.accept_friend_request(
+                  Social.accept_friend_request(
                     request_id,
                     socket.assigns.current_user.id
                   )
 
                   reqs =
-                    ParkBench.Social.list_pending_requests_for(socket.assigns.current_user.id)
+                    Social.list_pending_requests_for(socket.assigns.current_user.id)
 
-                  count = ParkBench.Social.count_pending_requests(socket.assigns.current_user.id)
+                  count = Social.count_pending_requests(socket.assigns.current_user.id)
 
                   {:halt,
                    {:noreply,
@@ -126,15 +140,15 @@ defmodule ParkBenchWeb.LiveAuth do
                     |> assign(:pending_friend_requests, count)}}
 
                 "ignore_request_dropdown", %{"id" => request_id}, socket ->
-                  ParkBench.Social.reject_friend_request(
+                  Social.reject_friend_request(
                     request_id,
                     socket.assigns.current_user.id
                   )
 
                   reqs =
-                    ParkBench.Social.list_pending_requests_for(socket.assigns.current_user.id)
+                    Social.list_pending_requests_for(socket.assigns.current_user.id)
 
-                  count = ParkBench.Social.count_pending_requests(socket.assigns.current_user.id)
+                  count = Social.count_pending_requests(socket.assigns.current_user.id)
 
                   {:halt,
                    {:noreply,
@@ -164,15 +178,15 @@ defmodule ParkBenchWeb.LiveAuth do
              |> assign(:current_user, user)
              |> assign(:unread_notifications, ParkBench.Notifications.count_unread(user.id))
              |> assign(:unread_messages, ParkBench.Messaging.count_unread(user.id))
-             |> assign(:pending_friend_requests, ParkBench.Social.count_pending_requests(user.id))
-             |> assign(:pending_pokes, ParkBench.Social.list_pending_pokes(user.id))
+             |> assign(:pending_friend_requests, Social.count_pending_requests(user.id))
+             |> assign(:pending_pokes, Social.list_pending_pokes(user.id))
              |> assign(
                :recent_notifications,
                ParkBench.Notifications.list_notifications(user.id, per_page: 5)
              )
              |> assign(
                :pending_requests_list,
-               ParkBench.Social.list_pending_requests_for(user.id) |> Enum.take(5)
+               Social.list_pending_requests_for(user.id) |> Enum.take(5)
              )
              |> assign(:show_notif_dropdown, false)
              |> assign(:show_friends_dropdown, false)}

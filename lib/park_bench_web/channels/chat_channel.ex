@@ -63,6 +63,42 @@ defmodule ParkBenchWeb.ChatChannel do
     end
   end
 
+  def handle_in("react", %{"message_id" => message_id, "emoji" => emoji}, socket) do
+    user = socket.assigns.current_user
+
+    case Messaging.toggle_reaction(message_id, user.id, emoji) do
+      {:ok, action, _} ->
+        broadcast(socket, "reaction", %{
+          message_id: message_id,
+          user_id: user.id,
+          user_name: user.display_name,
+          emoji: emoji,
+          action: to_string(action)
+        })
+
+        {:reply, :ok, socket}
+
+      {:error, _} ->
+        {:reply, {:error, %{reason: "failed"}}, socket}
+    end
+  end
+
+  def handle_in("share_post", %{"post_id" => post_id}, socket) do
+    user = socket.assigns.current_user
+    thread_id = socket.assigns.thread_id
+
+    case Messaging.share_post_in_chat(thread_id, user.id, post_id) do
+      {:ok, _message} ->
+        {:reply, :ok, socket}
+
+      {:error, reason} when is_atom(reason) ->
+        {:reply, {:error, %{reason: to_string(reason)}}, socket}
+
+      {:error, _} ->
+        {:reply, {:error, %{reason: "failed"}}, socket}
+    end
+  end
+
   def handle_in("typing", _payload, socket) do
     user = socket.assigns.current_user
 
@@ -106,6 +142,7 @@ defmodule ParkBenchWeb.ChatChannel do
       body: decrypted_body,
       sender_id: message.sender_id,
       sender_name: sender.display_name,
+      shared_post_id: message.shared_post_id,
       inserted_at: DateTime.to_iso8601(message.inserted_at)
     })
 

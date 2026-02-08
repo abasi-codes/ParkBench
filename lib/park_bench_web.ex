@@ -86,6 +86,9 @@ defmodule ParkBenchWeb do
       import Phoenix.HTML
       # Core UI components
       import ParkBenchWeb.CoreComponents
+      import ParkBenchWeb.LayoutComponents
+      import ParkBenchWeb.FeedComponents
+      import ParkBenchWeb.WidgetComponents
 
       # Common modules used in templates
       alias Phoenix.LiveView.JS

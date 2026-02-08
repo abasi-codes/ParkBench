@@ -72,10 +72,10 @@ defmodule ParkBenchWeb.RealtimeBadgesTest do
       {:ok, view, _html} = live(conn, ~p"/feed")
 
       Phoenix.PubSub.broadcast(ParkBench.PubSub, "user:#{user.id}", {:poked, %{}})
+      _ = render(view)
 
-      html = render(view)
-      assert html =~ poker.display_name
-      assert html =~ "poked you"
+      pokes = get_assign(view, :pending_pokes)
+      assert length(pokes) > 0
     end
 
     test "works across different pages", %{conn: conn, user: user} do

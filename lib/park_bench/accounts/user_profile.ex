@@ -18,6 +18,8 @@ defmodule ParkBench.Accounts.UserProfile do
     field :website, :string
     field :phone, :string
     field :cover_photo_url, :string
+    field :bench_streak, :integer, default: 0
+    field :last_active_date, :date
 
     belongs_to :user, ParkBench.Accounts.User, define_field: false
 

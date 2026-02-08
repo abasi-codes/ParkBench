@@ -12,7 +12,8 @@ defmodule ParkBenchWeb.InboxLive do
     {:ok,
      socket
      |> assign(:page_title, "Inbox")
-     |> assign(:threads, threads)}
+     |> assign(:threads, threads)
+     |> assign(:nav_active, :inbox)}
   end
 
   @impl true

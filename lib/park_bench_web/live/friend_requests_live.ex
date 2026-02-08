@@ -12,7 +12,8 @@ defmodule ParkBenchWeb.FriendRequestsLive do
      socket
      |> assign(:page_title, "Friend Requests")
      |> assign(:requests, requests)
-     |> assign(:sent_requests, sent)}
+     |> assign(:sent_requests, sent)
+     |> assign(:nav_active, :friends)}
   end
 
   @impl true

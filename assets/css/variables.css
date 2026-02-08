@@ -61,12 +61,12 @@
   --pb-line-height: 1.55;
 
   /* Layout */
-  --pb-width-page: 1080px;
+  --pb-width-page: 1400px;
   --pb-width-landing: 1080px;
   --pb-width-sidebar-left: 200px;
   --pb-width-main: 500px;
   --pb-width-sidebar-right: 300px;
-  --pb-height-nav: 56px;
+  --pb-height-nav: 64px;
   --pb-height-footer: 40px;
 
   /* Spacing */
@@ -110,4 +110,32 @@
   --pb-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
   --pb-duration-fast: 150ms;
   --pb-duration-normal: 300ms;
+
+  /* === New Design System (parkbench_6) === */
+  --moss: #4a6741;
+  --moss-light: #6b8c5e;
+  --sage: #a8b89c;
+  --bark: #5c4a3a;
+  --bark-light: #8b7355;
+  --cream: #f5f0e8;
+  --warm-white: #faf8f4;
+  --golden: #d4a853;
+  --golden-soft: #e8cc8a;
+  --sky: #7ba7c4;
+  --sky-light: #b8d4e8;
+  --sunset: #d4856a;
+  --stone: #9c9688;
+  --deep-earth: #2c2418;
+  --playground: #c4773b;
+  --playground-light: #d99a5f;
+  --leaf-shadow: rgba(74, 103, 65, 0.08);
+  --bench-shadow: rgba(92, 74, 58, 0.12);
+  --nav-height: 64px;
+  --sidebar-left-width: 240px;
+  --sidebar-right-width: 300px;
+  --max-width-app: 1400px;
+  --feed-max-width: 680px;
+  --font-cursive: "Caveat", cursive;
+  --z-top-nav: 100;
+  --z-chat: 200;
 }

@@ -3,7 +3,7 @@ defmodule ParkBench.Messaging do
 
   import Ecto.Query
   alias ParkBench.Repo
-  alias ParkBench.Messaging.{MessageThread, MessageThreadParticipant, Message}
+  alias ParkBench.Messaging.{MessageThread, MessageThreadParticipant, Message, MessageReaction}
   alias ParkBench.Accounts.User
   alias ParkBench.Social
   alias ParkBench.AIDetection
@@ -443,5 +443,76 @@ defmodule ParkBench.Messaging do
     |> limit(1)
     |> preload(:sender)
     |> Repo.one()
+  end
+
+  # === Reactions ===
+
+  def toggle_reaction(message_id, user_id, emoji) do
+    case Repo.get_by(MessageReaction, message_id: message_id, user_id: user_id, emoji: emoji) do
+      nil ->
+        %MessageReaction{}
+        |> MessageReaction.changeset(%{message_id: message_id, user_id: user_id, emoji: emoji})
+        |> Repo.insert()
+        |> case do
+          {:ok, reaction} -> {:ok, :added, reaction}
+          error -> error
+        end
+
+      existing ->
+        Repo.delete(existing)
+        {:ok, :removed, nil}
+    end
+  end
+
+  def batch_reactions(message_ids) when message_ids == [], do: %{}
+
+  def batch_reactions(message_ids) do
+    MessageReaction
+    |> where([r], r.message_id in ^message_ids)
+    |> preload(:user)
+    |> Repo.all()
+    |> Enum.group_by(& &1.message_id)
+  end
+
+  # === Share Post in Chat ===
+
+  def share_post_in_chat(thread_id, sender_id, wall_post_id) do
+    participant = get_participant(thread_id, sender_id)
+
+    if is_nil(participant) do
+      {:error, :not_participant}
+    else
+      now = DateTime.utc_now() |> DateTime.truncate(:second)
+
+      changeset =
+        %Message{}
+        |> Message.changeset(%{
+          thread_id: thread_id,
+          sender_id: sender_id,
+          body: "",
+          shared_post_id: wall_post_id
+        })
+
+      case Repo.insert(changeset) do
+        {:ok, message} ->
+          Repo.get!(MessageThread, thread_id)
+          |> Ecto.Changeset.change(last_message_at: now)
+          |> Repo.update!()
+
+          participant
+          |> Ecto.Changeset.change(last_read_at: now)
+          |> Repo.update!()
+
+          other_participant_ids(thread_id, sender_id)
+          |> Enum.each(fn uid ->
+            Phoenix.PubSub.broadcast(ParkBench.PubSub, "user:#{uid}", {:new_message, thread_id})
+          end)
+
+          {:ok, message}
+
+        error ->
+          error
+      end
+    end
   end
 end

@@ -18,6 +18,7 @@ defmodule ParkBench.Accounts.User do
     field :ai_flagged, :boolean, default: false
     field :ai_leniency_boost, :float, default: 0.0
     field :onboarding_completed_at, :utc_datetime
+    field :last_seen_at, :utc_datetime
 
     # Virtual fields
     field :password, :string, virtual: true
@@ -34,6 +35,8 @@ defmodule ParkBench.Accounts.User do
     has_many :status_updates, ParkBench.Timeline.StatusUpdate
     has_many :notifications, ParkBench.Notifications.Notification
     has_many :feed_items, ParkBench.Timeline.FeedItem
+    has_many :pets, ParkBench.Timeline.Pet
+    has_many :kids, ParkBench.Timeline.Kid
 
     timestamps(type: :utc_datetime)
   end

@@ -17,7 +17,8 @@ defmodule ParkBenchWeb.ThreadLive do
          |> assign(:thread, thread)
          |> assign(:messages, messages)
          |> assign(:other_users, others)
-         |> assign(:reply_body, "")}
+         |> assign(:reply_body, "")
+         |> assign(:nav_active, :inbox)}
 
       {:error, _} ->
         {:ok, push_navigate(socket, to: "/inbox") |> put_flash(:error, "Thread not found.")}

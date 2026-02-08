@@ -12,7 +12,8 @@ defmodule ParkBenchWeb.ComposeMessageLive do
      |> assign(:recipient_results, [])
      |> assign(:selected_recipient, nil)
      |> assign(:subject, "")
-     |> assign(:body, "")}
+     |> assign(:body, "")
+     |> assign(:nav_active, :inbox)}
   end
 
   @impl true

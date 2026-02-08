@@ -78,6 +78,22 @@ defmodule ParkBench.Social do
     if id1 < id2, do: {id1, id2}, else: {id2, id1}
   end
 
+  def online_friends(user_id) do
+    five_minutes_ago = DateTime.add(DateTime.utc_now(), -300, :second)
+
+    friends_query(user_id)
+    |> where([u], not is_nil(u.last_seen_at) and u.last_seen_at > ^five_minutes_ago)
+    |> Repo.all()
+  end
+
+  def online_friend_count(user_id) do
+    five_minutes_ago = DateTime.add(DateTime.utc_now(), -300, :second)
+
+    friends_query(user_id)
+    |> where([u], not is_nil(u.last_seen_at) and u.last_seen_at > ^five_minutes_ago)
+    |> Repo.aggregate(:count)
+  end
+
   # === Friend Requests ===
 
   def send_friend_request(sender_id, receiver_id) do

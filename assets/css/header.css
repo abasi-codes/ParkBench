@@ -443,3 +443,179 @@ button.nav-link {
   color: var(--pb-text-white);
   text-decoration: underline;
 }
+
+/* ==========================================================================
+   New Top Nav — Frosted Glass (parkbench_6 redesign)
+   Fixed 64px nav with backdrop blur, search bar, and circular action buttons.
+   Coexists with .nav-bar for backward compatibility.
+   ========================================================================== */
+
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: rgba(250, 248, 244, 0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(168, 184, 156, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  z-index: 100;
+}
+
+.top-nav-inner {
+  max-width: var(--max-width-app, 1400px);
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ── Logo ─────────────────────────────────────────────────────────────── */
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-link:hover {
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--bark);
+  letter-spacing: -0.5px;
+}
+
+.logo-text span {
+  color: var(--moss);
+}
+
+/* ── Search Bar ───────────────────────────────────────────────────────── */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background: rgba(168, 184, 156, 0.12);
+  border: 1px solid rgba(168, 184, 156, 0.2);
+  border-radius: 24px;
+  padding: 8px 16px;
+  gap: 8px;
+  width: 320px;
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus-within {
+  background: white;
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(168, 184, 156, 0.15);
+}
+
+.search-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--stone);
+  flex-shrink: 0;
+}
+
+.search-input {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 14px;
+  color: var(--deep-earth);
+  width: 100%;
+}
+
+.search-input::placeholder {
+  color: var(--stone);
+}
+
+/* Also style bare input inside .search-bar */
+.search-bar input {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 14px;
+  color: var(--deep-earth);
+  width: 100%;
+}
+
+.search-bar input::placeholder {
+  color: var(--stone);
+}
+
+/* ── Nav Action Buttons ───────────────────────────────────────────────── */
+
+.top-nav .nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.top-nav .nav-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bark-light);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.top-nav .nav-btn:hover {
+  background: var(--leaf-shadow);
+  color: var(--moss);
+}
+
+.top-nav .nav-btn .badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  background: var(--sunset);
+  border-radius: 50%;
+  border: 2px solid var(--warm-white);
+}
+
+/* ── Avatar Button ────────────────────────────────────────────────────── */
+
+.avatar-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid var(--sage);
+  overflow: hidden;
+  cursor: pointer;
+  margin-left: 8px;
+  background: linear-gradient(135deg, var(--moss-light), var(--sky));
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .search-bar { width: 180px; }
+}

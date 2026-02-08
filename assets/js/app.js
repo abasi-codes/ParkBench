@@ -139,6 +139,19 @@ Hooks.InfiniteScroll = {
   }
 }
 
+// Buddy list - periodically refresh online status
+Hooks.BuddyList = {
+  mounted() {
+    // Refresh online status every 60 seconds
+    this.timer = setInterval(() => {
+      this.pushEvent("refresh_buddy_list", {});
+    }, 60000);
+  },
+  destroyed() {
+    if (this.timer) clearInterval(this.timer);
+  }
+}
+
 // LiveSocket setup
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {

@@ -3,7 +3,18 @@ defmodule ParkBench.Timeline do
 
   import Ecto.Query
   alias ParkBench.Repo
-  alias ParkBench.Timeline.{WallPost, Comment, Like, StatusUpdate, FeedItem}
+
+  alias ParkBench.Timeline.{
+    WallPost,
+    Comment,
+    Like,
+    StatusUpdate,
+    FeedItem,
+    Bookmark,
+    Share,
+    WellnessEmbed
+  }
+
   alias ParkBench.Social
   alias ParkBench.Privacy.Block
   alias ParkBench.AIDetection
@@ -345,7 +356,9 @@ defmodule ParkBench.Timeline do
 
   defp load_feed_content(feed_items) do
     # Group content IDs by type
-    wall_post_ids = for %{item_type: "wall_post", content_id: id} <- feed_items, do: id
+    wall_post_ids =
+      for %{item_type: t, content_id: id} <- feed_items, t in ["wall_post", "shared_post"], do: id
+
     status_ids = for %{item_type: "status_update", content_id: id} <- feed_items, do: id
     friend_ids = for %{item_type: "new_friendship", content_id: id} <- feed_items, do: id
 
@@ -367,6 +380,7 @@ defmodule ParkBench.Timeline do
       content =
         case item.item_type do
           "wall_post" -> Map.get(wall_posts, item.content_id)
+          "shared_post" -> Map.get(wall_posts, item.content_id)
           "status_update" -> Map.get(statuses, item.content_id)
           "new_friendship" -> Map.get(friends, item.content_id)
           "profile_photo_updated" -> Map.get(profile_photos, item.content_id)
@@ -385,7 +399,7 @@ defmodule ParkBench.Timeline do
     WallPost
     |> where([p], p.id in ^ids and is_nil(p.deleted_at))
     |> where([p], p.ai_detection_status not in ["hard_rejected"])
-    |> preload([:author, :wall_owner])
+    |> preload([:author, :wall_owner, :wellness_embed, pet_embeds: :pet, kid_embeds: :kid])
     |> Repo.all()
     |> Map.new(&{&1.id, &1})
   end
@@ -438,6 +452,165 @@ defmodule ParkBench.Timeline do
       from(b in Block, where: b.blocker_id == ^user_id, select: b.blocked_id) |> Repo.all()
 
     Enum.uniq(blocker_ids ++ blocked_ids)
+  end
+
+  # === Bookmarks ===
+
+  def toggle_bookmark(user_id, wall_post_id) do
+    case get_bookmark(user_id, wall_post_id) do
+      nil ->
+        %Bookmark{}
+        |> Bookmark.changeset(%{user_id: user_id, wall_post_id: wall_post_id})
+        |> Repo.insert()
+        |> case do
+          {:ok, bookmark} -> {:ok, :bookmarked, bookmark}
+          error -> error
+        end
+
+      bookmark ->
+        Repo.delete(bookmark)
+        {:ok, :unbookmarked, nil}
+    end
+  end
+
+  def get_bookmark(user_id, wall_post_id) do
+    Bookmark
+    |> where([b], b.user_id == ^user_id and b.wall_post_id == ^wall_post_id)
+    |> Repo.one()
+  end
+
+  def batch_bookmarked_ids(_user_id, ids) when ids == [], do: MapSet.new()
+
+  def batch_bookmarked_ids(user_id, ids) do
+    Bookmark
+    |> where([b], b.user_id == ^user_id and b.wall_post_id in ^ids)
+    |> select([b], b.wall_post_id)
+    |> Repo.all()
+    |> MapSet.new()
+  end
+
+  # === Shares ===
+
+  def share_post(user_id, wall_post_id) do
+    %Share{}
+    |> Share.changeset(%{user_id: user_id, wall_post_id: wall_post_id})
+    |> Repo.insert()
+    |> case do
+      {:ok, share} ->
+        create_feed_item(%{
+          user_id: user_id,
+          item_type: "shared_post",
+          content_id: wall_post_id
+        })
+
+        {:ok, share}
+
+      {:error, %{errors: [{:user_id, _} | _]}} ->
+        {:error, :already_shared}
+
+      error ->
+        error
+    end
+  end
+
+  def batch_share_counts(ids) when ids == [], do: %{}
+
+  def batch_share_counts(ids) do
+    Share
+    |> where([s], s.wall_post_id in ^ids)
+    |> group_by([s], s.wall_post_id)
+    |> select([s], {s.wall_post_id, count(s.id)})
+    |> Repo.all()
+    |> Map.new()
+  end
+
+  # === Wellness ===
+
+  def create_wellness_embed(wall_post_id, attrs) do
+    %WellnessEmbed{}
+    |> WellnessEmbed.changeset(Map.put(attrs, :wall_post_id, wall_post_id))
+    |> Repo.insert()
+  end
+
+  def wellness_today(user_id) do
+    today_start =
+      Date.utc_today()
+      |> DateTime.new!(~T[00:00:00], "Etc/UTC")
+
+    WallPost
+    |> where([p], p.author_id == ^user_id and p.post_type == "wellness")
+    |> where([p], p.inserted_at >= ^today_start and is_nil(p.deleted_at))
+    |> join(:inner, [p], w in WellnessEmbed, on: w.wall_post_id == p.id)
+    |> select([_p, w], w)
+    |> order_by([_p, w], desc: w.inserted_at)
+    |> limit(1)
+    |> Repo.one()
+  end
+
+  # === Trending ===
+
+  def trending_posts(limit \\ 5) do
+    seven_days_ago = DateTime.add(DateTime.utc_now(), -7 * 86400, :second)
+
+    likes_sub =
+      from(l in Like,
+        where: l.likeable_type == "wall_post",
+        group_by: l.likeable_id,
+        select: %{post_id: l.likeable_id, like_count: count(l.id)}
+      )
+
+    comments_sub =
+      from(c in Comment,
+        where: c.commentable_type == "WallPost" and is_nil(c.deleted_at),
+        group_by: c.commentable_id,
+        select: %{post_id: c.commentable_id, comment_count: count(c.id)}
+      )
+
+    WallPost
+    |> where([p], p.inserted_at > ^seven_days_ago and is_nil(p.deleted_at))
+    |> where([p], p.ai_detection_status not in ["hard_rejected"])
+    |> join(:left, [p], l in subquery(likes_sub), on: l.post_id == p.id)
+    |> join(:left, [p, l], c in subquery(comments_sub), on: c.post_id == p.id)
+    |> order_by([p, l, c], desc: coalesce(l.like_count, 0) + coalesce(c.comment_count, 0))
+    |> limit(^limit)
+    |> preload([:author])
+    |> Repo.all()
+  end
+
+  # === Feed Filtering by Post Type ===
+
+  def get_news_feed_filtered(user_id, opts \\ []) do
+    page = Keyword.get(opts, :page, 1)
+    per_page = Keyword.get(opts, :per_page, 20)
+    post_type = Keyword.get(opts, :post_type, nil)
+
+    friend_ids = Social.list_friends(user_id) |> Enum.map(& &1.id)
+    all_ids = [user_id | friend_ids]
+    blocked_ids = blocked_user_ids(user_id)
+    visible_ids = all_ids -- blocked_ids
+
+    query =
+      FeedItem
+      |> where([fi], fi.user_id in type(^visible_ids, {:array, Ecto.UUID}))
+      |> order_by([fi], desc: fi.inserted_at)
+
+    query =
+      if post_type do
+        query
+        |> where([fi], fi.item_type == "wall_post")
+        |> join(:inner, [fi], p in WallPost,
+          on: p.id == fi.content_id and p.post_type == ^post_type
+        )
+      else
+        query
+      end
+
+    query
+    |> offset(^((page - 1) * per_page))
+    |> limit(^per_page)
+    |> preload(:user)
+    |> Repo.all()
+    |> load_feed_content()
   end
 
   # === Soft Delete Cleanup (called by Oban worker) ===

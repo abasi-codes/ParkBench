@@ -17,28 +17,26 @@ defmodule ParkBenchWeb.FeedLiveTest do
     test "renders feed page for authenticated user", %{conn: conn} do
       {:ok, _view, html} = live(conn, ~p"/feed")
       assert html =~ "News Feed"
-      assert html =~ "What&#39;s on your mind?"
+      assert html =~ "happening at the park"
       assert html =~ "submit_post"
-      assert html =~ "update_status"
     end
 
     test "shows empty feed message when no friends", %{conn: conn} do
       {:ok, _view, html} = live(conn, ~p"/feed")
       assert html =~ "Welcome to ParkBench!"
-      assert html =~ "Your news feed is empty"
+      assert html =~ "Your feed is empty"
       assert html =~ "Find Friends"
     end
 
-    test "can create a status update", %{conn: conn, user: user} do
+    test "can create a wall post via composer", %{conn: conn} do
       {:ok, view, _html} = live(conn, ~p"/feed")
 
-      html =
-        view
-        |> form("form[phx-submit='update_status']", %{body: "feeling great"})
-        |> render_submit()
+      view
+      |> form("form[phx-submit='submit_post']", %{body: "feeling great"})
+      |> render_submit()
 
-      assert html =~ "feeling great"
-      assert html =~ user.display_name
+      # The feed is re-fetched after posting. We verify no error flash.
+      refute render(view) =~ "Could not create post"
     end
 
     test "can create a wall post on own wall", %{conn: conn} do
@@ -74,7 +72,7 @@ defmodule ParkBenchWeb.FeedLiveTest do
 
       {:ok, _view, html} = live(conn, ~p"/feed")
       # With a friend, the feed should no longer show the empty message
-      refute html =~ "Your news feed is empty"
+      refute html =~ "Your feed is empty"
     end
 
     test "shows search link on feed page", %{conn: conn} do

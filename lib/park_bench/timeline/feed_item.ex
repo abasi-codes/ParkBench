@@ -11,7 +11,8 @@ defmodule ParkBench.Timeline.FeedItem do
     "new_friendship",
     "friend_added",
     "profile_photo_updated",
-    "profile_updated"
+    "profile_updated",
+    "shared_post"
   ]
 
   schema "feed_items" do

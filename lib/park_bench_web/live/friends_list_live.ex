@@ -33,7 +33,8 @@ defmodule ParkBenchWeb.FriendsListLive do
            |> assign(:profile_user, profile_user)
            |> assign(:grouped_friends, grouped)
            |> assign(:total, length(friends))
-           |> assign(:private, false)}
+           |> assign(:private, false)
+           |> assign(:nav_active, :friends)}
         else
           {:ok,
            socket
@@ -41,7 +42,8 @@ defmodule ParkBenchWeb.FriendsListLive do
            |> assign(:profile_user, profile_user)
            |> assign(:grouped_friends, [])
            |> assign(:total, 0)
-           |> assign(:private, true)}
+           |> assign(:private, true)
+           |> assign(:nav_active, :friends)}
         end
     end
   end

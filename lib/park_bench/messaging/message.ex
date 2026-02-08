@@ -25,14 +25,18 @@ defmodule ParkBench.Messaging.Message do
 
     belongs_to :thread, ParkBench.Messaging.MessageThread
     belongs_to :sender, ParkBench.Accounts.User
+    belongs_to :shared_post, ParkBench.Timeline.WallPost
+
+    has_many :reactions, ParkBench.Messaging.MessageReaction
 
     timestamps(type: :utc_datetime)
   end
 
   def changeset(message, attrs) do
     message
-    |> cast(attrs, [:thread_id, :sender_id, :body])
-    |> validate_required([:thread_id, :sender_id, :body])
+    |> cast(attrs, [:thread_id, :sender_id, :body, :shared_post_id])
+    |> validate_required([:thread_id, :sender_id])
+    |> validate_body_or_shared_post()
     |> validate_length(:body, min: 1, max: 10_000)
     |> generate_content_hash()
     |> encrypt_body()
@@ -49,6 +53,17 @@ defmodule ParkBench.Messaging.Message do
       greater_than_or_equal_to: 0.0,
       less_than_or_equal_to: 1.0
     )
+  end
+
+  defp validate_body_or_shared_post(changeset) do
+    body = get_field(changeset, :body)
+    shared_post_id = get_field(changeset, :shared_post_id)
+
+    if (is_nil(body) || body == "") && is_nil(shared_post_id) do
+      add_error(changeset, :body, "or a shared post is required")
+    else
+      changeset
+    end
   end
 
   defp generate_content_hash(changeset) do
