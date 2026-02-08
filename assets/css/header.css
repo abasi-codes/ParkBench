@@ -1,0 +1,445 @@
+/* ==========================================================================
+   Sunporch Header / Navigation Bar
+   The Sunporch top navigation — "Golden Hour" palette.
+   42px tall, warm honey gradient, white text, right-aligned nav links.
+   ========================================================================== */
+
+/* Nav Wrapper
+   Full-width warm honey gradient bar pinned to top.
+   ========================================================================== */
+
+.nav-bar {
+  width: 100%;
+  height: var(--sp-height-nav);
+  background: linear-gradient(to bottom, #9A7618, #8B6914);
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: none;
+  box-shadow: 0 2px 8px rgba(110,85,40,0.2);
+  position: sticky;
+  top: 0;
+  z-index: var(--sp-z-nav);
+}
+
+/* Nav Inner
+   960px centered container holding all nav elements.
+   ========================================================================== */
+
+.nav-bar-inner {
+  max-width: var(--sp-width-page);
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--sp-spacing-md);
+}
+
+/* Logo
+   "sunporch" in white bold text, left side.
+   ========================================================================== */
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nav-logo a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: var(--sp-font-heading);
+  color: var(--sp-text-white);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.nav-logo-icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.nav-logo a:hover {
+  text-decoration: none;
+  color: var(--sp-text-white);
+}
+
+/* Search
+   180px input with rounded corners, center-left area.
+   ========================================================================== */
+
+.nav-search {
+  position: relative;
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.nav-search-input {
+  width: 240px;
+  height: 34px;
+  padding: 4px 32px 4px 34px;
+  font-size: var(--sp-font-size-small);
+  font-family: var(--sp-font-body);
+  color: var(--sp-text-primary);
+  background-color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.95);
+  border-radius: var(--sp-radius-full);
+  outline: none;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+  transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, width 0.2s ease;
+}
+
+.nav-search-input::placeholder {
+  color: var(--sp-text-light);
+}
+
+.nav-search-input:focus {
+  background-color: var(--sp-bg-input);
+  border-color: var(--sp-border-input);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.08), 0 0 0 3px rgba(139,105,20,0.2);
+  color: var(--sp-text-primary);
+  width: 280px;
+}
+
+.nav-search-input:focus::placeholder {
+  color: var(--sp-text-light);
+}
+
+.nav-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  color: var(--sp-text-light);
+  pointer-events: none;
+}
+
+.nav-search-btn {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sp-text-light);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.nav-search-btn:hover {
+  color: var(--sp-text-secondary);
+}
+
+/* Navigation Links
+   Right-aligned row of text links with optional badges.
+   ========================================================================== */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-left: auto;
+}
+
+.nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: auto;
+  padding: 6px 12px;
+  font-size: var(--sp-font-size-small);
+  font-weight: 600;
+  color: var(--sp-text-white);
+  text-decoration: none;
+  white-space: nowrap;
+  border-radius: var(--sp-radius-full);
+  transition: background-color 0.15s ease;
+}
+
+/* Button variant of nav-link (dropdown triggers) */
+button.nav-link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  color: var(--sp-text-white);
+}
+
+.nav-link.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Nav link separator — small vertical pipe between some items */
+.nav-separator {
+  width: 1px;
+  height: 14px;
+  background-color: rgba(255, 255, 255, 0.25);
+  margin: 0 2px;
+}
+
+/* Profile link with small avatar */
+.nav-link-profile {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-link-profile .nav-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Notification Badge
+   Red circle overlaid on nav links.
+   ========================================================================== */
+
+.nav-badge {
+  position: absolute;
+  top: 6px;
+  right: 0;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  background-color: var(--sp-red);
+  color: var(--sp-text-white);
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 9px;
+  border: 1px solid #8B1A1A;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Icon-based nav items (friend requests, messages, notifications)
+   The three icons to the left of the text links.
+   ========================================================================== */
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-left: 12px;
+}
+
+.nav-icon-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: var(--sp-height-nav);
+  color: var(--sp-text-white);
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.85;
+  transition: opacity 0.1s ease;
+}
+
+.nav-icon-link:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  color: var(--sp-text-white);
+}
+
+.nav-icon-link .nav-badge {
+  top: 4px;
+  right: -2px;
+}
+
+@keyframes badge-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.nav-badge {
+  animation: badge-pulse 0.4s var(--sp-ease-bounce);
+}
+
+/* Dropdown menus from nav
+   ========================================================================== */
+
+.nav-dropdown {
+  position: absolute;
+  top: var(--sp-height-nav);
+  right: 0;
+  width: 300px;
+  background-color: var(--sp-bg-white);
+  border: 1px solid var(--sp-border);
+  border-top: none;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  z-index: var(--sp-z-dropdown);
+  display: none;
+}
+
+.nav-dropdown.open {
+  display: block;
+}
+
+.nav-dropdown-header {
+  padding: 8px 10px;
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  background-color: var(--sp-bg-sidebar-header);
+  border-bottom: 1px solid var(--sp-border);
+}
+
+.nav-dropdown-footer {
+  padding: 6px 10px;
+  text-align: center;
+  border-top: 1px solid var(--sp-border);
+  background-color: var(--sp-bg-sidebar-header);
+}
+
+.nav-dropdown-footer a {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-link);
+}
+
+.nav-dropdown-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #EDE9E0;
+  text-decoration: none;
+  color: var(--sp-text-primary);
+}
+
+.nav-dropdown-item:hover {
+  background-color: #F5F1E9;
+  text-decoration: none;
+}
+
+.nav-dropdown-item.unread {
+  background-color: var(--sp-bg-highlight);
+}
+
+.nav-dropdown-empty {
+  padding: 20px 10px;
+  text-align: center;
+  color: var(--sp-text-light);
+  font-size: var(--sp-font-size-base);
+}
+
+/* Logged-out header (landing page)
+   Simpler header with just logo + login form.
+   ========================================================================== */
+
+.nav-bar-landing {
+  width: 100%;
+  height: auto;
+  min-height: var(--sp-height-nav);
+  background: var(--sp-bg-nav);
+  border-bottom: 1px solid var(--sp-blue-dark);
+  padding: 8px 0;
+}
+
+.nav-bar-landing .nav-bar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Inline login form in the landing header */
+.nav-login-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.nav-login-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-login-field label {
+  font-size: var(--sp-font-size-small);
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2px;
+  font-weight: normal;
+}
+
+.nav-login-field input {
+  width: 150px;
+  height: 24px;
+  padding: 2px 6px;
+  font-size: var(--sp-font-size-base);
+  font-family: var(--sp-font-family);
+  border: 1px solid var(--sp-blue-dark);
+  border-radius: 2px;
+  outline: none;
+}
+
+.nav-login-field input:focus {
+  border-color: #5A4410;
+}
+
+.nav-login-submit {
+  height: 24px;
+  padding: 0 12px;
+  font-size: var(--sp-font-size-base);
+  font-family: var(--sp-font-family);
+  font-weight: bold;
+  color: var(--sp-text-white);
+  background-color: var(--sp-blue-dark);
+  border: 1px solid #4D3A0C;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.nav-login-submit:hover {
+  background-color: #5A4410;
+}
+
+.nav-login-extras {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.nav-login-extras label {
+  font-size: var(--sp-font-size-small);
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+}
+
+.nav-login-extras a {
+  font-size: var(--sp-font-size-small);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.nav-login-extras a:hover {
+  color: var(--sp-text-white);
+  text-decoration: underline;
+}

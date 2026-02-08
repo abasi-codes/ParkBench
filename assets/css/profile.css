@@ -1,0 +1,870 @@
+/* ==========================================================================
+   Sunporch Profile
+   Profile header, tab navigation, info tab, friends grid, mini feed,
+   and the two-column profile layout (300px sidebar + 620px main).
+   ========================================================================== */
+
+/* ==========================================================================
+   Profile Cover Photo
+   Wide banner across the top of the profile page.
+   ========================================================================== */
+
+.profile-cover {
+  width: 100%;
+  height: 280px;
+  border-radius: var(--sp-radius-lg) var(--sp-radius-lg) 0 0;
+  overflow: hidden;
+  background: linear-gradient(135deg, #C49A2B 0%, #E8B62C 30%, #F0C850 60%, #C49A2B 100%);
+  position: relative;
+}
+
+.profile-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-cover::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, rgba(0,0,0,0.25), transparent);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Profile Header
+   Large area: circular avatar overlapping cover, name + info on right.
+   ========================================================================== */
+
+.profile-header {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-top: none;
+  border-radius: 0 0 var(--sp-radius) var(--sp-radius);
+  padding: 20px 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 0;
+  margin-top: -60px;
+  position: relative;
+  box-shadow: var(--sp-shadow-sm);
+}
+
+/* Profile photo */
+.profile-photo {
+  width: 168px;
+  height: 168px;
+  flex-shrink: 0;
+  border: 4px solid var(--sp-bg-white);
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #EDE9E0;
+  box-shadow: var(--sp-shadow-md);
+}
+
+.profile-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-photo:hover,
+.profile-photo-edit:hover > img {
+  box-shadow: var(--sp-shadow-md), 0 0 0 4px rgba(232,182,44,0.3);
+}
+
+/* Profile photo edit overlay (own profile) */
+.profile-photo-edit {
+  position: relative;
+}
+
+.profile-photo-edit .photo-edit-link {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--sp-text-white);
+  font-size: var(--sp-font-size-small);
+  text-align: center;
+  padding: 4px;
+  cursor: pointer;
+  display: none;
+}
+
+.profile-photo-edit:hover .photo-edit-link {
+  display: block;
+}
+
+/* Profile info beside photo */
+.profile-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-name {
+  font-size: var(--sp-font-size-h1);
+  font-weight: 700;
+  font-family: var(--sp-font-heading);
+  color: var(--sp-text-primary);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.profile-network {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  margin-bottom: 8px;
+}
+
+.profile-network a {
+  color: var(--sp-text-link);
+}
+
+/* Quick info rows (relationship status, birthday, etc.) */
+.profile-quick-info {
+  margin-bottom: 10px;
+}
+
+.profile-quick-info-row {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  line-height: 1.6;
+}
+
+.profile-quick-info-row strong {
+  color: var(--sp-text-primary);
+}
+
+/* Action buttons (Add Friend, Send Message, Poke, etc.) */
+.profile-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+/* Friend status text */
+.profile-friend-status {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.profile-friend-status .icon {
+  color: var(--sp-btn-green);
+}
+
+/* Mutual friends count */
+.profile-mutual-friends {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  margin-top: 6px;
+}
+
+.profile-mutual-friends a {
+  color: var(--sp-text-link);
+}
+
+/* ==========================================================================
+   Profile Tab Bar
+   Tabs below the header: Wall, Info, Photos, etc.
+   ========================================================================== */
+
+.profile-tab-bar {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+  margin-bottom: var(--sp-spacing-md);
+  gap: 8px;
+}
+
+.profile-tab {
+  display: flex;
+  align-items: center;
+  padding: 8px 20px;
+  font-size: var(--sp-font-size-base);
+  font-weight: 600;
+  color: var(--sp-text-secondary);
+  text-decoration: none;
+  border: none;
+  border-radius: var(--sp-radius-full);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.profile-tab:hover {
+  text-decoration: none;
+  color: var(--sp-text-primary);
+  background-color: rgba(139,105,20,0.08);
+}
+
+.profile-tab.active {
+  background-color: var(--sp-blue);
+  color: var(--sp-text-white);
+  border-radius: var(--sp-radius-full);
+}
+
+.profile-tab .badge {
+  margin-left: 5px;
+}
+
+/* "Edit My Profile" link in tab bar */
+.profile-tab-edit {
+  margin-left: auto;
+  font-size: var(--sp-font-size-small);
+  font-weight: normal;
+  color: var(--sp-text-link);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+}
+
+.profile-tab-edit:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Profile Two-Column Layout
+   Left sidebar (300px) + Main content (flexible ~620px).
+   ========================================================================== */
+
+.profile-layout {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.profile-sidebar {
+  width: 300px;
+  min-width: 300px;
+  flex-shrink: 0;
+}
+
+.profile-main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ==========================================================================
+   Info Tab
+   Labeled rows for each profile field.
+   ========================================================================== */
+
+.profile-info-section {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  margin-bottom: var(--sp-spacing-md);
+  overflow: hidden;
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.profile-info-section-header {
+  padding: 12px 16px 8px 16px;
+  background-color: transparent;
+  border-bottom: 2px solid var(--sp-accent-gold);
+  font-size: var(--sp-font-size-base);
+  font-weight: 700;
+  font-family: var(--sp-font-heading);
+  color: var(--sp-text-primary);
+}
+
+.profile-info-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 6px 10px;
+  border-bottom: 1px solid #EDE9E0;
+  font-size: var(--sp-font-size-base);
+  line-height: var(--sp-line-height);
+}
+
+.profile-info-row:last-child {
+  border-bottom: none;
+}
+
+.profile-info-label {
+  width: 140px;
+  min-width: 140px;
+  flex-shrink: 0;
+  font-weight: bold;
+  color: var(--sp-text-secondary);
+  padding-right: 10px;
+}
+
+.profile-info-value {
+  flex: 1;
+  min-width: 0;
+  color: var(--sp-text-primary);
+  word-wrap: break-word;
+}
+
+.profile-info-value a {
+  color: var(--sp-text-link);
+}
+
+/* Empty info state */
+.profile-info-empty {
+  padding: 10px;
+  color: var(--sp-text-light);
+  font-size: var(--sp-font-size-base);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Edit info link */
+.profile-info-edit {
+  float: right;
+  font-size: var(--sp-font-size-small);
+  font-weight: normal;
+  color: var(--sp-text-link);
+}
+
+/* ==========================================================================
+   Friends Grid
+   3x2 grid of small thumbnails with names in the profile sidebar.
+   ========================================================================== */
+
+.profile-friends-box {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  margin-bottom: var(--sp-spacing-md);
+  overflow: hidden;
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.profile-friends-header {
+  padding: 12px 16px 8px 16px;
+  background-color: transparent;
+  border-bottom: 2px solid var(--sp-accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-friends-header-title {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+}
+
+.profile-friends-header-count {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+  font-weight: normal;
+}
+
+.profile-friends-header a {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-link);
+  font-weight: normal;
+}
+
+.profile-friends-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 8px;
+}
+
+.profile-friend-item {
+  text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+.profile-friend-item:hover {
+  text-decoration: none;
+}
+
+.profile-friend-thumb {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #EDE9E0;
+  margin-bottom: 6px;
+  transition: box-shadow 0.15s ease;
+}
+
+.profile-friend-item:hover .profile-friend-thumb {
+  box-shadow: 0 0 0 3px rgba(139,105,20,0.2);
+}
+
+.profile-friend-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-friend-name {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-link);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-friend-item:hover .profile-friend-name {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Mini Feed (on profile)
+   Compact activity feed shown on profile pages.
+   ========================================================================== */
+
+.mini-feed {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  margin-bottom: var(--sp-spacing-md);
+  overflow: hidden;
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.mini-feed-header {
+  padding: 12px 16px 8px 16px;
+  background-color: transparent;
+  border-bottom: 2px solid var(--sp-accent-gold);
+  font-size: var(--sp-font-size-base);
+  font-weight: 700;
+  font-family: var(--sp-font-heading);
+  color: var(--sp-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mini-feed-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 6px 8px;
+  border-bottom: 1px solid #EDE9E0;
+  font-size: var(--sp-font-size-base);
+  line-height: var(--sp-line-height);
+}
+
+.mini-feed-item:last-child {
+  border-bottom: none;
+}
+
+.mini-feed-item .avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.mini-feed-item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.mini-feed-item-content a {
+  color: var(--sp-text-link);
+  font-weight: bold;
+}
+
+.mini-feed-item-time {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+  margin-top: 1px;
+}
+
+/* ==========================================================================
+   Profile Photos Section
+   ========================================================================== */
+
+.profile-photos-box {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  margin-bottom: var(--sp-spacing-md);
+  overflow: hidden;
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.profile-photos-header {
+  padding: 12px 16px 8px 16px;
+  background-color: transparent;
+  border-bottom: 2px solid var(--sp-accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-photos-header-title {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+}
+
+.profile-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  padding: 8px;
+}
+
+.profile-photo-thumb {
+  aspect-ratio: 1;
+  border-radius: var(--sp-radius-sm);
+  overflow: hidden;
+  background-color: #EDE9E0;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.profile-photo-thumb:hover {
+  border-color: var(--sp-blue-light);
+  transform: scale(1.03);
+  box-shadow: var(--sp-shadow-md);
+}
+
+.profile-photo-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   Profile Edit Form
+   ========================================================================== */
+
+.profile-edit {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  padding: 24px;
+  margin-bottom: var(--sp-spacing-md);
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.profile-edit h2 {
+  font-size: var(--sp-font-size-h2);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  margin-bottom: var(--sp-spacing-md);
+  padding-bottom: var(--sp-spacing-sm);
+  border-bottom: 1px solid var(--sp-border);
+}
+
+.profile-edit .form-group {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.profile-edit .form-group label {
+  width: 140px;
+  min-width: 140px;
+  padding-top: 4px;
+  padding-right: 10px;
+  text-align: right;
+}
+
+.profile-edit .form-group .form-field {
+  flex: 1;
+}
+
+/* ==========================================================================
+   Poke / Nudge
+   ========================================================================== */
+
+.poke-notification {
+  background-color: var(--sp-bg-highlight);
+  border: 1px solid #e0c97f;
+  border-radius: var(--sp-radius);
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--sp-font-size-base);
+}
+
+.poke-notification a {
+  color: var(--sp-text-link);
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   Online Status Indicator
+   ========================================================================== */
+
+.online-status {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--sp-btn-green);
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.online-status.offline {
+  background-color: var(--sp-text-light);
+}
+
+/* ==========================================================================
+   Cover Photo Upload Overlay
+   ========================================================================== */
+
+.cover-photo-overlay {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  z-index: 2;
+}
+
+.cover-photo-edit-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  background-color: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: var(--sp-font-size-small);
+  border-radius: var(--sp-radius);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.cover-photo-edit-btn:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.cover-photo-save {
+  margin-left: 8px;
+}
+
+.cover-photo-preview {
+  position: absolute;
+  bottom: 40px;
+  right: 0;
+  background: var(--sp-bg-white);
+  border-radius: var(--sp-radius);
+  box-shadow: var(--sp-shadow-md);
+  padding: 4px;
+}
+
+.cover-preview-img {
+  display: block;
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: var(--sp-radius-sm);
+  background-color: #EDE9E0;
+}
+
+/* ==========================================================================
+   Profile Photo Upload
+   ========================================================================== */
+
+.profile-photo-upload-form {
+  text-align: center;
+  margin-top: 4px;
+}
+
+.profile-photo-save {
+  margin-top: 4px;
+}
+
+.profile-photo-preview {
+  margin-top: 4px;
+  text-align: center;
+}
+
+.profile-preview-img {
+  display: block;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--sp-accent-gold);
+  background-color: #EDE9E0;
+}
+
+.upload-cancel {
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  margin-left: 4px;
+  vertical-align: top;
+}
+
+.upload-cancel:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+/* ==========================================================================
+   Profile Page Wrapper
+   ========================================================================== */
+
+.profile-page {
+  max-width: var(--sp-width-page);
+}
+
+/* ==========================================================================
+   Info Tab Styling
+   ========================================================================== */
+
+.profile-info-tab h2 {
+  font-family: var(--sp-font-heading);
+  font-size: var(--sp-font-size-h2);
+  font-weight: 700;
+  color: var(--sp-text-primary);
+  margin-bottom: var(--sp-spacing-md);
+  padding-bottom: var(--sp-spacing-sm);
+  border-bottom: 2px solid var(--sp-accent-gold);
+}
+
+.info-section {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  overflow: hidden;
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px 16px;
+  border-bottom: 1px solid #EDE9E0;
+  font-size: var(--sp-font-size-base);
+  line-height: var(--sp-line-height);
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.info-label {
+  width: 140px;
+  min-width: 140px;
+  flex-shrink: 0;
+  font-weight: 600;
+  color: var(--sp-text-secondary);
+}
+
+/* ==========================================================================
+   Photos Tab Header
+   ========================================================================== */
+
+.photos-tab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--sp-spacing-md);
+}
+
+.photos-tab-header h2 {
+  font-family: var(--sp-font-heading);
+  font-size: var(--sp-font-size-h2);
+  font-weight: 700;
+  color: var(--sp-text-primary);
+}
+
+/* ==========================================================================
+   Album Grid
+   ========================================================================== */
+
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-spacing-md);
+}
+
+.album-card {
+  display: block;
+  text-decoration: none;
+  background: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  overflow: hidden;
+  box-shadow: var(--sp-shadow-sm);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.album-card:hover {
+  box-shadow: var(--sp-shadow-md);
+  transform: translateY(-2px);
+}
+
+.album-cover {
+  aspect-ratio: 1;
+  background-color: #EDE9E0;
+  overflow: hidden;
+}
+
+.album-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-cover-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--sp-text-light);
+  font-size: var(--sp-font-size-small);
+}
+
+.album-card-info {
+  padding: 10px 12px;
+}
+
+.album-title {
+  display: block;
+  font-weight: 600;
+  color: var(--sp-text-primary);
+  font-size: var(--sp-font-size-base);
+  margin-bottom: 2px;
+}
+
+.album-count {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

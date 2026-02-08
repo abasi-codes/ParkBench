@@ -1,0 +1,181 @@
+/* ==========================================================================
+   Photo Albums & Photo Grid
+   ========================================================================== */
+
+.photos-tab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.photos-tab-header h2 {
+  margin: 0;
+}
+
+/* Album Grid */
+.album-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.album-card {
+  display: block;
+  border: 1px solid var(--sp-border-box);
+  background: var(--sp-bg-white);
+  text-decoration: none;
+  color: inherit;
+}
+
+.album-card:hover {
+  border-color: var(--sp-blue-light);
+}
+
+.album-cover {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #EDE9E0;
+}
+
+.album-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.album-cover-empty {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sp-text-light);
+  font-size: 12px;
+}
+
+.album-card-info {
+  padding: 8px;
+}
+
+.album-title {
+  display: block;
+  font-weight: bold;
+  font-size: 13px;
+  color: var(--sp-text-link);
+}
+
+.album-count {
+  display: block;
+  font-size: 11px;
+  color: var(--sp-text-light);
+}
+
+.empty-albums {
+  padding: 20px;
+  text-align: center;
+  color: var(--sp-text-light);
+}
+
+/* Album Page */
+.album-page {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.album-create-form {
+  background: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+  padding: 16px;
+}
+
+.album-create-form h1 {
+  margin: 0 0 16px 0;
+  font-size: 18px;
+}
+
+.album-header {
+  background: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.album-header h1 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+}
+
+.album-description {
+  margin: 4px 0;
+  color: var(--sp-text-secondary);
+  font-size: 13px;
+}
+
+.album-photo-count {
+  font-size: 12px;
+  color: var(--sp-text-light);
+}
+
+.album-actions {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+}
+
+/* Photo Grid */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.photo-card {
+  border: 1px solid var(--sp-border-box);
+  background: var(--sp-bg-white);
+}
+
+.photo-thumb {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-caption {
+  padding: 4px 6px;
+  font-size: 11px;
+  color: var(--sp-text-secondary);
+  margin: 0;
+}
+
+.photo-actions {
+  padding: 4px 6px 6px;
+  display: flex;
+  gap: 4px;
+}
+
+/* Upload Form */
+.upload-form {
+  background: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+  padding: 12px;
+  margin-bottom: 12px;
+}
+
+.upload-entry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 12px;
+}
+
+.empty-album {
+  padding: 20px;
+  text-align: center;
+  color: var(--sp-text-light);
+  background: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+}

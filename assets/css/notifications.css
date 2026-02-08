@@ -1,0 +1,367 @@
+/* ==========================================================================
+   Sunporch Notifications
+   Notification badge pills, notification list rows, unread/read states,
+   and the notifications page layout.
+   ========================================================================== */
+
+/* ==========================================================================
+   Notification Badge (on nav links)
+   Red pill overlaid on icons/links in the header.
+   ========================================================================== */
+
+.notification-badge {
+  display: inline-block;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  background-color: var(--sp-red);
+  color: var(--sp-text-white);
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 18px;
+  text-align: center;
+  border-radius: 9px;
+  border: 1px solid #8B1A1A;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  top: -1px;
+}
+
+.notification-badge-small {
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  font-size: 9px;
+  line-height: 14px;
+  border-radius: 7px;
+}
+
+/* Inline badge (not absolutely positioned) */
+.notification-badge-inline {
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* Hidden when count is 0 */
+.notification-badge.empty {
+  display: none;
+}
+
+/* ==========================================================================
+   Notification Page Container
+   ========================================================================== */
+
+.notifications-page {
+  width: 100%;
+}
+
+.notifications-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.notifications-page-header h1 {
+  font-size: var(--sp-font-size-h1);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  margin: 0;
+}
+
+.notifications-mark-read {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-link);
+  cursor: pointer;
+}
+
+.notifications-mark-read:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Notification List
+   ========================================================================== */
+
+.notification-list {
+  background-color: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+  border-radius: var(--sp-radius);
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Notification Row
+   Individual notification item.
+   ========================================================================== */
+
+.notification-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #EDE9E0;
+  text-decoration: none;
+  color: var(--sp-text-primary);
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.notification-row:last-child {
+  border-bottom: none;
+}
+
+.notification-row:hover {
+  background-color: #F5F1E9;
+  text-decoration: none;
+}
+
+/* Unread notification — highlight background */
+.notification-row.unread {
+  background-color: var(--sp-bg-highlight);
+}
+
+.notification-row.unread:hover {
+  background-color: #FFF0B8;
+}
+
+/* Read notification — normal background */
+.notification-row.read {
+  background-color: var(--sp-bg-white);
+}
+
+/* Unread indicator dot */
+.notification-row.unread::before {
+  content: "";
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--sp-blue);
+  flex-shrink: 0;
+  margin-top: 6px;
+}
+
+/* Avatar */
+.notification-row .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* Notification content */
+.notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Notification text / message */
+.notification-text {
+  font-size: var(--sp-font-size-base);
+  line-height: var(--sp-line-height);
+  color: var(--sp-text-primary);
+  word-wrap: break-word;
+}
+
+.notification-text a,
+.notification-text strong {
+  color: var(--sp-text-link);
+  font-weight: bold;
+}
+
+.notification-text a:hover {
+  text-decoration: underline;
+}
+
+/* Notification timestamp */
+.notification-time {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+  margin-top: 2px;
+  line-height: 1.2;
+}
+
+/* Notification action buttons (e.g., "Confirm" / "Ignore" for friend requests) */
+.notification-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+/* ==========================================================================
+   Notification Type Icons / Indicators
+   ========================================================================== */
+
+.notification-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-size: 14px;
+  color: var(--sp-text-white);
+}
+
+.notification-icon-friend {
+  background-color: var(--sp-blue);
+}
+
+.notification-icon-like {
+  background-color: var(--sp-blue-light);
+}
+
+.notification-icon-comment {
+  background-color: var(--sp-btn-green);
+}
+
+.notification-icon-wall {
+  background-color: var(--sp-accent-gold);
+}
+
+.notification-icon-tag {
+  background-color: #8b6bb0;
+}
+
+.notification-icon-event {
+  background-color: #d95b5b;
+}
+
+.notification-icon-group {
+  background-color: var(--sp-blue-dark);
+}
+
+/* ==========================================================================
+   Friend Request Notifications
+   ========================================================================== */
+
+.friend-request-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #EDE9E0;
+}
+
+.friend-request-row:last-child {
+  border-bottom: none;
+}
+
+.friend-request-row .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.friend-request-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.friend-request-name {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-link);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.friend-request-name:hover {
+  text-decoration: underline;
+}
+
+.friend-request-mutual {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+  margin-bottom: 6px;
+}
+
+.friend-request-actions {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* ==========================================================================
+   Notification Settings Link
+   ========================================================================== */
+
+.notification-settings-link {
+  display: block;
+  padding: 8px 12px;
+  text-align: center;
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-link);
+  border-top: 1px solid var(--sp-border-box);
+  background-color: var(--sp-bg-sidebar-header);
+}
+
+.notification-settings-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Empty Notifications State
+   ========================================================================== */
+
+.notifications-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--sp-text-light);
+  font-size: var(--sp-font-size-base);
+}
+
+.notifications-empty p {
+  margin-bottom: 8px;
+}
+
+/* ==========================================================================
+   Notification Dropdown (in header)
+   ========================================================================== */
+
+.notification-dropdown {
+  width: 350px;
+}
+
+.notification-dropdown .notification-row {
+  padding: 8px 10px;
+}
+
+.notification-dropdown .notification-row .avatar {
+  width: 28px;
+  height: 28px;
+}
+
+.notification-dropdown .notification-text {
+  font-size: var(--sp-font-size-base);
+}
+
+.notification-dropdown .notification-time {
+  font-size: 9px;
+}
+
+/* ==========================================================================
+   Notification Grouping (e.g., "X and 3 others liked your post")
+   ========================================================================== */
+
+.notification-group-avatars {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.notification-group-avatars .avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+  border: 2px solid var(--sp-bg-white);
+  margin-left: -8px;
+}
+
+.notification-group-avatars .avatar:first-child {
+  margin-left: 0;
+}

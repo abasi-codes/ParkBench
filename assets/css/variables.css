@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Sunporch Design Tokens — "Golden Hour Porch" Identity
+   Warm honey, amber, and aged-oak tones evoking late-afternoon
+   light on a screened porch. Lora serif headings + Inter body.
+   ========================================================================== */
+
+:root {
+  /* Primary Amber/Honey — the sunlit hardwood porch floor */
+  --sp-blue: #8B6914;
+  --sp-blue-light: #B8942B;
+  --sp-blue-dark: #6B4F0E;
+  --sp-blue-link: #8B6914;
+
+  /* Backgrounds — sun-bleached linen and warm cream */
+  --sp-bg-page: #F0EBE1;
+  --sp-bg-white: #FEFCF7;
+  --sp-bg-tab: #E8DFD0;
+  --sp-bg-sidebar-header: #F7F3EB;
+  --sp-bg-input: #FFFEF9;
+  --sp-bg-nav: #8B6914;
+  --sp-bg-highlight: #FFF4CC;
+
+  /* Borders — warm taupe like wicker shadow lines */
+  --sp-border: #C9C0B0;
+  --sp-border-box: #D4CBBA;
+  --sp-border-input: #C5BBA8;
+  --sp-border-dark: #948770;
+
+  /* Buttons */
+  --sp-btn-blue: #8B6914;
+  --sp-btn-blue-hover: #7A5C11;
+  --sp-btn-green: #6A9A4E;
+  --sp-btn-green-hover: #5C8A42;
+  --sp-btn-gray: #EBE6DA;
+  --sp-btn-gray-hover: #DDD7C9;
+
+  /* Text — warm charcoal, not cold gray */
+  --sp-text-primary: #3A3226;
+  --sp-text-secondary: #5F564B;
+  --sp-text-light: #7A6F5E;
+  --sp-text-link: #7A5C11;
+  --sp-text-link-hover: #6B4F0E;
+  --sp-text-white: #ffffff;
+  --sp-text-error: #C0392B;
+  --sp-red: #C0392B;
+
+  /* Accent */
+  --sp-accent-gold: #E8B62C;
+
+  /* Typography */
+  --sp-font-heading: "Lora", Georgia, serif;
+  --sp-font-body: "Inter", system-ui, sans-serif;
+  --sp-font-family: "Inter", system-ui, sans-serif;
+  --sp-font-size-base: 15px;
+  --sp-font-size-small: 13px;
+  --sp-font-size-medium: 15px;
+  --sp-font-size-large: 17px;
+  --sp-font-size-xlarge: 19px;
+  --sp-font-size-h1: 28px;
+  --sp-font-size-h2: 22px;
+  --sp-line-height: 1.55;
+
+  /* Layout */
+  --sp-width-page: 1080px;
+  --sp-width-landing: 1080px;
+  --sp-width-sidebar-left: 200px;
+  --sp-width-main: 500px;
+  --sp-width-sidebar-right: 300px;
+  --sp-height-nav: 56px;
+  --sp-height-footer: 40px;
+
+  /* Spacing */
+  --sp-spacing-xs: 4px;
+  --sp-spacing-sm: 8px;
+  --sp-spacing-md: 16px;
+  --sp-spacing-lg: 24px;
+  --sp-spacing-xl: 32px;
+  --sp-spacing-2xl: 48px;
+
+  /* Shadows — warm-tinted like light through a window */
+  --sp-shadow-box: 0 1px 3px rgba(110, 85, 40, 0.12);
+  --sp-shadow-sm: 0 1px 2px rgba(110,85,40,0.06), 0 2px 4px rgba(110,85,40,0.06);
+  --sp-shadow-md: 0 2px 4px rgba(110,85,40,0.08), 0 4px 8px rgba(110,85,40,0.08), 0 8px 16px rgba(110,85,40,0.04);
+  --sp-shadow-lg: 0 4px 8px rgba(110,85,40,0.08), 0 8px 16px rgba(110,85,40,0.08), 0 16px 32px rgba(110,85,40,0.06);
+
+  /* Border Radius */
+  --sp-radius: 12px;
+  --sp-radius-sm: 8px;
+  --sp-radius-lg: 16px;
+  --sp-radius-full: 9999px;
+
+  /* Z-index */
+  --sp-z-dropdown: 100;
+  --sp-z-nav: 200;
+  --sp-z-modal: 300;
+  --sp-z-toast: 400;
+
+  /* AI Detection Status Colors */
+  --sp-status-human: #6A9A4E;
+  --sp-status-human-bg: #E8F5E0;
+  --sp-status-detected: #C0392B;
+  --sp-status-detected-bg: #FDEAE6;
+  --sp-status-review: #B8942B;
+  --sp-status-review-bg: #FFF7E6;
+  --sp-status-pending: #7A6F5E;
+  --sp-status-pending-bg: #F0ECE4;
+
+  /* Animation Timing */
+  --sp-ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --sp-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  --sp-duration-fast: 150ms;
+  --sp-duration-normal: 300ms;
+}

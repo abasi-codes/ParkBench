@@ -1,0 +1,135 @@
+/* ==========================================================================
+   AI Detection Badges & Status Indicators
+   The visual core of Sunporch's anti-AI identity. Shows verification
+   status on every post, comment, and profile.
+   ========================================================================== */
+
+/* ==========================================================================
+   Inline AI Badge (next to timestamps on posts/comments)
+   ========================================================================== */
+
+.ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 1px 7px;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--sp-font-body);
+  letter-spacing: 0.04em;
+  line-height: 16px;
+  border-radius: var(--sp-radius-full);
+  white-space: nowrap;
+  vertical-align: middle;
+  margin-left: 6px;
+  text-transform: uppercase;
+}
+
+.ai-badge-icon {
+  font-size: 10px;
+  line-height: 1;
+  font-style: normal;
+}
+
+/* Human Verified — green */
+.ai-badge-human {
+  background-color: var(--sp-status-human-bg);
+  color: var(--sp-status-human);
+  border: 1px solid rgba(106, 154, 78, 0.25);
+}
+
+/* Pending — gray */
+.ai-badge-pending {
+  background-color: var(--sp-status-pending-bg);
+  color: var(--sp-status-pending);
+  border: 1px solid rgba(122, 111, 94, 0.2);
+}
+
+/* Under Review — amber */
+.ai-badge-review {
+  background-color: var(--sp-status-review-bg);
+  color: var(--sp-status-review);
+  border: 1px solid rgba(184, 148, 43, 0.25);
+}
+
+/* Appeal Pending — amber variant */
+.ai-badge-appealed {
+  background-color: var(--sp-status-review-bg);
+  color: var(--sp-status-review);
+  border: 1px solid rgba(184, 148, 43, 0.25);
+}
+
+/* Detected — red (for admin/moderator views) */
+.ai-badge-detected {
+  background-color: var(--sp-status-detected-bg);
+  color: var(--sp-status-detected);
+  border: 1px solid rgba(192, 57, 43, 0.25);
+}
+
+/* ==========================================================================
+   Profile Trust Badge (next to display name)
+   ========================================================================== */
+
+.trust-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--sp-font-body);
+  line-height: 18px;
+  border-radius: var(--sp-radius-full);
+  white-space: nowrap;
+  vertical-align: middle;
+  margin-left: 8px;
+}
+
+.trust-badge-verified {
+  background-color: var(--sp-status-human-bg);
+  color: var(--sp-status-human);
+  border: 1px solid rgba(106, 154, 78, 0.3);
+}
+
+.trust-badge-icon {
+  font-style: normal;
+}
+
+/* ==========================================================================
+   Community Pulse Sidebar
+   ========================================================================== */
+
+.community-pulse-stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #EDE9E0;
+  font-size: var(--sp-font-size-base);
+}
+
+.community-pulse-stat:last-child {
+  border-bottom: none;
+}
+
+.community-pulse-value {
+  font-weight: 700;
+  color: var(--sp-status-human);
+  font-family: var(--sp-font-heading);
+}
+
+.community-pulse-label {
+  color: var(--sp-text-secondary);
+}
+
+/* ==========================================================================
+   Landing Page Stats — AI-specific overrides
+   ========================================================================== */
+
+.landing-stat-value.stat-verified {
+  color: var(--sp-status-human);
+}
+
+.landing-stat-value.stat-flagged {
+  color: var(--sp-status-review);
+}

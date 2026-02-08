@@ -1,0 +1,695 @@
+/* ==========================================================================
+   Sunporch Messages
+   Inbox table layout, message threads, compose form, message bubbles.
+   2008 Facebook-style messaging with table-like inbox and threaded views.
+   ========================================================================== */
+
+/* ==========================================================================
+   Messages Page Container
+   ========================================================================== */
+
+.messages-page {
+  width: 100%;
+}
+
+.messages-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.messages-page-header h1 {
+  font-size: var(--sp-font-size-h1);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Inbox Table
+   Table-like layout for message threads.
+   ========================================================================== */
+
+.inbox-table {
+  width: 100%;
+  background-color: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+  border-radius: var(--sp-radius);
+  overflow: hidden;
+}
+
+/* Inbox header row (column labels) */
+.inbox-header {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  background-color: var(--sp-bg-sidebar-header);
+  border-bottom: 1px solid var(--sp-border-box);
+  font-size: var(--sp-font-size-small);
+  font-weight: bold;
+  color: var(--sp-text-secondary);
+}
+
+.inbox-header-check {
+  width: 24px;
+  flex-shrink: 0;
+}
+
+.inbox-header-participants {
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.inbox-header-subject {
+  flex: 1;
+  min-width: 0;
+}
+
+.inbox-header-time {
+  width: 100px;
+  flex-shrink: 0;
+  text-align: right;
+}
+
+/* ==========================================================================
+   Inbox Row
+   Individual message thread row.
+   ========================================================================== */
+
+.inbox-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-bottom: 1px solid #EDE9E0;
+  text-decoration: none;
+  color: var(--sp-text-primary);
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.inbox-row:last-child {
+  border-bottom: none;
+}
+
+.inbox-row:hover {
+  background-color: #F5F1E9;
+  text-decoration: none;
+}
+
+/* Unread row: bold text, highlight background */
+.inbox-row.unread {
+  background-color: var(--sp-bg-highlight);
+  font-weight: bold;
+}
+
+.inbox-row.unread:hover {
+  background-color: #FFF0B8;
+}
+
+/* Read row: normal weight */
+.inbox-row.read {
+  font-weight: normal;
+}
+
+/* Selected row (checkbox checked) */
+.inbox-row.selected {
+  background-color: #FFF7E6;
+}
+
+/* Checkbox column */
+.inbox-row-check {
+  width: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.inbox-row-check input[type="checkbox"] {
+  cursor: pointer;
+}
+
+/* Participants column */
+.inbox-row-participants {
+  width: 160px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.inbox-row-participants .avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.inbox-row-participants-names {
+  font-size: var(--sp-font-size-base);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--sp-text-link);
+}
+
+.inbox-row.unread .inbox-row-participants-names {
+  font-weight: bold;
+}
+
+/* Subject column */
+.inbox-row-subject {
+  flex: 1;
+  min-width: 0;
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+.inbox-row-subject-text {
+  font-size: var(--sp-font-size-base);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--sp-text-primary);
+}
+
+.inbox-row.unread .inbox-row-subject-text {
+  font-weight: bold;
+}
+
+.inbox-row-preview {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 1px;
+  font-weight: normal;
+}
+
+/* Time column */
+.inbox-row-time {
+  width: 100px;
+  flex-shrink: 0;
+  text-align: right;
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+  white-space: nowrap;
+  font-weight: normal;
+}
+
+/* Attachment indicator */
+.inbox-row-attachment {
+  font-size: 10px;
+  color: var(--sp-text-light);
+  margin-left: 4px;
+}
+
+/* ==========================================================================
+   Inbox Actions Bar
+   Bulk actions: Delete, Mark as Read, etc.
+   ========================================================================== */
+
+.inbox-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background-color: var(--sp-bg-sidebar-header);
+  border-bottom: 1px solid var(--sp-border-box);
+}
+
+.inbox-actions .btn {
+  font-size: var(--sp-font-size-small);
+  padding: 2px 8px;
+}
+
+.inbox-select-all {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-secondary);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Inbox Tabs (Inbox, Sent, Archive)
+   ========================================================================== */
+
+.inbox-tabs {
+  display: flex;
+  align-items: stretch;
+  background-color: var(--sp-bg-tab);
+  border: 1px solid var(--sp-border-box);
+  border-radius: var(--sp-radius) var(--sp-radius) 0 0;
+  padding: 0 8px;
+  margin-bottom: 0;
+}
+
+.inbox-tab {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-link);
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-bottom: none;
+  margin-bottom: -1px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.inbox-tab:hover {
+  text-decoration: none;
+  color: var(--sp-text-primary);
+}
+
+.inbox-tab.active {
+  background-color: var(--sp-bg-white);
+  color: var(--sp-text-primary);
+  border-color: var(--sp-border-box);
+  border-bottom-color: var(--sp-bg-white);
+  border-radius: var(--sp-radius) var(--sp-radius) 0 0;
+}
+
+.inbox-tab .badge {
+  margin-left: 5px;
+}
+
+/* ==========================================================================
+   Compose Form
+   New message compose: recipient, subject, body fields.
+   ========================================================================== */
+
+.compose-form {
+  background-color: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+  border-radius: var(--sp-radius);
+  overflow: hidden;
+}
+
+.compose-form-header {
+  padding: 8px 12px;
+  background-color: var(--sp-bg-sidebar-header);
+  border-bottom: 1px solid var(--sp-border-box);
+  font-size: var(--sp-font-size-medium);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+}
+
+.compose-form-body {
+  padding: 12px;
+}
+
+/* Compose field rows */
+.compose-field {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.compose-field label {
+  width: 70px;
+  min-width: 70px;
+  flex-shrink: 0;
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  padding-top: 5px;
+  text-align: right;
+  padding-right: 10px;
+}
+
+.compose-field .form-input,
+.compose-field .form-textarea {
+  flex: 1;
+}
+
+/* Recipient autocomplete input */
+.compose-recipient-input {
+  position: relative;
+}
+
+.compose-recipient-input .form-input {
+  width: 100%;
+}
+
+.compose-recipient-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 4px 6px;
+  border: 1px solid var(--sp-border-input);
+  background-color: var(--sp-bg-input);
+  min-height: 28px;
+  cursor: text;
+}
+
+.compose-recipient-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  background-color: var(--sp-bg-tab);
+  border: 1px solid var(--sp-border-box);
+  border-radius: 2px;
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-primary);
+}
+
+.compose-recipient-tag-remove {
+  cursor: pointer;
+  color: var(--sp-text-light);
+  font-size: 10px;
+  line-height: 1;
+}
+
+.compose-recipient-tag-remove:hover {
+  color: var(--sp-text-error);
+}
+
+.compose-recipient-inline-input {
+  border: none;
+  outline: none;
+  font-size: var(--sp-font-size-base);
+  font-family: var(--sp-font-family);
+  padding: 2px 0;
+  flex: 1;
+  min-width: 80px;
+}
+
+/* Body textarea */
+.compose-body-textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* Compose form footer / actions */
+.compose-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-top: 1px solid var(--sp-border-box);
+  background-color: var(--sp-bg-sidebar-header);
+}
+
+/* ==========================================================================
+   Thread View
+   Chronological messages in a conversation.
+   ========================================================================== */
+
+.thread-view {
+  background-color: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+  border-radius: var(--sp-radius);
+  overflow: hidden;
+}
+
+.thread-header {
+  padding: 10px 12px;
+  background-color: var(--sp-bg-sidebar-header);
+  border-bottom: 1px solid var(--sp-border-box);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.thread-subject {
+  font-size: var(--sp-font-size-medium);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+}
+
+.thread-participants {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  margin-top: 2px;
+}
+
+.thread-participants a {
+  color: var(--sp-text-link);
+}
+
+.thread-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Message list */
+.thread-messages {
+  padding: 0;
+}
+
+/* ==========================================================================
+   Message Bubble
+   Individual message within a thread.
+   ========================================================================== */
+
+.message-bubble {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 10px 12px;
+  border-bottom: 1px solid #EDE9E0;
+}
+
+.message-bubble:last-child {
+  border-bottom: none;
+}
+
+.message-bubble .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.message-bubble-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.message-bubble-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.message-bubble-sender {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-link);
+  text-decoration: none;
+}
+
+.message-bubble-sender:hover {
+  text-decoration: underline;
+}
+
+.message-bubble-time {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+}
+
+.message-bubble-body {
+  font-size: var(--sp-font-size-base);
+  line-height: var(--sp-line-height);
+  color: var(--sp-text-primary);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Alternate message styling (every other message slightly different bg) */
+.message-bubble:nth-child(even) {
+  background-color: #F9F6F0;
+}
+
+/* Own message indicator */
+.message-bubble.own {
+  background-color: #F5EFE0;
+}
+
+/* ==========================================================================
+   Thread Reply Form
+   Reply input at the bottom of a thread.
+   ========================================================================== */
+
+.thread-reply {
+  padding: 12px;
+  border-top: 1px solid var(--sp-border-box);
+  background-color: var(--sp-bg-sidebar-header);
+}
+
+.thread-reply-label {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  margin-bottom: 6px;
+}
+
+.thread-reply .form-textarea {
+  min-height: 80px;
+  margin-bottom: 8px;
+}
+
+.thread-reply-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ==========================================================================
+   Empty Inbox State
+   ========================================================================== */
+
+.inbox-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--sp-text-light);
+  font-size: var(--sp-font-size-base);
+}
+
+.inbox-empty h3 {
+  font-size: var(--sp-font-size-large);
+  color: var(--sp-text-primary);
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.inbox-empty p {
+  margin-bottom: 12px;
+}
+
+/* ==========================================================================
+   Message Notifications Sidebar Widget
+   ========================================================================== */
+
+.messages-widget {
+  background-color: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+  border-radius: var(--sp-radius);
+  overflow: hidden;
+}
+
+.messages-widget-header {
+  padding: 5px 8px;
+  background-color: var(--sp-bg-sidebar-header);
+  border-bottom: 1px solid var(--sp-border-box);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+}
+
+.messages-widget-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 6px 8px;
+  border-bottom: 1px solid #EDE9E0;
+  cursor: pointer;
+}
+
+.messages-widget-item:last-child {
+  border-bottom: none;
+}
+
+.messages-widget-item:hover {
+  background-color: #F5F1E9;
+}
+
+.messages-widget-item.unread {
+  background-color: var(--sp-bg-highlight);
+}
+
+.messages-widget-item .avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.messages-widget-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.messages-widget-item-sender {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-link);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.messages-widget-item-preview {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.messages-widget-item-time {
+  font-size: 9px;
+  color: var(--sp-text-light);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Compose Autocomplete
+   Dropdown for recipient search in compose form.
+   ========================================================================== */
+
+.compose-autocomplete {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+  border-radius: var(--sp-radius-sm);
+  box-shadow: var(--sp-shadow-md);
+  z-index: var(--sp-z-dropdown);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.compose-autocomplete-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-primary);
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.compose-autocomplete-item:hover {
+  background-color: #F5F1E9;
+}
+
+.compose-selected-recipient {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background-color: var(--sp-bg-highlight);
+  border: 1px solid #E0C88A;
+  border-radius: 20px;
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-primary);
+  margin-bottom: 8px;
+}

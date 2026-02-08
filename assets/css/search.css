@@ -1,0 +1,370 @@
+/* ==========================================================================
+   Sunporch Search
+   Search autocomplete dropdown, search result items, full search results
+   page, and keyboard navigation highlighting.
+   ========================================================================== */
+
+/* ==========================================================================
+   Search Autocomplete Dropdown
+   Appears below the nav search input as user types.
+   ========================================================================== */
+
+.search-autocomplete {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 320px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: var(--sp-bg-white);
+  border: 1px solid var(--sp-border);
+  border-top: none;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  z-index: var(--sp-z-dropdown);
+  border-radius: 0 0 var(--sp-radius) var(--sp-radius);
+  display: none;
+}
+
+.search-autocomplete.open {
+  display: block;
+}
+
+/* Autocomplete section headers */
+.search-autocomplete-section {
+  padding: 4px 10px;
+  font-size: var(--sp-font-size-small);
+  font-weight: bold;
+  color: var(--sp-text-secondary);
+  background-color: var(--sp-bg-sidebar-header);
+  border-bottom: 1px solid #EDE9E0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Individual autocomplete result item */
+.search-autocomplete-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  text-decoration: none;
+  color: var(--sp-text-primary);
+  border-bottom: 1px solid #F2EEE6;
+  cursor: pointer;
+}
+
+.search-autocomplete-item:last-child {
+  border-bottom: none;
+}
+
+.search-autocomplete-item:hover,
+.search-autocomplete-item.highlight {
+  background-color: var(--sp-blue);
+  color: var(--sp-text-white);
+  text-decoration: none;
+}
+
+.search-autocomplete-item:hover .search-autocomplete-name,
+.search-autocomplete-item.highlight .search-autocomplete-name {
+  color: var(--sp-text-white);
+}
+
+.search-autocomplete-item:hover .search-autocomplete-meta,
+.search-autocomplete-item.highlight .search-autocomplete-meta {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-autocomplete-item .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.search-autocomplete-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-autocomplete-name {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.search-autocomplete-meta {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-secondary);
+  line-height: 1.2;
+  margin-top: 1px;
+}
+
+/* "See all results for..." footer link */
+.search-autocomplete-footer {
+  padding: 8px 10px;
+  border-top: 1px solid var(--sp-border);
+  background-color: var(--sp-bg-sidebar-header);
+  text-align: center;
+}
+
+.search-autocomplete-footer a {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-link);
+}
+
+.search-autocomplete-footer a:hover {
+  text-decoration: underline;
+}
+
+/* No results message */
+.search-autocomplete-empty {
+  padding: 16px 10px;
+  text-align: center;
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-light);
+}
+
+/* Keyboard navigation highlight */
+.search-autocomplete-item.keyboard-active {
+  background-color: var(--sp-blue);
+  color: var(--sp-text-white);
+}
+
+.search-autocomplete-item.keyboard-active .search-autocomplete-name {
+  color: var(--sp-text-white);
+}
+
+.search-autocomplete-item.keyboard-active .search-autocomplete-meta {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ==========================================================================
+   Search Results Page
+   Full search results with larger avatars and more detail.
+   ========================================================================== */
+
+.search-results-page {
+  width: 100%;
+}
+
+.search-results-header {
+  margin-bottom: 10px;
+}
+
+.search-results-header h1 {
+  font-size: var(--sp-font-size-h1);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  margin-bottom: 4px;
+}
+
+.search-results-count {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+}
+
+/* Search filter tabs */
+.search-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--sp-border);
+}
+
+.search-filter {
+  padding: 4px 10px;
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-link);
+  text-decoration: none;
+  border-radius: var(--sp-radius);
+}
+
+.search-filter:hover {
+  background-color: #EDE9E0;
+  text-decoration: none;
+}
+
+.search-filter.active {
+  background-color: var(--sp-blue);
+  color: var(--sp-text-white);
+}
+
+/* Individual search result */
+.search-result {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  background-color: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+  border-radius: var(--sp-radius);
+  margin-bottom: 8px;
+}
+
+.search-result:hover {
+  border-color: var(--sp-blue-light);
+}
+
+.search-result .avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.search-result-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.search-result-name {
+  font-size: var(--sp-font-size-medium);
+  font-weight: bold;
+  color: var(--sp-text-link);
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+.search-result-name:hover {
+  text-decoration: underline;
+}
+
+.search-result-detail {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  line-height: var(--sp-line-height);
+  margin-top: 2px;
+}
+
+.search-result-mutual {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+  margin-top: 4px;
+}
+
+.search-result-mutual a {
+  color: var(--sp-text-link);
+}
+
+.search-result-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+/* ==========================================================================
+   People You May Know (search sidebar suggestions)
+   ========================================================================== */
+
+.people-you-may-know {
+  background-color: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+  border-radius: var(--sp-radius);
+  overflow: hidden;
+}
+
+.people-you-may-know-header {
+  padding: 5px 8px;
+  background-color: var(--sp-bg-sidebar-header);
+  border-bottom: 1px solid var(--sp-border-box);
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+}
+
+.people-you-may-know-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-bottom: 1px solid #EDE9E0;
+}
+
+.people-you-may-know-item:last-child {
+  border-bottom: none;
+}
+
+.people-you-may-know-item .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.people-you-may-know-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.people-you-may-know-name {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-link);
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.people-you-may-know-name:hover {
+  text-decoration: underline;
+}
+
+.people-you-may-know-mutual {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+}
+
+.people-you-may-know-action {
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Search Input on Results Page
+   ========================================================================== */
+
+.search-page-input {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.search-page-input .form-input {
+  flex: 1;
+  padding: 6px 8px;
+  font-size: var(--sp-font-size-medium);
+}
+
+/* ==========================================================================
+   No Results State
+   ========================================================================== */
+
+.search-no-results {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+  border-radius: var(--sp-radius);
+}
+
+.search-no-results h3 {
+  font-size: var(--sp-font-size-large);
+  color: var(--sp-text-primary);
+  margin-bottom: 8px;
+}
+
+.search-no-results p {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  max-width: 400px;
+  margin: 0 auto;
+}

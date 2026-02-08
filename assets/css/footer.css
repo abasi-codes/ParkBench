@@ -1,0 +1,90 @@
+/* ==========================================================================
+   Sunporch Footer
+   Simple 40px footer with centered links, as in 2008 Facebook.
+   ========================================================================== */
+
+.footer {
+  width: 100%;
+  min-height: var(--sp-height-footer);
+  background-color: #F5F0E6;
+  border-top: 1px solid var(--sp-border);
+  padding: 10px 0;
+}
+
+.footer-inner {
+  max-width: var(--sp-width-page);
+  width: var(--sp-width-page);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* Footer links row */
+.footer-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.footer-links a {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-link);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+/* Dot separator between footer links */
+.footer-links .dot {
+  color: var(--sp-text-light);
+  font-size: 8px;
+  line-height: 1;
+  margin: 0 2px;
+  user-select: none;
+}
+
+/* Copyright text */
+.footer-copyright {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-light);
+  white-space: nowrap;
+}
+
+/* Language selector link (like 2008 FB had) */
+.footer-language {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-link);
+  cursor: pointer;
+}
+
+.footer-language:hover {
+  text-decoration: underline;
+}
+
+/* Landing page footer — centered, no border, lighter */
+.footer-landing {
+  width: 100%;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer-landing .footer-inner {
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-landing .footer-links {
+  justify-content: center;
+}
+
+.footer-landing .footer-copyright {
+  font-size: var(--sp-font-size-small);
+}

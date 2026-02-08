@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Sunporch Onboarding
+   Step-by-step onboarding flow styling.
+   Clean, 2008-Facebook-era progress indicators and card layouts.
+   ========================================================================== */
+
+/* Progress bar container */
+.onboarding-progress {
+  background-color: var(--sp-bg-white);
+  border: 1px solid var(--sp-border-box);
+  border-radius: var(--sp-radius);
+  padding: 10px 16px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Step indicators row */
+.onboarding-steps {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+/* Individual step label */
+.onboarding-step {
+  display: inline-block;
+  font-size: var(--sp-font-size-small);
+  font-weight: bold;
+  color: var(--sp-text-light);
+  padding: 3px 8px;
+  border-radius: 2px;
+  background-color: #EDE9E0;
+  border: 1px solid var(--sp-border);
+  white-space: nowrap;
+}
+
+/* Active step: blue highlight */
+.onboarding-step.active {
+  background-color: var(--sp-blue);
+  color: var(--sp-text-white);
+  border-color: var(--sp-blue-dark);
+}
+
+/* Completed step: lighter blue */
+.onboarding-step.completed {
+  background-color: #E8DFD0;
+  color: var(--sp-text-primary);
+  border-color: #D4CBBA;
+}
+
+/* Arrow separator between steps */
+.onboarding-step-separator {
+  color: var(--sp-text-light);
+  font-size: var(--sp-font-size-small);
+  padding: 0 2px;
+}
+
+/* "Step X of 4" label */
+.onboarding-step-label {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-secondary);
+  margin-top: 4px;
+}

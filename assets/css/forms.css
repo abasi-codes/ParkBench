@@ -1,0 +1,608 @@
+/* ==========================================================================
+   Sunporch Forms
+   Input fields, textareas, selects, error states, form layouts.
+   Form styling with warm borders and Tahoma 11px type.
+   ========================================================================== */
+
+/* ==========================================================================
+   Base Form Elements
+   ========================================================================== */
+
+/* Form group: label + input stack */
+.form-group {
+  margin-bottom: var(--sp-spacing-md);
+}
+
+.form-group label {
+  display: block;
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  margin-bottom: 3px;
+}
+
+.form-group label .required {
+  color: var(--sp-text-error);
+  margin-left: 2px;
+}
+
+/* Inline label + input (side by side) */
+.form-group-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: var(--sp-spacing-sm);
+}
+
+.form-group-inline label {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+/* Text Input
+   ========================================================================== */
+
+.form-input {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: var(--sp-font-size-base);
+  font-family: var(--sp-font-body);
+  line-height: 20px;
+  color: var(--sp-text-primary);
+  background-color: var(--sp-bg-input);
+  border: 2px solid var(--sp-border-input);
+  border-radius: var(--sp-radius-sm);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-input:focus {
+  border-color: var(--sp-blue-light);
+  box-shadow: 0 0 0 3px rgba(232,182,44,0.15);
+}
+
+.form-input::placeholder {
+  color: var(--sp-text-light);
+}
+
+/* Smaller input for inline use */
+.form-input-sm {
+  padding: 2px 4px;
+  font-size: var(--sp-font-size-small);
+  line-height: 16px;
+}
+
+/* Wider input variant */
+.form-input-wide {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Textarea
+   ========================================================================== */
+
+.form-textarea {
+  display: block;
+  width: 100%;
+  padding: 10px 14px;
+  font-size: var(--sp-font-size-base);
+  font-family: var(--sp-font-body);
+  line-height: var(--sp-line-height);
+  color: var(--sp-text-primary);
+  background-color: var(--sp-bg-input);
+  border: 2px solid var(--sp-border-input);
+  border-radius: var(--sp-radius-sm);
+  outline: none;
+  resize: vertical;
+  min-height: 60px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-textarea:focus {
+  border-color: var(--sp-blue-light);
+  box-shadow: 0 0 0 3px rgba(232,182,44,0.15);
+}
+
+.form-textarea::placeholder {
+  color: var(--sp-text-light);
+}
+
+/* Select
+   ========================================================================== */
+
+.form-select {
+  display: block;
+  padding: 10px 14px;
+  font-size: var(--sp-font-size-base);
+  font-family: var(--sp-font-body);
+  line-height: 20px;
+  color: var(--sp-text-primary);
+  background-color: var(--sp-bg-input);
+  border: 2px solid var(--sp-border-input);
+  border-radius: var(--sp-radius-sm);
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: auto;
+  appearance: auto;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-select:focus {
+  border-color: var(--sp-blue-light);
+  box-shadow: 0 0 0 3px rgba(232,182,44,0.15);
+}
+
+/* Inline select (e.g., birthday month/day/year row) */
+.form-select-inline {
+  display: inline-block;
+  width: auto;
+}
+
+/* Checkbox & Radio
+   ========================================================================== */
+
+.form-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+
+.form-check input[type="checkbox"],
+.form-check input[type="radio"] {
+  margin-top: 2px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.form-check label {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-primary);
+  font-weight: normal;
+  cursor: pointer;
+  line-height: var(--sp-line-height);
+}
+
+/* ==========================================================================
+   Error States
+   ========================================================================== */
+
+/* Error input border */
+.form-input.error,
+.form-textarea.error,
+.form-select.error {
+  border-color: var(--sp-text-error);
+  background-color: #FFF5F3;
+}
+
+.form-input.error:focus,
+.form-textarea.error:focus,
+.form-select.error:focus {
+  border-color: var(--sp-text-error);
+  box-shadow: inset 0 1px 2px rgba(192, 57, 43, 0.15);
+}
+
+/* Error message text below input */
+.form-error {
+  display: block;
+  margin-top: 3px;
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-error);
+  line-height: var(--sp-line-height);
+}
+
+/* Field-level error with icon */
+.form-error::before {
+  content: "! ";
+  font-weight: bold;
+}
+
+/* Error state on form group */
+.form-group.has-error label {
+  color: var(--sp-text-error);
+}
+
+.form-group.has-error .form-input,
+.form-group.has-error .form-textarea,
+.form-group.has-error .form-select {
+  border-color: var(--sp-text-error);
+  background-color: #FFF5F3;
+}
+
+/* ==========================================================================
+   Help Text
+   ========================================================================== */
+
+.form-help {
+  display: block;
+  margin-top: 3px;
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-secondary);
+  line-height: var(--sp-line-height);
+}
+
+/* ==========================================================================
+   Form Actions
+   Button alignment at the bottom of forms.
+   ========================================================================== */
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: var(--sp-spacing-md);
+}
+
+.form-actions-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-top: var(--sp-spacing-md);
+}
+
+.form-actions-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-top: var(--sp-spacing-md);
+}
+
+/* Divider above form actions */
+.form-actions-border {
+  border-top: 1px solid var(--sp-border);
+  margin-top: var(--sp-spacing-md);
+  padding-top: var(--sp-spacing-md);
+}
+
+/* ==========================================================================
+   Registration Form
+   The right-side registration box on the landing page.
+   ========================================================================== */
+
+.register-form {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  padding: var(--sp-spacing-lg);
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.register-form h2 {
+  font-size: var(--sp-font-size-large);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  margin-bottom: var(--sp-spacing-md);
+}
+
+.register-form .form-group {
+  margin-bottom: var(--sp-spacing-sm);
+}
+
+.register-form .form-group label {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.register-form .form-input {
+  width: 100%;
+}
+
+/* Name row: first + last side by side */
+.register-name-row {
+  display: flex;
+  gap: 8px;
+}
+
+.register-name-row .form-group {
+  flex: 1;
+}
+
+/* Birthday row: three selects side by side */
+.register-birthday-row {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+}
+
+.register-birthday-row .form-select {
+  flex: 1;
+}
+
+/* Gender radio row */
+.register-gender-row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+/* Terms text */
+.register-terms {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-secondary);
+  line-height: var(--sp-line-height);
+  margin-top: var(--sp-spacing-sm);
+  margin-bottom: var(--sp-spacing-md);
+}
+
+.register-terms a {
+  color: var(--sp-text-link);
+}
+
+/* Register submit button */
+.register-submit {
+  text-align: center;
+  margin-top: var(--sp-spacing-md);
+}
+
+.register-submit .btn {
+  padding: 6px 24px;
+  font-size: var(--sp-font-size-medium);
+}
+
+/* Divider "or" line */
+.register-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: var(--sp-spacing-lg) 0;
+}
+
+.register-divider::before,
+.register-divider::after {
+  content: "";
+  flex: 1;
+  border-top: 1px solid var(--sp-border);
+}
+
+.register-divider span {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  white-space: nowrap;
+}
+
+/* ==========================================================================
+   Login Form
+   Inline login in nav or standalone login page.
+   ========================================================================== */
+
+.login-form {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  padding: var(--sp-spacing-lg);
+  max-width: 400px;
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.login-form h2 {
+  font-size: var(--sp-font-size-large);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  margin-bottom: var(--sp-spacing-md);
+}
+
+.login-form .form-group {
+  margin-bottom: var(--sp-spacing-sm);
+}
+
+.login-form .form-input {
+  width: 100%;
+}
+
+.login-form .form-actions {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-form .login-remember {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+}
+
+.login-form .login-forgot {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-link);
+}
+
+/* ==========================================================================
+   Settings Form
+   ========================================================================== */
+
+.settings-form {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  padding: var(--sp-spacing-lg);
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.settings-form h2 {
+  font-size: var(--sp-font-size-h2);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  margin-bottom: var(--sp-spacing-md);
+  padding-bottom: var(--sp-spacing-sm);
+  border-bottom: 1px solid var(--sp-border);
+}
+
+.settings-form .form-group label {
+  min-width: 140px;
+}
+
+.settings-row {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px 0;
+  border-bottom: 1px solid #EDE9E0;
+}
+
+.settings-row:last-child {
+  border-bottom: none;
+}
+
+.settings-row-label {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  min-width: 140px;
+  padding-top: 3px;
+}
+
+.settings-row-value {
+  flex: 1;
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-primary);
+}
+
+.settings-row-action {
+  margin-left: 12px;
+}
+
+.settings-row-action a {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-link);
+}
+
+/* ==========================================================================
+   Info Section
+   Card-style section used in settings pages.
+   ========================================================================== */
+
+.info-section h2 {
+  font-family: var(--sp-font-heading);
+  font-size: var(--sp-font-size-medium);
+  font-weight: 700;
+  color: var(--sp-text-primary);
+  padding: 16px 20px;
+  margin: 0;
+  border-bottom: 2px solid transparent;
+  border-image: linear-gradient(to right, var(--sp-accent-gold), transparent) 1;
+}
+
+.info-section form {
+  padding: 16px 20px;
+}
+
+/* ==========================================================================
+   Settings Photo Section
+   Profile photo upload area in settings.
+   ========================================================================== */
+
+.settings-photo-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 20px;
+}
+
+.settings-photo-preview {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.settings-photo-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.settings-photo-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #EDE9E0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sp-text-light);
+  font-size: var(--sp-font-size-small);
+  flex-shrink: 0;
+}
+
+.settings-photo-upload {
+  flex: 1;
+}
+
+.upload-entry {
+  margin-top: 4px;
+}
+
+.upload-entry-name {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-primary);
+}
+
+.upload-entry progress {
+  width: 200px;
+}
+
+.upload-error {
+  color: var(--sp-text-error);
+  font-size: var(--sp-font-size-small);
+}
+
+.settings-ai-status {
+  font-size: var(--sp-font-size-small);
+  padding: 4px 20px 12px;
+}
+
+.settings-ai-status.pending {
+  color: #996;
+}
+
+.settings-ai-status.flagged {
+  color: #c00;
+}
+
+/* ==========================================================================
+   Privacy Groups
+   Visual grouping for privacy settings fields.
+   ========================================================================== */
+
+.privacy-group {
+  margin-bottom: var(--sp-spacing-md);
+}
+
+.privacy-group-title {
+  font-family: var(--sp-font-heading);
+  font-size: var(--sp-font-size-base);
+  font-weight: 700;
+  color: var(--sp-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding-bottom: 6px;
+  margin-bottom: var(--sp-spacing-sm);
+  border-bottom: 1px solid #EDE9E0;
+}
+
+/* ==========================================================================
+   Field Counter (character count)
+   ========================================================================== */
+
+.field-counter {
+  text-align: right;
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+  margin-top: 2px;
+}
+
+.field-counter.over-limit {
+  color: var(--sp-text-error);
+  font-weight: bold;
+}

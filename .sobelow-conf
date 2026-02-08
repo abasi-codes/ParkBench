@@ -1,0 +1,7 @@
+[
+  verbose: false,
+  private: false,
+  skip: false,
+  router: "lib/sunporch_web/router.ex",
+  exit: "low"
+]

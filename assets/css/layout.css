@@ -1,0 +1,238 @@
+/* ==========================================================================
+   Sunporch Layout
+   Page wrappers, column systems, and structural layouts.
+   960px fixed-width, centered — the 2008 way.
+   ========================================================================== */
+
+/* Page Wrapper
+   The main container beneath the nav and above the footer.
+   ========================================================================== */
+
+.page-wrapper {
+  max-width: var(--sp-width-page);
+  width: 100%;
+  margin: 0 auto;
+  min-height: calc(100vh - var(--sp-height-nav) - var(--sp-height-footer));
+  padding: var(--sp-spacing-lg) var(--sp-spacing-md);
+}
+
+/* Three-Column Layout
+   Left sidebar (200px) + Main content (flexible) + Right sidebar (220px)
+   ========================================================================== */
+
+.three-column {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.three-column .col-left {
+  width: var(--sp-width-sidebar-left);
+  min-width: var(--sp-width-sidebar-left);
+  flex-shrink: 0;
+}
+
+.three-column .col-main {
+  flex: 1;
+  min-width: 0; /* prevent flex overflow */
+}
+
+.three-column .col-right {
+  width: var(--sp-width-sidebar-right);
+  min-width: var(--sp-width-sidebar-right);
+  flex-shrink: 0;
+}
+
+/* Two-Column Layout
+   Left sidebar (200px) + Main content (flexible)
+   ========================================================================== */
+
+.two-column {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.two-column .col-left {
+  width: var(--sp-width-sidebar-left);
+  min-width: var(--sp-width-sidebar-left);
+  flex-shrink: 0;
+}
+
+.two-column .col-main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Two-Column Reversed (Main + Right Sidebar)
+   Main content (flexible) + Right sidebar (220px)
+   ========================================================================== */
+
+.two-column-right {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.two-column-right .col-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.two-column-right .col-right {
+  width: var(--sp-width-sidebar-right);
+  min-width: var(--sp-width-sidebar-right);
+  flex-shrink: 0;
+}
+
+/* Profile Two-Column
+   Left sidebar (300px) + Main content (flexible)
+   Wider sidebar for profile pages with photo + info.
+   ========================================================================== */
+
+.profile-columns {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.profile-columns .col-left {
+  width: 300px;
+  min-width: 300px;
+  flex-shrink: 0;
+}
+
+.profile-columns .col-main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Single Column / Full Width
+   ========================================================================== */
+
+.single-column {
+  max-width: var(--sp-width-page);
+  width: 100%;
+}
+
+/* Landing Page Wrapper
+   Slightly wider at 980px for the landing/login page.
+   ========================================================================== */
+
+.landing-wrapper {
+  max-width: var(--sp-width-landing);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--sp-spacing-md);
+}
+
+/* Landing Page Two-Column Split
+   Left tagline area + Right registration form.
+   ========================================================================== */
+
+.landing-split {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px 0;
+}
+
+.landing-split .landing-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.landing-split .landing-right {
+  width: 400px;
+  min-width: 400px;
+  flex-shrink: 0;
+}
+
+/* Content Box
+   A generic white container used throughout the app.
+   ========================================================================== */
+
+.content-box {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  margin-bottom: var(--sp-spacing-md);
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.content-box-padded {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  padding: var(--sp-spacing-lg);
+  margin-bottom: var(--sp-spacing-md);
+  box-shadow: var(--sp-shadow-sm);
+}
+
+/* Section dividers
+   ========================================================================== */
+
+.section-divider {
+  border-top: 1px solid var(--sp-border);
+  margin: var(--sp-spacing-md) 0;
+}
+
+/* Inline layout helpers
+   ========================================================================== */
+
+.inline-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-spacing-sm);
+}
+
+.inline-row-spread {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-spacing-sm);
+}
+
+/* Float-based fallback layout (2008 authenticity)
+   ========================================================================== */
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.clear {
+  clear: both;
+}
+
+/* Margin / padding utilities
+   ========================================================================== */
+
+.mt-0 { margin-top: 0; }
+.mt-xs { margin-top: var(--sp-spacing-xs); }
+.mt-sm { margin-top: var(--sp-spacing-sm); }
+.mt-md { margin-top: var(--sp-spacing-md); }
+.mt-lg { margin-top: var(--sp-spacing-lg); }
+.mt-xl { margin-top: var(--sp-spacing-xl); }
+
+.mb-0 { margin-bottom: 0; }
+.mb-xs { margin-bottom: var(--sp-spacing-xs); }
+.mb-sm { margin-bottom: var(--sp-spacing-sm); }
+.mb-md { margin-bottom: var(--sp-spacing-md); }
+.mb-lg { margin-bottom: var(--sp-spacing-lg); }
+.mb-xl { margin-bottom: var(--sp-spacing-xl); }
+
+.p-0 { padding: 0; }
+.p-xs { padding: var(--sp-spacing-xs); }
+.p-sm { padding: var(--sp-spacing-sm); }
+.p-md { padding: var(--sp-spacing-md); }
+.p-lg { padding: var(--sp-spacing-lg); }
+.p-xl { padding: var(--sp-spacing-xl); }

@@ -1,0 +1,627 @@
+/* ==========================================================================
+   Sunporch Landing Page
+   The logged-out landing page: hero header with branding, left tagline
+   area with feature descriptions, right registration form.
+   ========================================================================== */
+
+/* ==========================================================================
+   Landing Page Body Override
+   ========================================================================== */
+
+.page-landing {
+  background-color: var(--sp-bg-page);
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   Landing Hero / Header Area
+   Blue header band with large "sunporch" branding.
+   ========================================================================== */
+
+.landing-hero {
+  background: linear-gradient(135deg, #7A5C11, #8B6914, #A07A1E, #8B6914);
+  border-bottom: 1px solid var(--sp-blue-dark);
+  padding: 20px 0;
+}
+
+.landing-hero-inner {
+  max-width: var(--sp-width-landing);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--sp-spacing-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Large branding text */
+.landing-brand {
+  font-size: 48px;
+  font-weight: 700;
+  font-family: var(--sp-font-heading);
+  color: var(--sp-text-white);
+  letter-spacing: -1px;
+  line-height: 1;
+  text-shadow: 0 2px 8px rgba(90,68,16,0.3);
+}
+
+.landing-brand a {
+  color: var(--sp-text-white);
+  text-decoration: none;
+}
+
+.landing-brand a:hover {
+  text-decoration: none;
+  color: var(--sp-text-white);
+}
+
+/* Inline login form in the hero (alternative to nav login) */
+.landing-hero-login {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.landing-hero-login .form-group {
+  margin-bottom: 0;
+}
+
+.landing-hero-login label {
+  display: block;
+  font-size: var(--sp-font-size-small);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2px;
+  font-weight: bold;
+}
+
+.landing-hero-login .form-input {
+  width: 150px;
+  height: 26px;
+  padding: 2px 6px;
+  font-size: var(--sp-font-size-base);
+  border: 1px solid var(--sp-blue-dark);
+  border-radius: 2px;
+}
+
+.landing-hero-login .form-input:focus {
+  border-color: #5A4410;
+}
+
+.landing-hero-login .btn {
+  height: 26px;
+  padding: 0 12px;
+  font-size: var(--sp-font-size-base);
+  line-height: 24px;
+}
+
+.landing-hero-extras {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.landing-hero-extras label {
+  font-size: var(--sp-font-size-small);
+  color: rgba(255, 255, 255, 0.75);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.landing-hero-extras a {
+  font-size: var(--sp-font-size-small);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.landing-hero-extras a:hover {
+  color: var(--sp-text-white);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Landing Main Content Area
+   Two columns: left taglines + right registration form.
+   ========================================================================== */
+
+.landing-content {
+  max-width: var(--sp-width-landing);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  gap: var(--sp-spacing-xl);
+  padding: var(--sp-spacing-2xl) var(--sp-spacing-md);
+  align-items: flex-start;
+}
+
+/* ==========================================================================
+   Left Column: Taglines & Feature Descriptions
+   ========================================================================== */
+
+.landing-taglines {
+  flex: 1;
+  min-width: 0;
+  padding-top: 10px;
+}
+
+.landing-headline {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: var(--sp-font-heading);
+  color: var(--sp-text-primary);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--sp-spacing-md);
+}
+
+.landing-subheadline {
+  font-size: var(--sp-font-size-large);
+  color: var(--sp-text-secondary);
+  line-height: var(--sp-line-height);
+  margin-bottom: 24px;
+}
+
+/* Feature tagline boxes with icons */
+.landing-features {
+  list-style: none;
+}
+
+.landing-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.landing-feature-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #A07A1E, #8B6914, #C49A2B);
+  border-radius: 50%;
+  color: var(--sp-text-white);
+  font-size: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(139,105,20,0.25);
+}
+
+.landing-feature-text {
+  flex: 1;
+}
+
+.landing-feature-title {
+  font-size: var(--sp-font-size-large);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.landing-feature-desc {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  line-height: var(--sp-line-height);
+}
+
+/* Large tagline blocks (alternative layout) */
+.landing-tagline-block {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--sp-border);
+}
+
+.landing-tagline-block:last-child {
+  border-bottom: none;
+}
+
+.landing-tagline-block h3 {
+  font-size: var(--sp-font-size-xlarge);
+  font-weight: bold;
+  color: var(--sp-blue);
+  margin-bottom: 6px;
+}
+
+.landing-tagline-block p {
+  font-size: var(--sp-font-size-medium);
+  color: var(--sp-text-secondary);
+  line-height: 1.5;
+}
+
+/* Image placeholders for feature illustrations */
+.landing-feature-image {
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  background-color: #EDE9E0;
+  border: 1px solid var(--sp-border);
+  border-radius: var(--sp-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sp-text-light);
+  font-size: var(--sp-font-size-base);
+  margin: 12px 0;
+}
+
+/* ==========================================================================
+   Right Column: Registration Form
+   ========================================================================== */
+
+.landing-register {
+  width: 400px;
+  min-width: 400px;
+  flex-shrink: 0;
+}
+
+.landing-register-box {
+  background-color: var(--sp-bg-white);
+  border: none;
+  border-radius: var(--sp-radius-lg);
+  padding: var(--sp-spacing-lg);
+  box-shadow: var(--sp-shadow-lg);
+}
+
+.landing-register-box h2 {
+  font-size: var(--sp-font-size-h2);
+  font-weight: 700;
+  font-family: var(--sp-font-heading);
+  color: var(--sp-text-primary);
+  margin-bottom: 4px;
+}
+
+.landing-register-subtitle {
+  font-size: var(--sp-font-size-medium);
+  color: var(--sp-text-secondary);
+  margin-bottom: 16px;
+  line-height: var(--sp-line-height);
+}
+
+.landing-register-box .form-group {
+  margin-bottom: 10px;
+}
+
+.landing-register-box .form-group label {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  margin-bottom: 3px;
+}
+
+.landing-register-box .form-input {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: var(--sp-font-size-medium);
+}
+
+.landing-register-box .form-select {
+  padding: 5px 6px;
+  font-size: var(--sp-font-size-base);
+}
+
+/* Name fields side by side */
+.landing-name-fields {
+  display: flex;
+  gap: 8px;
+}
+
+.landing-name-fields .form-group {
+  flex: 1;
+}
+
+/* Birthday selector row */
+.landing-birthday-row {
+  display: flex;
+  gap: 6px;
+}
+
+.landing-birthday-row .form-select {
+  flex: 1;
+}
+
+/* Birthday label with "Why?" link */
+.landing-birthday-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.landing-birthday-label .why-link {
+  font-size: var(--sp-font-size-small);
+  font-weight: normal;
+  color: var(--sp-text-link);
+}
+
+/* Gender radio buttons */
+.landing-gender-row {
+  display: flex;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.landing-gender-option {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-primary);
+  cursor: pointer;
+}
+
+.landing-gender-option input[type="radio"] {
+  cursor: pointer;
+}
+
+/* Terms and conditions text */
+.landing-terms {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-secondary);
+  line-height: 1.5;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.landing-terms a {
+  color: var(--sp-text-link);
+}
+
+.landing-terms a:hover {
+  text-decoration: underline;
+}
+
+/* Sign Up button */
+.landing-signup-btn {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.landing-signup-btn .btn {
+  padding: 10px 32px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: var(--sp-font-heading);
+  box-shadow: var(--sp-shadow-md);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.landing-signup-btn .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sp-shadow-lg);
+}
+
+/* Divider line with "or" text */
+.landing-or-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.landing-or-divider::before,
+.landing-or-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--sp-border);
+}
+
+.landing-or-divider span {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  white-space: nowrap;
+}
+
+/* "Already have an account?" link */
+.landing-login-link {
+  text-align: center;
+  margin-top: 12px;
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+}
+
+.landing-login-link a {
+  color: var(--sp-text-link);
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   Guest Login Box
+   Muted box below registration for the "Try as Guest" option.
+   ========================================================================== */
+
+.landing-guest-box {
+  margin-top: 16px;
+  text-align: center;
+  padding: 16px 20px;
+}
+
+.landing-guest-box p {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  margin-bottom: 10px;
+}
+
+/* Mission Quote */
+.landing-mission-quote {
+  border-left: 3px solid var(--sp-accent-gold);
+  padding: 12px 16px;
+  margin-top: 24px;
+  font-style: italic;
+  font-size: var(--sp-font-size-large);
+  color: var(--sp-text-secondary);
+  line-height: var(--sp-line-height);
+}
+
+/* ==========================================================================
+   Landing Page Footer Area
+   Additional content sections below the main split.
+   ========================================================================== */
+
+.landing-bottom {
+  max-width: var(--sp-width-landing);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 var(--sp-spacing-md) var(--sp-spacing-xl) var(--sp-spacing-md);
+}
+
+/* Stats / social proof bar */
+.landing-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px 0;
+  border-top: 1px solid var(--sp-border);
+  margin-top: 10px;
+}
+
+.landing-stat {
+  text-align: center;
+}
+
+.landing-stat-value {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--sp-blue);
+  line-height: 1.2;
+}
+
+.landing-stat-label {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   Landing Page Responsive Adjustments
+   The 2008 version was fixed-width, but we add minimal guard-rails.
+   ========================================================================== */
+
+@media (max-width: 1000px) {
+  .landing-hero-inner,
+  .landing-content,
+  .landing-bottom {
+    width: auto;
+    max-width: var(--sp-width-landing);
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .landing-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .landing-register {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .landing-hero-inner {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .landing-hero-login {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   Login Page (standalone, not hero)
+   When the login form is its own page rather than in the hero.
+   ========================================================================== */
+
+.login-page {
+  max-width: var(--sp-width-landing);
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--sp-spacing-2xl) var(--sp-spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-page-brand {
+  font-size: 42px;
+  font-weight: 700;
+  font-family: var(--sp-font-heading);
+  color: var(--sp-blue);
+  margin-bottom: var(--sp-spacing-lg);
+  letter-spacing: -1px;
+}
+
+.login-page-box {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  padding: var(--sp-spacing-lg);
+  width: 400px;
+  box-shadow: var(--sp-shadow-md);
+}
+
+.login-page-box h2 {
+  font-size: var(--sp-font-size-large);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.login-page-box .form-input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: var(--sp-font-size-medium);
+  margin-bottom: 10px;
+}
+
+.login-page-box .btn {
+  width: 100%;
+  padding: 8px;
+  font-size: var(--sp-font-size-large);
+}
+
+.login-page-forgot {
+  text-align: center;
+  margin-top: 12px;
+}
+
+.login-page-forgot a {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-link);
+}
+
+.login-page-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.login-page-divider::before,
+.login-page-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--sp-border);
+}
+
+.login-page-divider span {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+}
+
+.login-page-create {
+  text-align: center;
+}
+
+.login-page-create .btn-green {
+  padding: 8px 24px;
+  font-size: var(--sp-font-size-large);
+}

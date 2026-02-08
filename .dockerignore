@@ -1,0 +1,38 @@
+# Version control
+.git
+
+# Build artifacts
+_build
+deps
+node_modules
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Editor / IDE
+.elixir_ls
+.vscode
+.idea
+
+# Archives
+*.tar.gz
+
+# Uploaded files (runtime data, not part of build)
+priv/static/uploads/*
+
+# Tests (not needed in production image)
+test/
+
+# Docker files (avoid recursive context)
+docker-compose.yml
+Dockerfile
+
+# CI/CD
+.github/
+
+# Misc
+.DS_Store
+*.swp
+*.swo

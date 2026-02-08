@@ -1,0 +1,877 @@
+/* ==========================================================================
+   Sunporch Feed
+   News feed container, post cards, post composer, new-posts bar,
+   and empty feed state. The core content view of the app.
+   ========================================================================== */
+
+/* ==========================================================================
+   Feed Container
+   ========================================================================== */
+
+.feed-container {
+  width: 100%;
+}
+
+/* ==========================================================================
+   New Posts Notification Bar
+   Blue bar at the top of feed: "3 new posts — click to load"
+   ========================================================================== */
+
+.new-posts-bar {
+  background-color: #FFF7E6;
+  border: 1px solid #E0C88A;
+  border-radius: var(--sp-radius);
+  padding: 6px 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-link);
+  font-weight: bold;
+}
+
+.new-posts-bar:hover {
+  background-color: #F0E4C4;
+  border-color: #D4C08A;
+}
+
+/* ==========================================================================
+   Post Composer
+   "What's on your mind?" textarea at top of feed.
+   ========================================================================== */
+
+.post-composer {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  margin-bottom: var(--sp-spacing-md);
+  overflow: hidden;
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.post-composer-header {
+  padding: 12px 20px 8px 20px;
+  background-color: transparent;
+  border-bottom: 2px solid var(--sp-accent-gold);
+  font-size: var(--sp-font-size-base);
+  font-weight: 700;
+  font-family: var(--sp-font-heading);
+  color: var(--sp-text-primary);
+}
+
+.post-composer-body {
+  padding: 16px 20px;
+}
+
+.post-composer-body .form-textarea {
+  width: 100%;
+  min-height: 50px;
+  border: 1px solid var(--sp-border-input);
+  font-size: var(--sp-font-size-base);
+  font-family: var(--sp-font-family);
+  padding: 6px 8px;
+  resize: vertical;
+}
+
+.post-composer-body .form-textarea:focus {
+  border-color: var(--sp-blue-light);
+  min-height: 80px;
+}
+
+.post-composer-body .form-textarea::placeholder {
+  color: var(--sp-text-light);
+  font-style: italic;
+}
+
+.post-composer-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0 0 0;
+}
+
+.post-composer-options {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.post-composer-option {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  cursor: pointer;
+}
+
+.post-composer-option:hover {
+  color: var(--sp-text-link);
+}
+
+.post-composer-option .icon {
+  font-size: 12px;
+}
+
+.post-composer-submit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Privacy selector next to share button */
+.post-privacy-select {
+  font-size: var(--sp-font-size-small);
+  padding: 2px 4px;
+  border: 1px solid var(--sp-border-input);
+  background-color: var(--sp-bg-input);
+  color: var(--sp-text-secondary);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Post Card
+   Individual feed post.
+   ========================================================================== */
+
+.post-card {
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  margin-bottom: var(--sp-spacing-md);
+  overflow: hidden;
+  box-shadow: var(--sp-shadow-sm);
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.post-card:hover {
+  box-shadow: var(--sp-shadow-md);
+  transform: translateY(-1px);
+}
+
+/* Post Header: avatar + name + timestamp */
+.post-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px 0 20px;
+}
+
+.post-card-header .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.post-card-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.post-card-author {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-link);
+  text-decoration: none;
+  line-height: 1.2;
+}
+
+.post-card-author:hover {
+  text-decoration: underline;
+}
+
+/* Context text: "wrote on X's wall", "updated their status", etc. */
+.post-card-context {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  font-weight: normal;
+}
+
+.post-card-context a {
+  color: var(--sp-text-link);
+  font-weight: bold;
+}
+
+.post-card-timestamp {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+  line-height: 1.2;
+  margin-top: 1px;
+}
+
+.post-card-timestamp a {
+  color: var(--sp-text-light);
+}
+
+.post-card-timestamp a:hover {
+  text-decoration: underline;
+  color: var(--sp-text-secondary);
+}
+
+/* Post Body: main content area */
+.post-card-body {
+  padding: 12px 20px 16px 20px;
+  font-size: var(--sp-font-size-base);
+  line-height: var(--sp-line-height);
+  color: var(--sp-text-primary);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Indented body for posts with avatar alignment */
+.post-card-body-indented {
+  padding-left: 50px; /* 32px avatar + 8px gap + 10px padding */
+}
+
+/* Attached photo in a post */
+.post-card-photo {
+  margin-top: 8px;
+  max-width: 100%;
+  border: 1px solid var(--sp-border);
+  border-radius: 2px;
+}
+
+.post-card-photo img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Link attachment preview */
+.post-card-link-preview {
+  margin-top: 8px;
+  border: 1px solid var(--sp-border);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.post-card-link-preview-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
+
+.post-card-link-preview-text {
+  padding: 6px 8px;
+  background-color: #F8F5EE;
+}
+
+.post-card-link-preview-title {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  color: var(--sp-text-link);
+  margin-bottom: 2px;
+}
+
+.post-card-link-preview-desc {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-secondary);
+  line-height: var(--sp-line-height);
+}
+
+.post-card-link-preview-domain {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+  margin-top: 2px;
+}
+
+/* Post Actions: like, comment links at bottom */
+.post-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  font-size: var(--sp-font-size-base);
+}
+
+/* Action button styles */
+.like-btn, .comment-btn, .delete-btn {
+  background: none;
+  border: none;
+  font-family: var(--sp-font-body);
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.like-btn:active {
+  transform: scale(1.3);
+}
+
+.like-btn:hover, .comment-btn:hover {
+  color: var(--sp-text-link);
+  text-decoration: underline;
+}
+
+.like-btn.liked {
+  color: var(--sp-text-link);
+  font-weight: bold;
+}
+
+.delete-btn {
+  color: var(--sp-text-light);
+  font-size: var(--sp-font-size-small);
+  margin-left: auto;
+}
+
+.delete-btn:hover {
+  color: var(--sp-text-error);
+}
+
+/* Separator dots between action buttons */
+.post-card-actions > button + button:not(.delete-btn)::before,
+.post-card-actions > .like-count + button:not(.delete-btn)::before {
+  content: "\00b7";
+  margin-right: 12px;
+  color: var(--sp-text-light);
+  font-weight: bold;
+}
+
+.post-card-action {
+  color: var(--sp-text-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  font-size: var(--sp-font-size-base);
+}
+
+.post-card-action:hover {
+  text-decoration: underline;
+  color: var(--sp-text-link);
+}
+
+.post-card-action.active {
+  color: var(--sp-text-link);
+  font-weight: bold;
+}
+
+/* Separator dot between actions */
+.post-card-action-sep {
+  color: var(--sp-text-light);
+  font-size: 8px;
+  user-select: none;
+}
+
+/* Like count / comment count */
+.post-card-stats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 10px;
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-secondary);
+}
+
+.post-card-stat a {
+  color: var(--sp-text-link);
+}
+
+.post-card-stat a:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Comments Section (within a post card)
+   ========================================================================== */
+
+.post-comments {
+  background-color: #F3F0EA;
+  border-top: 1px solid #DDD8CE;
+  padding: 0;
+}
+
+/* Individual comment */
+.post-comment {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 6px 10px;
+  border-bottom: 1px solid #DDD8CE;
+}
+
+.post-comment:last-child {
+  border-bottom: none;
+}
+
+.post-comment .avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.post-comment-content {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--sp-font-size-base);
+  line-height: var(--sp-line-height);
+  word-wrap: break-word;
+}
+
+.post-comment-author {
+  font-weight: bold;
+  color: var(--sp-text-link);
+  text-decoration: none;
+}
+
+.post-comment-author:hover {
+  text-decoration: underline;
+}
+
+.post-comment-text {
+  color: var(--sp-text-primary);
+}
+
+.post-comment-time {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+  margin-left: 6px;
+}
+
+.post-comment-actions {
+  font-size: var(--sp-font-size-small);
+  margin-top: 2px;
+}
+
+.post-comment-actions a {
+  color: var(--sp-text-secondary);
+}
+
+.post-comment-actions a:hover {
+  text-decoration: underline;
+}
+
+/* View more comments link */
+.post-comments-more {
+  padding: 6px 10px;
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+}
+
+.post-comments-more a {
+  color: var(--sp-text-link);
+}
+
+/* Comment input */
+.post-comment-form {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 6px 10px;
+  border-top: 1px solid #DDD8CE;
+}
+
+.post-comment-form .avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.post-comment-input {
+  flex: 1;
+  padding: 4px 6px;
+  font-size: var(--sp-font-size-base);
+  font-family: var(--sp-font-family);
+  border: 1px solid var(--sp-border-input);
+  background-color: var(--sp-bg-input);
+  outline: none;
+  min-height: 26px;
+  resize: none;
+}
+
+.post-comment-input:focus {
+  border-color: var(--sp-blue-light);
+}
+
+.post-comment-input::placeholder {
+  color: var(--sp-text-light);
+}
+
+/* ==========================================================================
+   Empty Feed State
+   Shown when user has no posts / no friends.
+   ========================================================================== */
+
+.empty-feed {
+  text-align: center;
+  padding: var(--sp-spacing-2xl) var(--sp-spacing-xl);
+  background-color: var(--sp-bg-white);
+  border: 1px solid rgba(0,0,0,0.04);
+  border-radius: var(--sp-radius);
+  box-shadow: var(--sp-shadow-sm);
+}
+
+.empty-feed-icon {
+  font-size: 48px;
+  color: var(--sp-text-light);
+  margin-bottom: 12px;
+}
+
+.empty-feed h3 {
+  font-size: var(--sp-font-size-large);
+  color: var(--sp-text-primary);
+  margin-bottom: 8px;
+}
+
+.empty-feed p {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  margin-bottom: 16px;
+  max-width: 360px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.empty-feed .btn {
+  margin: 0 auto;
+}
+
+/* Friend suggestions in empty feed */
+.empty-feed-suggestions {
+  margin-top: 20px;
+  text-align: left;
+  border-top: 1px solid var(--sp-border);
+  padding-top: 16px;
+}
+
+.empty-feed-suggestions h4 {
+  font-size: var(--sp-font-size-base);
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   Feed Filters / View Toggle
+   "Top Stories" vs "Most Recent" toggle
+   ========================================================================== */
+
+.feed-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 6px 0;
+}
+
+.feed-filter-bar h2 {
+  font-size: var(--sp-font-size-h2);
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  margin: 0;
+}
+
+.feed-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feed-filter {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  text-decoration: none;
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.feed-filter:hover {
+  text-decoration: none;
+  color: var(--sp-text-link);
+}
+
+.feed-filter.active {
+  font-weight: bold;
+  color: var(--sp-text-primary);
+  background-color: #EDE9E0;
+}
+
+/* ==========================================================================
+   Shared / Repost indicator
+   ========================================================================== */
+
+.post-shared-via {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+  padding: 4px 10px 0 10px;
+}
+
+.post-shared-via a {
+  color: var(--sp-text-link);
+}
+
+/* ==========================================================================
+   Post Type Variants
+   ========================================================================== */
+
+/* Status update (just text) */
+.post-card-status .post-card-body {
+  font-size: var(--sp-font-size-medium);
+}
+
+/* Wall post (from another user) */
+.post-card-wall .post-card-header {
+  padding-bottom: 4px;
+}
+
+/* Photo post */
+.post-card-photo-type .post-card-body {
+  padding-bottom: 0;
+}
+
+/* Loading more posts */
+.feed-loading {
+  text-align: center;
+  padding: 16px;
+  color: var(--sp-text-light);
+  font-size: var(--sp-font-size-base);
+}
+
+/* ==========================================================================
+   Post Card Depth — handled by shadow-sm in main .post-card rule
+   ========================================================================== */
+
+/* ==========================================================================
+   Wall Arrow (between author and wall owner names)
+   ========================================================================== */
+
+.wall-arrow {
+  color: var(--sp-text-light);
+  font-size: 9px;
+  margin: 0 3px;
+}
+
+/* ==========================================================================
+   Status Input (left sidebar)
+   ========================================================================== */
+
+.status-input {
+  width: 100%;
+  padding: 4px 6px;
+  font-size: var(--sp-font-size-base);
+  font-family: var(--sp-font-family);
+  border: 1px solid var(--sp-border-input);
+  background: var(--sp-bg-input);
+  margin-bottom: 6px;
+}
+
+.status-text {
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-primary);
+  margin-bottom: 8px;
+  line-height: var(--sp-line-height);
+}
+
+.status-text-inline {
+  color: var(--sp-text-secondary);
+}
+
+/* ==========================================================================
+   Poke Items (left sidebar)
+   ========================================================================== */
+
+.poke-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  font-size: var(--sp-font-size-base);
+  border-bottom: 1px solid #E8E3D8;
+}
+
+.poke-item:last-child {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   People You May Know Items (right sidebar)
+   ========================================================================== */
+
+.pymk-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid #E8E3D8;
+}
+
+.pymk-item:last-child {
+  border-bottom: none;
+}
+
+.pymk-item a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--sp-text-link);
+}
+
+.pymk-item a:hover {
+  text-decoration: underline;
+}
+
+.mutual-count {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+}
+
+.pymk-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.pymk-add-btn {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: var(--sp-font-size-small);
+  padding: 2px 8px;
+}
+
+.pymk-requested {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-light);
+  font-style: italic;
+}
+
+/* ==========================================================================
+   Load More
+   ========================================================================== */
+
+.load-more {
+  text-align: center;
+  padding: 12px 0;
+}
+
+/* ==========================================================================
+   Status Card & Friendship Card
+   ========================================================================== */
+
+.status-card .post-card-header,
+.friendship-card .post-card-header {
+  padding-bottom: 10px;
+}
+
+.status-card .post-card-meta,
+.friendship-card .post-card-meta {
+  font-size: var(--sp-font-size-base);
+  line-height: var(--sp-line-height);
+}
+
+/* ==========================================================================
+   Post Photo Display
+   ========================================================================== */
+
+.post-photo {
+  padding: 0 20px 12px 20px;
+}
+
+.post-photo img {
+  display: block;
+  max-width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: var(--sp-radius-sm);
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+/* ==========================================================================
+   Photo Attach Button (in composer)
+   ========================================================================== */
+
+.photo-attach-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--sp-font-size-base);
+  color: var(--sp-text-secondary);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--sp-radius-sm);
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.photo-attach-btn:hover {
+  color: var(--sp-text-link);
+  background-color: rgba(139,105,20,0.06);
+}
+
+/* ==========================================================================
+   Composer Photo Preview
+   ========================================================================== */
+
+.post-composer-photo-preview {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.composer-preview-img {
+  display: block;
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: var(--sp-radius-sm);
+  border: 1px solid rgba(0,0,0,0.1);
+  background-color: #EDE9E0;
+}
+
+/* ==========================================================================
+   Feed Animations
+   ========================================================================== */
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes like-pop {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.35); }
+  60% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.feed-entry {
+  animation: card-enter var(--sp-duration-normal) var(--sp-ease-out) both;
+}
+
+.feed-entry:nth-child(2) { animation-delay: 50ms; }
+.feed-entry:nth-child(3) { animation-delay: 100ms; }
+.feed-entry:nth-child(4) { animation-delay: 150ms; }
+.feed-entry:nth-child(5) { animation-delay: 200ms; }
+
+.like-btn.liked {
+  animation: like-pop 0.35s var(--sp-ease-bounce);
+}
+
+.new-posts-bar {
+  animation: slide-down var(--sp-duration-normal) var(--sp-ease-out);
+}

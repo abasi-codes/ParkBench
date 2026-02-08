@@ -1,0 +1,247 @@
+/* ==========================================================================
+   Sunporch Base Styles
+   Body, typography, links, and foundational element styles.
+   ========================================================================== */
+
+/* Body
+   ========================================================================== */
+
+body {
+  font-family: var(--sp-font-body);
+  font-size: var(--sp-font-size-base);
+  line-height: var(--sp-line-height);
+  color: var(--sp-text-primary);
+  background-color: var(--sp-bg-page);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(232,182,44,0.06) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.012'/%3E%3C/svg%3E");
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sp-font-heading);
+}
+
+h1 {
+  font-size: var(--sp-font-size-h1);
+  font-weight: 700;
+  color: var(--sp-text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--sp-spacing-sm);
+}
+
+h2 {
+  font-size: var(--sp-font-size-h2);
+  font-weight: 700;
+  color: var(--sp-text-primary);
+  line-height: 1.3;
+  margin-bottom: var(--sp-spacing-sm);
+}
+
+h3 {
+  font-size: var(--sp-font-size-medium);
+  font-weight: 600;
+  color: var(--sp-text-primary);
+  line-height: 1.3;
+  margin-bottom: var(--sp-spacing-xs);
+}
+
+h4 {
+  font-size: var(--sp-font-size-base);
+  font-weight: 600;
+  color: var(--sp-text-primary);
+  line-height: var(--sp-line-height);
+  margin-bottom: var(--sp-spacing-xs);
+}
+
+h5 {
+  font-size: var(--sp-font-size-small);
+  font-weight: 600;
+  color: var(--sp-text-secondary);
+  line-height: var(--sp-line-height);
+  margin-bottom: var(--sp-spacing-xs);
+}
+
+h6 {
+  font-size: var(--sp-font-size-small);
+  font-weight: normal;
+  color: var(--sp-text-secondary);
+  line-height: var(--sp-line-height);
+  margin-bottom: var(--sp-spacing-xs);
+}
+
+p {
+  font-size: var(--sp-font-size-base);
+  line-height: var(--sp-line-height);
+  color: var(--sp-text-primary);
+  margin-bottom: var(--sp-spacing-sm);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+small {
+  font-size: var(--sp-font-size-small);
+  color: var(--sp-text-secondary);
+}
+
+strong,
+b {
+  font-weight: bold;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+/* Links
+   ========================================================================== */
+
+a {
+  color: var(--sp-text-link);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:hover {
+  color: var(--sp-text-link-hover);
+  text-decoration: underline;
+}
+
+a:active {
+  color: var(--sp-text-link-hover);
+}
+
+/* Muted / secondary links */
+a.muted {
+  color: var(--sp-text-secondary);
+}
+
+a.muted:hover {
+  color: var(--sp-text-link);
+  text-decoration: underline;
+}
+
+/* Lists (when styled)
+   ========================================================================== */
+
+.list-styled {
+  list-style: disc;
+  padding-left: 18px;
+  margin-bottom: var(--sp-spacing-sm);
+}
+
+.list-styled li {
+  margin-bottom: 2px;
+  line-height: var(--sp-line-height);
+}
+
+.list-styled-ordered {
+  list-style: decimal;
+  padding-left: 18px;
+  margin-bottom: var(--sp-spacing-sm);
+}
+
+/* Blockquote
+   ========================================================================== */
+
+blockquote {
+  border-left: 3px solid var(--sp-border-box);
+  padding-left: var(--sp-spacing-md);
+  margin: var(--sp-spacing-sm) 0;
+  color: var(--sp-text-secondary);
+  font-style: italic;
+}
+
+/* Horizontal rule
+   ========================================================================== */
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--sp-border);
+  margin: var(--sp-spacing-md) 0;
+}
+
+/* Code / preformatted
+   ========================================================================== */
+
+code {
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--sp-font-size-base);
+  background-color: #F2EEE6;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: var(--sp-font-size-base);
+  background-color: #F2EEE6;
+  padding: var(--sp-spacing-sm);
+  border: 1px solid var(--sp-border);
+  border-radius: var(--sp-radius);
+  overflow-x: auto;
+  margin-bottom: var(--sp-spacing-sm);
+}
+
+/* Selection
+   ========================================================================== */
+
+::selection {
+  background-color: var(--sp-blue-light);
+  color: var(--sp-text-white);
+}
+
+::-moz-selection {
+  background-color: var(--sp-blue-light);
+  color: var(--sp-text-white);
+}
+
+/* Misc helper text styles
+   ========================================================================== */
+
+.text-small {
+  font-size: var(--sp-font-size-small);
+}
+
+.text-medium {
+  font-size: var(--sp-font-size-medium);
+}
+
+.text-large {
+  font-size: var(--sp-font-size-large);
+}
+
+.text-muted {
+  color: var(--sp-text-secondary);
+}
+
+.text-light {
+  color: var(--sp-text-light);
+}
+
+.text-error {
+  color: var(--sp-text-error);
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
