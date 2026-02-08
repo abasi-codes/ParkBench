@@ -1,38 +1,38 @@
 import Config
 
-config :sunporch,
-  ecto_repos: [Sunporch.Repo],
+config :park_bench,
+  ecto_repos: [ParkBench.Repo],
   generators: [timestamp_type: :utc_datetime]
 
 # Configure the endpoint
-config :sunporch, SunporchWeb.Endpoint,
+config :park_bench, ParkBenchWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: SunporchWeb.ErrorHTML, json: SunporchWeb.ErrorJSON],
+    formats: [html: ParkBenchWeb.ErrorHTML, json: ParkBenchWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: Sunporch.PubSub,
+  pubsub_server: ParkBench.PubSub,
   live_view: [signing_salt: "LIKl7tn6"]
 
 # Configure esbuild
 config :esbuild,
   version: "0.25.4",
-  sunporch: [
+  park_bench: [
     args:
       ~w(js/app.js --bundle --target=es2022 --outdir=../priv/static/assets/js --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => [Path.expand("../deps", __DIR__), Mix.Project.build_path()]}
   ],
-  sunporch_css: [
-    args: ~w(css/sunporch.css --bundle --outdir=../priv/static/assets/css --loader:.css=css),
+  park_bench_css: [
+    args: ~w(css/park_bench.css --bundle --outdir=../priv/static/assets/css --loader:.css=css),
     cd: Path.expand("../assets", __DIR__)
   ]
 
 # Oban configuration
-config :sunporch, Oban,
+config :park_bench, Oban,
   engine: Oban.Engines.Basic,
-  repo: Sunporch.Repo,
+  repo: ParkBench.Repo,
   queues: [
     default: 10,
     ai_detection: 20,
@@ -45,23 +45,23 @@ config :sunporch, Oban,
     Oban.Plugins.Pruner,
     {Oban.Plugins.Cron,
      crontab: [
-       {"0 3 * * *", Sunporch.Workers.NotificationPruneWorker},
-       {"0 3 * * *", Sunporch.Workers.SoftDeleteCleanupWorker},
-       {"*/15 * * * *", Sunporch.Workers.SessionPruneWorker},
-       {"0 4 * * *", Sunporch.Workers.UnverifiedAccountPurgeWorker}
+       {"0 3 * * *", ParkBench.Workers.NotificationPruneWorker},
+       {"0 3 * * *", ParkBench.Workers.SoftDeleteCleanupWorker},
+       {"*/15 * * * *", ParkBench.Workers.SessionPruneWorker},
+       {"0 4 * * *", ParkBench.Workers.UnverifiedAccountPurgeWorker}
      ]}
   ]
 
 # Swoosh mailer config
-config :sunporch, Sunporch.Mailer, adapter: Swoosh.Adapters.Local
+config :park_bench, ParkBench.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client - use Req-based client or disable for local adapter
 config :swoosh, :api_client, false
 
 # AI Detection defaults
-config :sunporch, :ai_detection,
-  text_provider: Sunporch.AIDetection.Clients.GPTZero,
-  image_provider: Sunporch.AIDetection.Clients.HiveModeration,
+config :park_bench, :ai_detection,
+  text_provider: ParkBench.AIDetection.Clients.GPTZero,
+  image_provider: ParkBench.AIDetection.Clients.HiveModeration,
   text_soft_reject: 0.65,
   text_hard_reject: 0.85,
   image_soft_reject: 0.70,
@@ -69,7 +69,7 @@ config :sunporch, :ai_detection,
   min_text_length: 50
 
 # Message encryption key (override in runtime.exs for prod)
-config :sunporch, :message_encryption_key, "dev-only-key-must-be-32-bytes!!"
+config :park_bench, :message_encryption_key, "dev-only-key-must-be-32-bytes!!"
 
 # S3 / ExAws config (defaults for dev with MinIO)
 config :ex_aws,
@@ -82,7 +82,7 @@ config :ex_aws, :s3,
   host: "localhost",
   port: 9000
 
-config :sunporch, :s3_bucket, "sunporch-uploads"
+config :park_bench, :s3_bucket, "park-bench-uploads"
 
 # Logger
 config :logger, :default_formatter,

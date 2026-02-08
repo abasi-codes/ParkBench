@@ -22,14 +22,14 @@
 
 .album-card {
   display: block;
-  border: 1px solid var(--sp-border-box);
-  background: var(--sp-bg-white);
+  border: 1px solid var(--pb-border-box);
+  background: var(--pb-bg-white);
   text-decoration: none;
   color: inherit;
 }
 
 .album-card:hover {
-  border-color: var(--sp-blue-light);
+  border-color: var(--pb-blue-light);
 }
 
 .album-cover {
@@ -51,7 +51,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
   font-size: 12px;
 }
 
@@ -63,19 +63,19 @@
   display: block;
   font-weight: bold;
   font-size: 13px;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 .album-count {
   display: block;
   font-size: 11px;
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
 }
 
 .empty-albums {
   padding: 20px;
   text-align: center;
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
 }
 
 /* Album Page */
@@ -85,8 +85,8 @@
 }
 
 .album-create-form {
-  background: var(--sp-bg-white);
-  border: 1px solid var(--sp-border-box);
+  background: var(--pb-bg-white);
+  border: 1px solid var(--pb-border-box);
   padding: 16px;
 }
 
@@ -96,8 +96,8 @@
 }
 
 .album-header {
-  background: var(--sp-bg-white);
-  border: 1px solid var(--sp-border-box);
+  background: var(--pb-bg-white);
+  border: 1px solid var(--pb-border-box);
   padding: 12px;
   margin-bottom: 12px;
 }
@@ -109,13 +109,13 @@
 
 .album-description {
   margin: 4px 0;
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
   font-size: 13px;
 }
 
 .album-photo-count {
   font-size: 12px;
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
 }
 
 .album-actions {
@@ -132,8 +132,8 @@
 }
 
 .photo-card {
-  border: 1px solid var(--sp-border-box);
-  background: var(--sp-bg-white);
+  border: 1px solid var(--pb-border-box);
+  background: var(--pb-bg-white);
 }
 
 .photo-thumb {
@@ -146,7 +146,7 @@
 .photo-caption {
   padding: 4px 6px;
   font-size: 11px;
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
   margin: 0;
 }
 
@@ -158,8 +158,8 @@
 
 /* Upload Form */
 .upload-form {
-  background: var(--sp-bg-white);
-  border: 1px solid var(--sp-border-box);
+  background: var(--pb-bg-white);
+  border: 1px solid var(--pb-border-box);
   padding: 12px;
   margin-bottom: 12px;
 }
@@ -175,7 +175,7 @@
 .empty-album {
   padding: 20px;
   text-align: center;
-  color: var(--sp-text-light);
-  background: var(--sp-bg-white);
-  border: 1px solid var(--sp-border-box);
+  color: var(--pb-text-light);
+  background: var(--pb-bg-white);
+  border: 1px solid var(--pb-border-box);
 }

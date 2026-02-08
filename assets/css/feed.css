@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Sunporch Feed
+   ParkBench Feed
    News feed container, post cards, post composer, new-posts bar,
    and empty feed state. The core content view of the app.
    ========================================================================== */
@@ -20,13 +20,13 @@
 .new-posts-bar {
   background-color: #FFF7E6;
   border: 1px solid #E0C88A;
-  border-radius: var(--sp-radius);
+  border-radius: var(--pb-radius);
   padding: 6px 10px;
   margin-bottom: 10px;
   text-align: center;
   cursor: pointer;
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-link);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-link);
   font-weight: bold;
 }
 
@@ -41,22 +41,22 @@
    ========================================================================== */
 
 .post-composer {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
-  margin-bottom: var(--sp-spacing-md);
+  border-radius: var(--pb-radius);
+  margin-bottom: var(--pb-spacing-md);
   overflow: hidden;
-  box-shadow: var(--sp-shadow-sm);
+  box-shadow: var(--pb-shadow-sm);
 }
 
 .post-composer-header {
   padding: 12px 20px 8px 20px;
   background-color: transparent;
-  border-bottom: 2px solid var(--sp-accent-gold);
-  font-size: var(--sp-font-size-base);
+  border-bottom: 2px solid var(--pb-accent-gold);
+  font-size: var(--pb-font-size-base);
   font-weight: 700;
-  font-family: var(--sp-font-heading);
-  color: var(--sp-text-primary);
+  font-family: var(--pb-font-heading);
+  color: var(--pb-text-primary);
 }
 
 .post-composer-body {
@@ -66,20 +66,20 @@
 .post-composer-body .form-textarea {
   width: 100%;
   min-height: 50px;
-  border: 1px solid var(--sp-border-input);
-  font-size: var(--sp-font-size-base);
-  font-family: var(--sp-font-family);
+  border: 1px solid var(--pb-border-input);
+  font-size: var(--pb-font-size-base);
+  font-family: var(--pb-font-family);
   padding: 6px 8px;
   resize: vertical;
 }
 
 .post-composer-body .form-textarea:focus {
-  border-color: var(--sp-blue-light);
+  border-color: var(--pb-blue-light);
   min-height: 80px;
 }
 
 .post-composer-body .form-textarea::placeholder {
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
   font-style: italic;
 }
 
@@ -100,13 +100,13 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   cursor: pointer;
 }
 
 .post-composer-option:hover {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 .post-composer-option .icon {
@@ -121,11 +121,11 @@
 
 /* Privacy selector next to share button */
 .post-privacy-select {
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
   padding: 2px 4px;
-  border: 1px solid var(--sp-border-input);
-  background-color: var(--sp-bg-input);
-  color: var(--sp-text-secondary);
+  border: 1px solid var(--pb-border-input);
+  background-color: var(--pb-bg-input);
+  color: var(--pb-text-secondary);
   cursor: pointer;
 }
 
@@ -135,17 +135,17 @@
    ========================================================================== */
 
 .post-card {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
-  margin-bottom: var(--sp-spacing-md);
+  border-radius: var(--pb-radius);
+  margin-bottom: var(--pb-spacing-md);
   overflow: hidden;
-  box-shadow: var(--sp-shadow-sm);
+  box-shadow: var(--pb-shadow-sm);
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .post-card:hover {
-  box-shadow: var(--sp-shadow-md);
+  box-shadow: var(--pb-shadow-md);
   transform: translateY(-1px);
 }
 
@@ -170,9 +170,9 @@
 }
 
 .post-card-author {
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: bold;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   text-decoration: none;
   line-height: 1.2;
 }
@@ -183,38 +183,38 @@
 
 /* Context text: "wrote on X's wall", "updated their status", etc. */
 .post-card-context {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   font-weight: normal;
 }
 
 .post-card-context a {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   font-weight: bold;
 }
 
 .post-card-timestamp {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
   line-height: 1.2;
   margin-top: 1px;
 }
 
 .post-card-timestamp a {
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
 }
 
 .post-card-timestamp a:hover {
   text-decoration: underline;
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
 }
 
 /* Post Body: main content area */
 .post-card-body {
   padding: 12px 20px 16px 20px;
-  font-size: var(--sp-font-size-base);
-  line-height: var(--sp-line-height);
-  color: var(--sp-text-primary);
+  font-size: var(--pb-font-size-base);
+  line-height: var(--pb-line-height);
+  color: var(--pb-text-primary);
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -228,7 +228,7 @@
 .post-card-photo {
   margin-top: 8px;
   max-width: 100%;
-  border: 1px solid var(--sp-border);
+  border: 1px solid var(--pb-border);
   border-radius: 2px;
 }
 
@@ -241,7 +241,7 @@
 /* Link attachment preview */
 .post-card-link-preview {
   margin-top: 8px;
-  border: 1px solid var(--sp-border);
+  border: 1px solid var(--pb-border);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -258,21 +258,21 @@
 }
 
 .post-card-link-preview-title {
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: bold;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   margin-bottom: 2px;
 }
 
 .post-card-link-preview-desc {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-secondary);
-  line-height: var(--sp-line-height);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-secondary);
+  line-height: var(--pb-line-height);
 }
 
 .post-card-link-preview-domain {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
   margin-top: 2px;
 }
 
@@ -283,16 +283,16 @@
   gap: 12px;
   padding: 10px 20px;
   border-top: 1px solid rgba(0,0,0,0.06);
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
 }
 
 /* Action button styles */
 .like-btn, .comment-btn, .delete-btn {
   background: none;
   border: none;
-  font-family: var(--sp-font-body);
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-family: var(--pb-font-body);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   cursor: pointer;
   padding: 0;
   transition: color 0.15s ease, transform 0.15s ease;
@@ -303,23 +303,23 @@
 }
 
 .like-btn:hover, .comment-btn:hover {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   text-decoration: underline;
 }
 
 .like-btn.liked {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   font-weight: bold;
 }
 
 .delete-btn {
-  color: var(--sp-text-light);
-  font-size: var(--sp-font-size-small);
+  color: var(--pb-text-light);
+  font-size: var(--pb-font-size-small);
   margin-left: auto;
 }
 
 .delete-btn:hover {
-  color: var(--sp-text-error);
+  color: var(--pb-text-error);
 }
 
 /* Separator dots between action buttons */
@@ -327,30 +327,30 @@
 .post-card-actions > .like-count + button:not(.delete-btn)::before {
   content: "\00b7";
   margin-right: 12px;
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
   font-weight: bold;
 }
 
 .post-card-action {
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
   text-decoration: none;
   cursor: pointer;
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
 }
 
 .post-card-action:hover {
   text-decoration: underline;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 .post-card-action.active {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   font-weight: bold;
 }
 
 /* Separator dot between actions */
 .post-card-action-sep {
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
   font-size: 8px;
   user-select: none;
 }
@@ -361,12 +361,12 @@
   align-items: center;
   gap: 10px;
   padding: 4px 10px;
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-secondary);
 }
 
 .post-card-stat a {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 .post-card-stat a:hover {
@@ -407,14 +407,14 @@
 .post-comment-content {
   flex: 1;
   min-width: 0;
-  font-size: var(--sp-font-size-base);
-  line-height: var(--sp-line-height);
+  font-size: var(--pb-font-size-base);
+  line-height: var(--pb-line-height);
   word-wrap: break-word;
 }
 
 .post-comment-author {
   font-weight: bold;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   text-decoration: none;
 }
 
@@ -423,22 +423,22 @@
 }
 
 .post-comment-text {
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
 }
 
 .post-comment-time {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
   margin-left: 6px;
 }
 
 .post-comment-actions {
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
   margin-top: 2px;
 }
 
 .post-comment-actions a {
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
 }
 
 .post-comment-actions a:hover {
@@ -448,12 +448,12 @@
 /* View more comments link */
 .post-comments-more {
   padding: 6px 10px;
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
 }
 
 .post-comments-more a {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 /* Comment input */
@@ -476,21 +476,21 @@
 .post-comment-input {
   flex: 1;
   padding: 4px 6px;
-  font-size: var(--sp-font-size-base);
-  font-family: var(--sp-font-family);
-  border: 1px solid var(--sp-border-input);
-  background-color: var(--sp-bg-input);
+  font-size: var(--pb-font-size-base);
+  font-family: var(--pb-font-family);
+  border: 1px solid var(--pb-border-input);
+  background-color: var(--pb-bg-input);
   outline: none;
   min-height: 26px;
   resize: none;
 }
 
 .post-comment-input:focus {
-  border-color: var(--sp-blue-light);
+  border-color: var(--pb-blue-light);
 }
 
 .post-comment-input::placeholder {
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
 }
 
 /* ==========================================================================
@@ -500,28 +500,28 @@
 
 .empty-feed {
   text-align: center;
-  padding: var(--sp-spacing-2xl) var(--sp-spacing-xl);
-  background-color: var(--sp-bg-white);
+  padding: var(--pb-spacing-2xl) var(--pb-spacing-xl);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
-  box-shadow: var(--sp-shadow-sm);
+  border-radius: var(--pb-radius);
+  box-shadow: var(--pb-shadow-sm);
 }
 
 .empty-feed-icon {
   font-size: 48px;
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
   margin-bottom: 12px;
 }
 
 .empty-feed h3 {
-  font-size: var(--sp-font-size-large);
-  color: var(--sp-text-primary);
+  font-size: var(--pb-font-size-large);
+  color: var(--pb-text-primary);
   margin-bottom: 8px;
 }
 
 .empty-feed p {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   margin-bottom: 16px;
   max-width: 360px;
   margin-left: auto;
@@ -536,12 +536,12 @@
 .empty-feed-suggestions {
   margin-top: 20px;
   text-align: left;
-  border-top: 1px solid var(--sp-border);
+  border-top: 1px solid var(--pb-border);
   padding-top: 16px;
 }
 
 .empty-feed-suggestions h4 {
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -560,9 +560,9 @@
 }
 
 .feed-filter-bar h2 {
-  font-size: var(--sp-font-size-h2);
+  font-size: var(--pb-font-size-h2);
   font-weight: bold;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
   margin: 0;
 }
 
@@ -573,8 +573,8 @@
 }
 
 .feed-filter {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   text-decoration: none;
   padding: 2px 6px;
   border-radius: 2px;
@@ -582,12 +582,12 @@
 
 .feed-filter:hover {
   text-decoration: none;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 .feed-filter.active {
   font-weight: bold;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
   background-color: #EDE9E0;
 }
 
@@ -596,13 +596,13 @@
    ========================================================================== */
 
 .post-shared-via {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
   padding: 4px 10px 0 10px;
 }
 
 .post-shared-via a {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 /* ==========================================================================
@@ -611,7 +611,7 @@
 
 /* Status update (just text) */
 .post-card-status .post-card-body {
-  font-size: var(--sp-font-size-medium);
+  font-size: var(--pb-font-size-medium);
 }
 
 /* Wall post (from another user) */
@@ -628,8 +628,8 @@
 .feed-loading {
   text-align: center;
   padding: 16px;
-  color: var(--sp-text-light);
-  font-size: var(--sp-font-size-base);
+  color: var(--pb-text-light);
+  font-size: var(--pb-font-size-base);
 }
 
 /* ==========================================================================
@@ -641,7 +641,7 @@
    ========================================================================== */
 
 .wall-arrow {
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
   font-size: 9px;
   margin: 0 3px;
 }
@@ -653,22 +653,22 @@
 .status-input {
   width: 100%;
   padding: 4px 6px;
-  font-size: var(--sp-font-size-base);
-  font-family: var(--sp-font-family);
-  border: 1px solid var(--sp-border-input);
-  background: var(--sp-bg-input);
+  font-size: var(--pb-font-size-base);
+  font-family: var(--pb-font-family);
+  border: 1px solid var(--pb-border-input);
+  background: var(--pb-bg-input);
   margin-bottom: 6px;
 }
 
 .status-text {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-primary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-primary);
   margin-bottom: 8px;
-  line-height: var(--sp-line-height);
+  line-height: var(--pb-line-height);
 }
 
 .status-text-inline {
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
 }
 
 /* ==========================================================================
@@ -680,7 +680,7 @@
   align-items: center;
   gap: 6px;
   padding: 4px 0;
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   border-bottom: 1px solid #E8E3D8;
 }
 
@@ -709,7 +709,7 @@
   align-items: center;
   gap: 6px;
   text-decoration: none;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 .pymk-item a:hover {
@@ -717,8 +717,8 @@
 }
 
 .mutual-count {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
 }
 
 .pymk-details {
@@ -731,15 +731,15 @@
 .pymk-add-btn {
   margin-left: auto;
   flex-shrink: 0;
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
   padding: 2px 8px;
 }
 
 .pymk-requested {
   margin-left: auto;
   flex-shrink: 0;
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
   font-style: italic;
 }
 
@@ -763,8 +763,8 @@
 
 .status-card .post-card-meta,
 .friendship-card .post-card-meta {
-  font-size: var(--sp-font-size-base);
-  line-height: var(--sp-line-height);
+  font-size: var(--pb-font-size-base);
+  line-height: var(--pb-line-height);
 }
 
 /* ==========================================================================
@@ -780,7 +780,7 @@
   max-width: 100%;
   max-height: 500px;
   object-fit: cover;
-  border-radius: var(--sp-radius-sm);
+  border-radius: var(--pb-radius-sm);
   border: 1px solid rgba(0,0,0,0.08);
 }
 
@@ -792,17 +792,17 @@
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   cursor: pointer;
   padding: 4px 8px;
-  border-radius: var(--sp-radius-sm);
+  border-radius: var(--pb-radius-sm);
   transition: color 0.15s ease, background-color 0.15s ease;
 }
 
 .photo-attach-btn:hover {
-  color: var(--sp-text-link);
-  background-color: rgba(139,105,20,0.06);
+  color: var(--pb-text-link);
+  background-color: rgba(74,103,65,0.06);
 }
 
 /* ==========================================================================
@@ -821,7 +821,7 @@
   width: 200px;
   height: 150px;
   object-fit: cover;
-  border-radius: var(--sp-radius-sm);
+  border-radius: var(--pb-radius-sm);
   border: 1px solid rgba(0,0,0,0.1);
   background-color: #EDE9E0;
 }
@@ -860,7 +860,7 @@
 }
 
 .feed-entry {
-  animation: card-enter var(--sp-duration-normal) var(--sp-ease-out) both;
+  animation: card-enter var(--pb-duration-normal) var(--pb-ease-out) both;
 }
 
 .feed-entry:nth-child(2) { animation-delay: 50ms; }
@@ -869,9 +869,9 @@
 .feed-entry:nth-child(5) { animation-delay: 200ms; }
 
 .like-btn.liked {
-  animation: like-pop 0.35s var(--sp-ease-bounce);
+  animation: like-pop 0.35s var(--pb-ease-bounce);
 }
 
 .new-posts-bar {
-  animation: slide-down var(--sp-duration-normal) var(--sp-ease-out);
+  animation: slide-down var(--pb-duration-normal) var(--pb-ease-out);
 }

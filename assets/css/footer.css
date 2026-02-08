@@ -1,19 +1,19 @@
 /* ==========================================================================
-   Sunporch Footer
+   ParkBench Footer
    Simple 40px footer with centered links, as in 2008 Facebook.
    ========================================================================== */
 
 .footer {
   width: 100%;
-  min-height: var(--sp-height-footer);
-  background-color: #F5F0E6;
-  border-top: 1px solid var(--sp-border);
+  min-height: var(--pb-height-footer);
+  background-color: #f3efe5;
+  border-top: 1px solid var(--pb-border);
   padding: 10px 0;
 }
 
 .footer-inner {
-  max-width: var(--sp-width-page);
-  width: var(--sp-width-page);
+  max-width: var(--pb-width-page);
+  width: var(--pb-width-page);
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -31,8 +31,8 @@
 }
 
 .footer-links a {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-link);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-link);
   text-decoration: none;
   white-space: nowrap;
 }
@@ -43,7 +43,7 @@
 
 /* Dot separator between footer links */
 .footer-links .dot {
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
   font-size: 8px;
   line-height: 1;
   margin: 0 2px;
@@ -52,15 +52,15 @@
 
 /* Copyright text */
 .footer-copyright {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-light);
   white-space: nowrap;
 }
 
 /* Language selector link (like 2008 FB had) */
 .footer-language {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-link);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-link);
   cursor: pointer;
 }
 
@@ -86,5 +86,5 @@
 }
 
 .footer-landing .footer-copyright {
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
 }

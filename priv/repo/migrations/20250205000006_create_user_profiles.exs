@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateUserProfiles do
+defmodule ParkBench.Repo.Migrations.CreateUserProfiles do
   use Ecto.Migration
 
   def change do

@@ -1,6 +1,6 @@
 /* ==========================================================================
    AI Detection Badges & Status Indicators
-   The visual core of Sunporch's anti-AI identity. Shows verification
+   The visual core of ParkBench's anti-AI identity. Shows verification
    status on every post, comment, and profile.
    ========================================================================== */
 
@@ -15,10 +15,10 @@
   padding: 1px 7px;
   font-size: 10px;
   font-weight: 700;
-  font-family: var(--sp-font-body);
+  font-family: var(--pb-font-body);
   letter-spacing: 0.04em;
   line-height: 16px;
-  border-radius: var(--sp-radius-full);
+  border-radius: var(--pb-radius-full);
   white-space: nowrap;
   vertical-align: middle;
   margin-left: 6px;
@@ -33,36 +33,36 @@
 
 /* Human Verified — green */
 .ai-badge-human {
-  background-color: var(--sp-status-human-bg);
-  color: var(--sp-status-human);
+  background-color: var(--pb-status-human-bg);
+  color: var(--pb-status-human);
   border: 1px solid rgba(106, 154, 78, 0.25);
 }
 
 /* Pending — gray */
 .ai-badge-pending {
-  background-color: var(--sp-status-pending-bg);
-  color: var(--sp-status-pending);
+  background-color: var(--pb-status-pending-bg);
+  color: var(--pb-status-pending);
   border: 1px solid rgba(122, 111, 94, 0.2);
 }
 
 /* Under Review — amber */
 .ai-badge-review {
-  background-color: var(--sp-status-review-bg);
-  color: var(--sp-status-review);
+  background-color: var(--pb-status-review-bg);
+  color: var(--pb-status-review);
   border: 1px solid rgba(184, 148, 43, 0.25);
 }
 
 /* Appeal Pending — amber variant */
 .ai-badge-appealed {
-  background-color: var(--sp-status-review-bg);
-  color: var(--sp-status-review);
+  background-color: var(--pb-status-review-bg);
+  color: var(--pb-status-review);
   border: 1px solid rgba(184, 148, 43, 0.25);
 }
 
 /* Detected — red (for admin/moderator views) */
 .ai-badge-detected {
-  background-color: var(--sp-status-detected-bg);
-  color: var(--sp-status-detected);
+  background-color: var(--pb-status-detected-bg);
+  color: var(--pb-status-detected);
   border: 1px solid rgba(192, 57, 43, 0.25);
 }
 
@@ -77,17 +77,17 @@
   padding: 2px 10px;
   font-size: 11px;
   font-weight: 700;
-  font-family: var(--sp-font-body);
+  font-family: var(--pb-font-body);
   line-height: 18px;
-  border-radius: var(--sp-radius-full);
+  border-radius: var(--pb-radius-full);
   white-space: nowrap;
   vertical-align: middle;
   margin-left: 8px;
 }
 
 .trust-badge-verified {
-  background-color: var(--sp-status-human-bg);
-  color: var(--sp-status-human);
+  background-color: var(--pb-status-human-bg);
+  color: var(--pb-status-human);
   border: 1px solid rgba(106, 154, 78, 0.3);
 }
 
@@ -105,7 +105,7 @@
   justify-content: space-between;
   padding: 6px 0;
   border-bottom: 1px solid #EDE9E0;
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
 }
 
 .community-pulse-stat:last-child {
@@ -114,12 +114,12 @@
 
 .community-pulse-value {
   font-weight: 700;
-  color: var(--sp-status-human);
-  font-family: var(--sp-font-heading);
+  color: var(--pb-status-human);
+  font-family: var(--pb-font-heading);
 }
 
 .community-pulse-label {
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
 }
 
 /* ==========================================================================
@@ -127,9 +127,9 @@
    ========================================================================== */
 
 .landing-stat-value.stat-verified {
-  color: var(--sp-status-human);
+  color: var(--pb-status-human);
 }
 
 .landing-stat-value.stat-flagged {
-  color: var(--sp-status-review);
+  color: var(--pb-status-review);
 }

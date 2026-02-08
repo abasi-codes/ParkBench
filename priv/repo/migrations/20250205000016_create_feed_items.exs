@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateFeedItems do
+defmodule ParkBench.Repo.Migrations.CreateFeedItems do
   use Ecto.Migration
 
   def change do

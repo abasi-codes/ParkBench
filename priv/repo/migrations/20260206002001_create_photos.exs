@@ -1,11 +1,14 @@
-defmodule Sunporch.Repo.Migrations.CreatePhotos do
+defmodule ParkBench.Repo.Migrations.CreatePhotos do
   use Ecto.Migration
 
   def change do
     create table(:photos, primary_key: false) do
       add :id, :binary_id, primary_key: true
       add :user_id, references(:users, type: :binary_id, on_delete: :delete_all), null: false
-      add :album_id, references(:photo_albums, type: :binary_id, on_delete: :delete_all), null: false
+
+      add :album_id, references(:photo_albums, type: :binary_id, on_delete: :delete_all),
+        null: false
+
       add :original_url, :string, null: false
       add :thumb_200_url, :string
       add :thumb_50_url, :string

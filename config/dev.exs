@@ -1,40 +1,40 @@
 import Config
 
-config :sunporch, Sunporch.Repo,
+config :park_bench, ParkBench.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "sunporch_dev",
+  database: "park_bench_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
-config :sunporch, SunporchWeb.Endpoint,
+config :park_bench, ParkBenchWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
   secret_key_base: "O+Mxbdw/wMZVNelcbim60uCkULFEKtv476ZPkU03JUvWLUSLqjuNGCpskeHgNSHX",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:sunporch, ~w(--sourcemap=inline --watch)]},
-    esbuild_css: {Esbuild, :install_and_run, [:sunporch_css, ~w(--watch)]}
+    esbuild: {Esbuild, :install_and_run, [:park_bench, ~w(--sourcemap=inline --watch)]},
+    esbuild_css: {Esbuild, :install_and_run, [:park_bench_css, ~w(--watch)]}
   ]
 
-config :sunporch, SunporchWeb.Endpoint,
+config :park_bench, ParkBenchWeb.Endpoint,
   live_reload: [
     web_console_logger: true,
     patterns: [
       ~r"priv/static/(?!uploads/).*\.(js|css|png|jpeg|jpg|gif|svg)$"E,
       ~r"priv/gettext/.*\.po$"E,
-      ~r"lib/sunporch_web/router\.ex$"E,
-      ~r"lib/sunporch_web/(controllers|live|components)/.*\.(ex|heex)$"E
+      ~r"lib/park_bench_web/router\.ex$"E,
+      ~r"lib/park_bench_web/(controllers|live|components)/.*\.(ex|heex)$"E
     ]
   ]
 
-config :sunporch, dev_routes: true
+config :park_bench, dev_routes: true
 
 # Disable Oban in dev to avoid cron noise (enable manually if needed)
-config :sunporch, Oban, testing: :manual
+config :park_bench, Oban, testing: :manual
 
 config :logger, :default_formatter, format: "[$level] $message\n"
 

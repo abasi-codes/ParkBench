@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Sunporch Search
+   ParkBench Search
    Search autocomplete dropdown, search result items, full search results
    page, and keyboard navigation highlighting.
    ========================================================================== */
@@ -16,12 +16,12 @@
   width: 320px;
   max-height: 400px;
   overflow-y: auto;
-  background-color: var(--sp-bg-white);
-  border: 1px solid var(--sp-border);
+  background-color: var(--pb-bg-white);
+  border: 1px solid var(--pb-border);
   border-top: none;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-  z-index: var(--sp-z-dropdown);
-  border-radius: 0 0 var(--sp-radius) var(--sp-radius);
+  z-index: var(--pb-z-dropdown);
+  border-radius: 0 0 var(--pb-radius) var(--pb-radius);
   display: none;
 }
 
@@ -32,10 +32,10 @@
 /* Autocomplete section headers */
 .search-autocomplete-section {
   padding: 4px 10px;
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
   font-weight: bold;
-  color: var(--sp-text-secondary);
-  background-color: var(--sp-bg-sidebar-header);
+  color: var(--pb-text-secondary);
+  background-color: var(--pb-bg-sidebar-header);
   border-bottom: 1px solid #EDE9E0;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -48,7 +48,7 @@
   gap: 8px;
   padding: 6px 10px;
   text-decoration: none;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
   border-bottom: 1px solid #F2EEE6;
   cursor: pointer;
 }
@@ -59,14 +59,14 @@
 
 .search-autocomplete-item:hover,
 .search-autocomplete-item.highlight {
-  background-color: var(--sp-blue);
-  color: var(--sp-text-white);
+  background-color: var(--pb-blue);
+  color: var(--pb-text-white);
   text-decoration: none;
 }
 
 .search-autocomplete-item:hover .search-autocomplete-name,
 .search-autocomplete-item.highlight .search-autocomplete-name {
-  color: var(--sp-text-white);
+  color: var(--pb-text-white);
 }
 
 .search-autocomplete-item:hover .search-autocomplete-meta,
@@ -87,9 +87,9 @@
 }
 
 .search-autocomplete-name {
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: bold;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
   line-height: 1.2;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -97,8 +97,8 @@
 }
 
 .search-autocomplete-meta {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-secondary);
   line-height: 1.2;
   margin-top: 1px;
 }
@@ -106,15 +106,15 @@
 /* "See all results for..." footer link */
 .search-autocomplete-footer {
   padding: 8px 10px;
-  border-top: 1px solid var(--sp-border);
-  background-color: var(--sp-bg-sidebar-header);
+  border-top: 1px solid var(--pb-border);
+  background-color: var(--pb-bg-sidebar-header);
   text-align: center;
 }
 
 .search-autocomplete-footer a {
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: bold;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 .search-autocomplete-footer a:hover {
@@ -125,18 +125,18 @@
 .search-autocomplete-empty {
   padding: 16px 10px;
   text-align: center;
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-light);
 }
 
 /* Keyboard navigation highlight */
 .search-autocomplete-item.keyboard-active {
-  background-color: var(--sp-blue);
-  color: var(--sp-text-white);
+  background-color: var(--pb-blue);
+  color: var(--pb-text-white);
 }
 
 .search-autocomplete-item.keyboard-active .search-autocomplete-name {
-  color: var(--sp-text-white);
+  color: var(--pb-text-white);
 }
 
 .search-autocomplete-item.keyboard-active .search-autocomplete-meta {
@@ -157,15 +157,15 @@
 }
 
 .search-results-header h1 {
-  font-size: var(--sp-font-size-h1);
+  font-size: var(--pb-font-size-h1);
   font-weight: bold;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
   margin-bottom: 4px;
 }
 
 .search-results-count {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
 }
 
 /* Search filter tabs */
@@ -175,16 +175,16 @@
   gap: 2px;
   margin-bottom: 10px;
   padding: 6px 0;
-  border-bottom: 1px solid var(--sp-border);
+  border-bottom: 1px solid var(--pb-border);
 }
 
 .search-filter {
   padding: 4px 10px;
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: bold;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   text-decoration: none;
-  border-radius: var(--sp-radius);
+  border-radius: var(--pb-radius);
 }
 
 .search-filter:hover {
@@ -193,8 +193,8 @@
 }
 
 .search-filter.active {
-  background-color: var(--sp-blue);
-  color: var(--sp-text-white);
+  background-color: var(--pb-blue);
+  color: var(--pb-text-white);
 }
 
 /* Individual search result */
@@ -203,14 +203,14 @@
   align-items: flex-start;
   gap: 12px;
   padding: 12px;
-  background-color: var(--sp-bg-white);
-  border: 1px solid var(--sp-border-box);
-  border-radius: var(--sp-radius);
+  background-color: var(--pb-bg-white);
+  border: 1px solid var(--pb-border-box);
+  border-radius: var(--pb-radius);
   margin-bottom: 8px;
 }
 
 .search-result:hover {
-  border-color: var(--sp-blue-light);
+  border-color: var(--pb-blue-light);
 }
 
 .search-result .avatar {
@@ -226,9 +226,9 @@
 }
 
 .search-result-name {
-  font-size: var(--sp-font-size-medium);
+  font-size: var(--pb-font-size-medium);
   font-weight: bold;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   text-decoration: none;
   line-height: 1.2;
 }
@@ -238,20 +238,20 @@
 }
 
 .search-result-detail {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
-  line-height: var(--sp-line-height);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
+  line-height: var(--pb-line-height);
   margin-top: 2px;
 }
 
 .search-result-mutual {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
   margin-top: 4px;
 }
 
 .search-result-mutual a {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 .search-result-actions {
@@ -266,19 +266,19 @@
    ========================================================================== */
 
 .people-you-may-know {
-  background-color: var(--sp-bg-white);
-  border: 1px solid var(--sp-border-box);
-  border-radius: var(--sp-radius);
+  background-color: var(--pb-bg-white);
+  border: 1px solid var(--pb-border-box);
+  border-radius: var(--pb-radius);
   overflow: hidden;
 }
 
 .people-you-may-know-header {
   padding: 5px 8px;
-  background-color: var(--sp-bg-sidebar-header);
-  border-bottom: 1px solid var(--sp-border-box);
-  font-size: var(--sp-font-size-base);
+  background-color: var(--pb-bg-sidebar-header);
+  border-bottom: 1px solid var(--pb-border-box);
+  font-size: var(--pb-font-size-base);
   font-weight: bold;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
 }
 
 .people-you-may-know-item {
@@ -306,9 +306,9 @@
 }
 
 .people-you-may-know-name {
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: bold;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   display: block;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -320,8 +320,8 @@
 }
 
 .people-you-may-know-mutual {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
 }
 
 .people-you-may-know-action {
@@ -341,7 +341,7 @@
 .search-page-input .form-input {
   flex: 1;
   padding: 6px 8px;
-  font-size: var(--sp-font-size-medium);
+  font-size: var(--pb-font-size-medium);
 }
 
 /* ==========================================================================
@@ -351,20 +351,20 @@
 .search-no-results {
   text-align: center;
   padding: 40px 20px;
-  background-color: var(--sp-bg-white);
-  border: 1px solid var(--sp-border-box);
-  border-radius: var(--sp-radius);
+  background-color: var(--pb-bg-white);
+  border: 1px solid var(--pb-border-box);
+  border-radius: var(--pb-radius);
 }
 
 .search-no-results h3 {
-  font-size: var(--sp-font-size-large);
-  color: var(--sp-text-primary);
+  font-size: var(--pb-font-size-large);
+  color: var(--pb-text-primary);
   margin-bottom: 8px;
 }
 
 .search-no-results p {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   max-width: 400px;
   margin: 0 auto;
 }

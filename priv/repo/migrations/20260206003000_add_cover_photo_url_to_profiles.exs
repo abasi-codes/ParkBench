@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.AddCoverPhotoUrlToProfiles do
+defmodule ParkBench.Repo.Migrations.AddCoverPhotoUrlToProfiles do
   use Ecto.Migration
 
   def change do

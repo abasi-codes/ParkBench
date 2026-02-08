@@ -9,7 +9,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: sunporch
+      POSTGRES_DB: park_bench
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:

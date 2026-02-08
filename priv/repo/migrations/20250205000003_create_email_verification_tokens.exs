@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateEmailVerificationTokens do
+defmodule ParkBench.Repo.Migrations.CreateEmailVerificationTokens do
   use Ecto.Migration
 
   def change do

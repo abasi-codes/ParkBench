@@ -18,7 +18,7 @@ function formatTime(isoString) {
 
 export default class Chat {
   constructor() {
-    const config = document.getElementById("sp-chat-config");
+    const config = document.getElementById("pb-chat-config");
     if (!config) return;
 
     this.userId = config.dataset.userId;
@@ -33,7 +33,7 @@ export default class Chat {
     this.typingUsers = {}; // threadId -> { userId, name, timer }
     this.presences = {};
 
-    this.root = document.getElementById("sp-chat-root");
+    this.root = document.getElementById("pb-chat-root");
     if (!this.root) return;
 
     this.restoreState();
@@ -139,7 +139,7 @@ export default class Chat {
     });
 
     this.root.addEventListener("keydown", (e) => {
-      if (e.target.classList.contains("sp-chat-input")) {
+      if (e.target.classList.contains("pb-chat-input")) {
         const threadId = e.target.dataset.threadId;
         if (e.key === "Enter" && !e.shiftKey) {
           e.preventDefault();
@@ -150,14 +150,14 @@ export default class Chat {
         }
       }
 
-      if (e.target.classList.contains("sp-chat-sidebar-search")) {
+      if (e.target.classList.contains("pb-chat-sidebar-search")) {
         this.sidebarFilter = e.target.value.toLowerCase();
         this.render();
       }
     });
 
     this.root.addEventListener("input", (e) => {
-      if (e.target.classList.contains("sp-chat-sidebar-search")) {
+      if (e.target.classList.contains("pb-chat-sidebar-search")) {
         this.sidebarFilter = e.target.value.toLowerCase();
         this.render();
       }
@@ -395,13 +395,13 @@ export default class Chat {
       };
     }
     try {
-      sessionStorage.setItem("sp_chat_windows", JSON.stringify(state));
+      sessionStorage.setItem("pb_chat_windows", JSON.stringify(state));
     } catch (e) { /* ignore */ }
   }
 
   restoreState() {
     try {
-      const saved = sessionStorage.getItem("sp_chat_windows");
+      const saved = sessionStorage.getItem("pb_chat_windows");
       if (!saved) return;
 
       const state = JSON.parse(saved);
@@ -469,9 +469,9 @@ export default class Chat {
   renderSidebar(friends) {
     if (!this.sidebarOpen) {
       return `
-        <div class="sp-chat-sidebar sp-chat-sidebar--collapsed">
-          <div class="sp-chat-sidebar-header" data-chat-action="toggle-sidebar" role="button">
-            <span class="sp-chat-sidebar-title">Chat</span>
+        <div class="pb-chat-sidebar pb-chat-sidebar--collapsed">
+          <div class="pb-chat-sidebar-header" data-chat-action="toggle-sidebar" role="button">
+            <span class="pb-chat-sidebar-title">Chat</span>
           </div>
         </div>
       `;
@@ -481,13 +481,13 @@ export default class Chat {
       const online = this.onlineUserIds.has(f.id);
       const avatarUrl = f.avatar_url || "/images/default-avatar.svg";
       return `
-        <div class="sp-chat-friend ${online ? "sp-chat-friend--online" : "sp-chat-friend--offline"}"
+        <div class="pb-chat-friend ${online ? "pb-chat-friend--online" : "pb-chat-friend--offline"}"
              data-chat-action="open-chat" data-friend-id="${f.id}" role="button">
-          <div class="sp-chat-friend-avatar">
+          <div class="pb-chat-friend-avatar">
             <img src="${escapeHtml(avatarUrl)}" alt="" />
-            <span class="sp-chat-status-dot ${online ? "sp-chat-status-dot--online" : "sp-chat-status-dot--offline"}"></span>
+            <span class="pb-chat-status-dot ${online ? "pb-chat-status-dot--online" : "pb-chat-status-dot--offline"}"></span>
           </div>
-          <span class="sp-chat-friend-name">${escapeHtml(f.display_name)}</span>
+          <span class="pb-chat-friend-name">${escapeHtml(f.display_name)}</span>
         </div>
       `;
     }).join("");
@@ -495,23 +495,23 @@ export default class Chat {
     const headerText = this.friendsLoaded ? `Chat (${this.friends.length})` : "Chat";
     let listContent;
     if (!this.friendsLoaded) {
-      listContent = '<div class="sp-chat-empty">Loading...</div>';
+      listContent = '<div class="pb-chat-empty">Loading...</div>';
     } else if (friendItems) {
       listContent = friendItems;
     } else {
-      listContent = '<div class="sp-chat-empty">No friends yet</div>';
+      listContent = '<div class="pb-chat-empty">No friends yet</div>';
     }
 
     return `
-      <div class="sp-chat-sidebar">
-        <div class="sp-chat-sidebar-header" data-chat-action="toggle-sidebar" role="button">
-          <span class="sp-chat-sidebar-title">${headerText}</span>
+      <div class="pb-chat-sidebar">
+        <div class="pb-chat-sidebar-header" data-chat-action="toggle-sidebar" role="button">
+          <span class="pb-chat-sidebar-title">${headerText}</span>
         </div>
-        <div class="sp-chat-sidebar-search-wrap">
-          <input type="text" class="sp-chat-sidebar-search" placeholder="Search friends..."
+        <div class="pb-chat-sidebar-search-wrap">
+          <input type="text" class="pb-chat-sidebar-search" placeholder="Search friends..."
                  value="${escapeHtml(this.sidebarFilter)}" />
         </div>
-        <div class="sp-chat-sidebar-list">
+        <div class="pb-chat-sidebar-list">
           ${listContent}
         </div>
       </div>
@@ -523,15 +523,15 @@ export default class Chat {
       const messages = (win.messages || []).map(msg => {
         const isOwn = msg.sender_id === this.userId;
         const seenMark = isOwn && win.seen && msg === win.messages[win.messages.length - 1]
-          ? '<span class="sp-chat-seen">Seen</span>'
+          ? '<span class="pb-chat-seen">Seen</span>'
           : '';
 
         return `
-          <div class="sp-chat-msg ${isOwn ? "sp-chat-msg--own" : "sp-chat-msg--other"}">
-            <div class="sp-chat-msg-bubble">${escapeHtml(msg.body)}</div>
-            <div class="sp-chat-msg-meta">
-              ${isOwn ? "" : `<span class="sp-chat-msg-sender">${escapeHtml(msg.sender_name)}</span>`}
-              <span class="sp-chat-msg-time">${formatTime(msg.inserted_at)}</span>
+          <div class="pb-chat-msg ${isOwn ? "pb-chat-msg--own" : "pb-chat-msg--other"}">
+            <div class="pb-chat-msg-bubble">${escapeHtml(msg.body)}</div>
+            <div class="pb-chat-msg-meta">
+              ${isOwn ? "" : `<span class="pb-chat-msg-sender">${escapeHtml(msg.sender_name)}</span>`}
+              <span class="pb-chat-msg-time">${formatTime(msg.inserted_at)}</span>
               ${seenMark}
             </div>
           </div>
@@ -543,20 +543,20 @@ export default class Chat {
       const rightOffset = 220 + (index * 310);
 
       return `
-        <div class="sp-chat-window" style="right: ${rightOffset}px">
-          <div class="sp-chat-window-header">
-            <span class="sp-chat-window-name">${escapeHtml(win.friendName)}</span>
-            <div class="sp-chat-window-actions">
-              <button class="sp-chat-window-btn" data-chat-action="minimize-window" data-thread-id="${threadId}" title="Minimize">&minus;</button>
-              <button class="sp-chat-window-btn" data-chat-action="close-window" data-thread-id="${threadId}" title="Close">&times;</button>
+        <div class="pb-chat-window" style="right: ${rightOffset}px">
+          <div class="pb-chat-window-header">
+            <span class="pb-chat-window-name">${escapeHtml(win.friendName)}</span>
+            <div class="pb-chat-window-actions">
+              <button class="pb-chat-window-btn" data-chat-action="minimize-window" data-thread-id="${threadId}" title="Minimize">&minus;</button>
+              <button class="pb-chat-window-btn" data-chat-action="close-window" data-thread-id="${threadId}" title="Close">&times;</button>
             </div>
           </div>
-          <div class="sp-chat-window-messages" data-messages-thread="${threadId}">
+          <div class="pb-chat-window-messages" data-messages-thread="${threadId}">
             ${messages}
             ${typingHtml}
           </div>
-          <div class="sp-chat-window-input">
-            <textarea class="sp-chat-input" data-thread-id="${threadId}" placeholder="Type a message..." rows="1"></textarea>
+          <div class="pb-chat-window-input">
+            <textarea class="pb-chat-input" data-thread-id="${threadId}" placeholder="Type a message..." rows="1"></textarea>
           </div>
         </div>
       `;
@@ -568,19 +568,19 @@ export default class Chat {
 
     const tabs = minimizedWindows.map(([threadId, win]) => {
       const badge = win.unread > 0
-        ? `<span class="sp-chat-min-badge">${win.unread}</span>`
+        ? `<span class="pb-chat-min-badge">${win.unread}</span>`
         : "";
 
       return `
-        <div class="sp-chat-min-tab" data-chat-action="restore-window" data-thread-id="${threadId}" role="button">
-          <span class="sp-chat-min-name">${escapeHtml(win.friendName)}</span>
+        <div class="pb-chat-min-tab" data-chat-action="restore-window" data-thread-id="${threadId}" role="button">
+          <span class="pb-chat-min-name">${escapeHtml(win.friendName)}</span>
           ${badge}
-          <button class="sp-chat-min-close" data-chat-action="close-window" data-thread-id="${threadId}">&times;</button>
+          <button class="pb-chat-min-close" data-chat-action="close-window" data-thread-id="${threadId}">&times;</button>
         </div>
       `;
     }).join("");
 
-    return `<div class="sp-chat-minimized">${tabs}</div>`;
+    return `<div class="pb-chat-minimized">${tabs}</div>`;
   }
 
   renderTypingIndicator(threadId) {
@@ -588,11 +588,11 @@ export default class Chat {
     if (!typing || Object.keys(typing).length === 0) return "";
 
     return `
-      <div class="sp-chat-typing">
-        <span class="sp-chat-typing-dots">
+      <div class="pb-chat-typing">
+        <span class="pb-chat-typing-dots">
           <span></span><span></span><span></span>
         </span>
-        <span class="sp-chat-typing-text">typing...</span>
+        <span class="pb-chat-typing-text">typing...</span>
       </div>
     `;
   }

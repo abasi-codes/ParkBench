@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.EnableExtensions do
+defmodule ParkBench.Repo.Migrations.EnableExtensions do
   use Ecto.Migration
 
   def change do

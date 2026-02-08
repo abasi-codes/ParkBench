@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Sunporch Wall
+   ParkBench Wall
    Profile wall posting, wall post list, and inline comments.
    The wall is the main content area on a user's profile page.
    ========================================================================== */
@@ -10,22 +10,22 @@
    ========================================================================== */
 
 .wall-composer {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
-  margin-bottom: var(--sp-spacing-md);
+  border-radius: var(--pb-radius);
+  margin-bottom: var(--pb-spacing-md);
   overflow: hidden;
-  box-shadow: var(--sp-shadow-sm);
+  box-shadow: var(--pb-shadow-sm);
 }
 
 .wall-composer-header {
   padding: 12px 20px 8px 20px;
   background-color: transparent;
-  border-bottom: 2px solid var(--sp-accent-gold);
-  font-size: var(--sp-font-size-base);
+  border-bottom: 2px solid var(--pb-accent-gold);
+  font-size: var(--pb-font-size-base);
   font-weight: 700;
-  font-family: var(--sp-font-heading);
-  color: var(--sp-text-primary);
+  font-family: var(--pb-font-heading);
+  color: var(--pb-text-primary);
 }
 
 .wall-composer-body {
@@ -36,23 +36,23 @@
   width: 100%;
   min-height: 40px;
   padding: 6px 8px;
-  font-size: var(--sp-font-size-base);
-  font-family: var(--sp-font-family);
-  color: var(--sp-text-primary);
-  background-color: var(--sp-bg-input);
-  border: 1px solid var(--sp-border-input);
+  font-size: var(--pb-font-size-base);
+  font-family: var(--pb-font-family);
+  color: var(--pb-text-primary);
+  background-color: var(--pb-bg-input);
+  border: 1px solid var(--pb-border-input);
   outline: none;
   resize: vertical;
 }
 
 .wall-composer-input:focus {
-  border-color: var(--sp-blue-light);
+  border-color: var(--pb-blue-light);
   min-height: 60px;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .wall-composer-input::placeholder {
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
   font-style: italic;
 }
 
@@ -71,8 +71,8 @@
 }
 
 .wall-composer-option {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -80,7 +80,7 @@
 }
 
 .wall-composer-option:hover {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 /* ==========================================================================
@@ -93,17 +93,17 @@
 
 /* Individual wall post */
 .wall-post {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
-  margin-bottom: var(--sp-spacing-md);
+  border-radius: var(--pb-radius);
+  margin-bottom: var(--pb-spacing-md);
   overflow: hidden;
-  box-shadow: var(--sp-shadow-sm);
+  box-shadow: var(--pb-shadow-sm);
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .wall-post:hover {
-  box-shadow: var(--sp-shadow-md);
+  box-shadow: var(--pb-shadow-md);
   transform: translateY(-1px);
 }
 
@@ -128,9 +128,9 @@
 }
 
 .wall-post-author {
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: bold;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   text-decoration: none;
 }
 
@@ -140,24 +140,24 @@
 
 /* "wrote on [Name]'s wall" context */
 .wall-post-context {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   font-weight: normal;
 }
 
 .wall-post-context a {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   font-weight: bold;
 }
 
 .wall-post-timestamp {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
   margin-top: 1px;
 }
 
 .wall-post-timestamp a {
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
 }
 
 .wall-post-timestamp a:hover {
@@ -167,9 +167,9 @@
 /* Wall post body content */
 .wall-post-body {
   padding: 0 10px 8px 10px;
-  font-size: var(--sp-font-size-base);
-  line-height: var(--sp-line-height);
-  color: var(--sp-text-primary);
+  font-size: var(--pb-font-size-base);
+  line-height: var(--pb-line-height);
+  color: var(--pb-text-primary);
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
@@ -186,28 +186,28 @@
   gap: 8px;
   padding: 6px 10px;
   border-top: 1px solid #E8E3D8;
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
 }
 
 .wall-post-action {
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
   text-decoration: none;
   cursor: pointer;
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
 }
 
 .wall-post-action:hover {
   text-decoration: underline;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 .wall-post-action.active {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   font-weight: bold;
 }
 
 .wall-post-action-sep {
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
   font-size: 8px;
   user-select: none;
 }
@@ -215,12 +215,12 @@
 /* Delete link (visible to wall owner or post author) */
 .wall-post-action.delete {
   margin-left: auto;
-  color: var(--sp-text-light);
-  font-size: var(--sp-font-size-small);
+  color: var(--pb-text-light);
+  font-size: var(--pb-font-size-small);
 }
 
 .wall-post-action.delete:hover {
-  color: var(--sp-text-error);
+  color: var(--pb-text-error);
 }
 
 /* ==========================================================================
@@ -256,13 +256,13 @@
 .wall-comment-content {
   flex: 1;
   min-width: 0;
-  font-size: var(--sp-font-size-base);
-  line-height: var(--sp-line-height);
+  font-size: var(--pb-font-size-base);
+  line-height: var(--pb-line-height);
 }
 
 .wall-comment-author {
   font-weight: bold;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   text-decoration: none;
 }
 
@@ -271,7 +271,7 @@
 }
 
 .wall-comment-text {
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
   word-wrap: break-word;
 }
 
@@ -283,33 +283,33 @@
 }
 
 .wall-comment-time {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
 }
 
 .wall-comment-actions {
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
 }
 
 .wall-comment-actions a {
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
 }
 
 .wall-comment-actions a:hover {
   text-decoration: underline;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 /* View more comments link */
 .wall-comments-more {
   padding: 6px 10px;
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   border-bottom: 1px solid #DDD8CE;
 }
 
 .wall-comments-more a {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 /* Comment input inline */
@@ -333,28 +333,28 @@
 .wall-comment-input {
   flex: 1;
   padding: 4px 6px;
-  font-size: var(--sp-font-size-base);
-  font-family: var(--sp-font-family);
-  color: var(--sp-text-primary);
-  background-color: var(--sp-bg-input);
-  border: 1px solid var(--sp-border-input);
+  font-size: var(--pb-font-size-base);
+  font-family: var(--pb-font-family);
+  color: var(--pb-text-primary);
+  background-color: var(--pb-bg-input);
+  border: 1px solid var(--pb-border-input);
   outline: none;
   min-height: 26px;
   resize: none;
 }
 
 .wall-comment-input:focus {
-  border-color: var(--sp-blue-light);
+  border-color: var(--pb-blue-light);
 }
 
 .wall-comment-input::placeholder {
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
 }
 
 /* Comment submit hint */
 .wall-comment-hint {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
   margin-top: 3px;
   text-align: right;
 }
@@ -369,23 +369,23 @@
   align-items: center;
   gap: 8px;
   padding: 8px 10px;
-  background-color: var(--sp-bg-sidebar-header);
-  border: 1px solid var(--sp-border-box);
-  border-radius: var(--sp-radius);
+  background-color: var(--pb-bg-sidebar-header);
+  border: 1px solid var(--pb-border-box);
+  border-radius: var(--pb-radius);
   margin-bottom: 10px;
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
 }
 
 .wall-to-wall-header a {
   font-weight: bold;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 .wall-to-wall-header .separator {
   margin: 0 4px;
   height: auto;
   background: none;
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
 }
 
 /* ==========================================================================
@@ -394,13 +394,13 @@
 
 .wall-empty {
   text-align: center;
-  padding: var(--sp-spacing-xl) var(--sp-spacing-xl);
-  background-color: var(--sp-bg-white);
+  padding: var(--pb-spacing-xl) var(--pb-spacing-xl);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
-  color: var(--sp-text-secondary);
-  font-size: var(--sp-font-size-base);
-  box-shadow: var(--sp-shadow-sm);
+  border-radius: var(--pb-radius);
+  color: var(--pb-text-secondary);
+  font-size: var(--pb-font-size-base);
+  box-shadow: var(--pb-shadow-sm);
 }
 
 .wall-empty p {

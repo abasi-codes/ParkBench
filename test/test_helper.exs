@@ -1,2 +1,2 @@
 ExUnit.start()
-Ecto.Adapters.SQL.Sandbox.mode(Sunporch.Repo, :manual)
+Ecto.Adapters.SQL.Sandbox.mode(ParkBench.Repo, :manual)

@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateLikes do
+defmodule ParkBench.Repo.Migrations.CreateLikes do
   use Ecto.Migration
 
   def change do

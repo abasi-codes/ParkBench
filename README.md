@@ -1,4 +1,4 @@
-# Sunporch
+# ParkBench
 
 To start your Phoenix server:
 

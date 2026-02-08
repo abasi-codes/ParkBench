@@ -69,13 +69,13 @@ ENV LC_ALL=en_US.UTF-8
 WORKDIR /app
 
 # Create a non-root user to run the app
-RUN groupadd --system sunporch && \
-    useradd --system --gid sunporch --home /app sunporch
+RUN groupadd --system park_bench && \
+    useradd --system --gid park_bench --home /app park_bench
 
 # Copy the release from the build stage
-COPY --from=build --chown=sunporch:sunporch /app/_build/prod/rel/sunporch ./
+COPY --from=build --chown=park_bench:park_bench /app/_build/prod/rel/park_bench ./
 
-USER sunporch
+USER park_bench
 
 ENV MIX_ENV=prod
 ENV PHX_SERVER=true
@@ -86,4 +86,4 @@ EXPOSE 4000
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD curl -f http://localhost:4000/ || exit 1
 
-CMD ["/app/bin/sunporch", "start"]
+CMD ["/app/bin/park_bench", "start"]

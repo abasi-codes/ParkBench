@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateFriendRequests do
+defmodule ParkBench.Repo.Migrations.CreateFriendRequests do
   use Ecto.Migration
 
   def change do
@@ -12,9 +12,9 @@ defmodule Sunporch.Repo.Migrations.CreateFriendRequests do
     end
 
     create unique_index(:friend_requests, [:sender_id, :receiver_id],
-      where: "status = 'pending'",
-      name: :friend_requests_sender_receiver_pending_unique
-    )
+             where: "status = 'pending'",
+             name: :friend_requests_sender_receiver_pending_unique
+           )
 
     create index(:friend_requests, [:receiver_id])
     create index(:friend_requests, [:sender_id])

@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Sunporch Base Styles
+   ParkBench Base Styles
    Body, typography, links, and foundational element styles.
    ========================================================================== */
 
@@ -7,13 +7,13 @@
    ========================================================================== */
 
 body {
-  font-family: var(--sp-font-body);
-  font-size: var(--sp-font-size-base);
-  line-height: var(--sp-line-height);
-  color: var(--sp-text-primary);
-  background-color: var(--sp-bg-page);
+  font-family: var(--pb-font-body);
+  font-size: var(--pb-font-size-base);
+  line-height: var(--pb-line-height);
+  color: var(--pb-text-primary);
+  background-color: var(--pb-bg-page);
   background-image:
-    radial-gradient(ellipse at 50% 0%, rgba(232,182,44,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse at 50% 0%, rgba(74,103,65,0.06) 0%, transparent 70%),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.012'/%3E%3C/svg%3E");
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -23,62 +23,62 @@ body {
    ========================================================================== */
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--sp-font-heading);
+  font-family: var(--pb-font-heading);
 }
 
 h1 {
-  font-size: var(--sp-font-size-h1);
+  font-size: var(--pb-font-size-h1);
   font-weight: 700;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
   line-height: 1.2;
-  margin-bottom: var(--sp-spacing-sm);
+  margin-bottom: var(--pb-spacing-sm);
 }
 
 h2 {
-  font-size: var(--sp-font-size-h2);
+  font-size: var(--pb-font-size-h2);
   font-weight: 700;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
   line-height: 1.3;
-  margin-bottom: var(--sp-spacing-sm);
+  margin-bottom: var(--pb-spacing-sm);
 }
 
 h3 {
-  font-size: var(--sp-font-size-medium);
+  font-size: var(--pb-font-size-medium);
   font-weight: 600;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
   line-height: 1.3;
-  margin-bottom: var(--sp-spacing-xs);
+  margin-bottom: var(--pb-spacing-xs);
 }
 
 h4 {
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: 600;
-  color: var(--sp-text-primary);
-  line-height: var(--sp-line-height);
-  margin-bottom: var(--sp-spacing-xs);
+  color: var(--pb-text-primary);
+  line-height: var(--pb-line-height);
+  margin-bottom: var(--pb-spacing-xs);
 }
 
 h5 {
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
   font-weight: 600;
-  color: var(--sp-text-secondary);
-  line-height: var(--sp-line-height);
-  margin-bottom: var(--sp-spacing-xs);
+  color: var(--pb-text-secondary);
+  line-height: var(--pb-line-height);
+  margin-bottom: var(--pb-spacing-xs);
 }
 
 h6 {
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
   font-weight: normal;
-  color: var(--sp-text-secondary);
-  line-height: var(--sp-line-height);
-  margin-bottom: var(--sp-spacing-xs);
+  color: var(--pb-text-secondary);
+  line-height: var(--pb-line-height);
+  margin-bottom: var(--pb-spacing-xs);
 }
 
 p {
-  font-size: var(--sp-font-size-base);
-  line-height: var(--sp-line-height);
-  color: var(--sp-text-primary);
-  margin-bottom: var(--sp-spacing-sm);
+  font-size: var(--pb-font-size-base);
+  line-height: var(--pb-line-height);
+  color: var(--pb-text-primary);
+  margin-bottom: var(--pb-spacing-sm);
 }
 
 p:last-child {
@@ -86,8 +86,8 @@ p:last-child {
 }
 
 small {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-secondary);
 }
 
 strong,
@@ -104,27 +104,27 @@ i {
    ========================================================================== */
 
 a {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   text-decoration: none;
   cursor: pointer;
 }
 
 a:hover {
-  color: var(--sp-text-link-hover);
+  color: var(--pb-text-link-hover);
   text-decoration: underline;
 }
 
 a:active {
-  color: var(--sp-text-link-hover);
+  color: var(--pb-text-link-hover);
 }
 
 /* Muted / secondary links */
 a.muted {
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
 }
 
 a.muted:hover {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   text-decoration: underline;
 }
 
@@ -134,28 +134,28 @@ a.muted:hover {
 .list-styled {
   list-style: disc;
   padding-left: 18px;
-  margin-bottom: var(--sp-spacing-sm);
+  margin-bottom: var(--pb-spacing-sm);
 }
 
 .list-styled li {
   margin-bottom: 2px;
-  line-height: var(--sp-line-height);
+  line-height: var(--pb-line-height);
 }
 
 .list-styled-ordered {
   list-style: decimal;
   padding-left: 18px;
-  margin-bottom: var(--sp-spacing-sm);
+  margin-bottom: var(--pb-spacing-sm);
 }
 
 /* Blockquote
    ========================================================================== */
 
 blockquote {
-  border-left: 3px solid var(--sp-border-box);
-  padding-left: var(--sp-spacing-md);
-  margin: var(--sp-spacing-sm) 0;
-  color: var(--sp-text-secondary);
+  border-left: 3px solid var(--pb-border-box);
+  padding-left: var(--pb-spacing-md);
+  margin: var(--pb-spacing-sm) 0;
+  color: var(--pb-text-secondary);
   font-style: italic;
 }
 
@@ -164,8 +164,8 @@ blockquote {
 
 hr {
   border: 0;
-  border-top: 1px solid var(--sp-border);
-  margin: var(--sp-spacing-md) 0;
+  border-top: 1px solid var(--pb-border);
+  margin: var(--pb-spacing-md) 0;
 }
 
 /* Code / preformatted
@@ -173,7 +173,7 @@ hr {
 
 code {
   font-family: "Courier New", Courier, monospace;
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   background-color: #F2EEE6;
   padding: 1px 4px;
   border-radius: 2px;
@@ -181,53 +181,53 @@ code {
 
 pre {
   font-family: "Courier New", Courier, monospace;
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   background-color: #F2EEE6;
-  padding: var(--sp-spacing-sm);
-  border: 1px solid var(--sp-border);
-  border-radius: var(--sp-radius);
+  padding: var(--pb-spacing-sm);
+  border: 1px solid var(--pb-border);
+  border-radius: var(--pb-radius);
   overflow-x: auto;
-  margin-bottom: var(--sp-spacing-sm);
+  margin-bottom: var(--pb-spacing-sm);
 }
 
 /* Selection
    ========================================================================== */
 
 ::selection {
-  background-color: var(--sp-blue-light);
-  color: var(--sp-text-white);
+  background-color: var(--pb-blue-light);
+  color: var(--pb-text-white);
 }
 
 ::-moz-selection {
-  background-color: var(--sp-blue-light);
-  color: var(--sp-text-white);
+  background-color: var(--pb-blue-light);
+  color: var(--pb-text-white);
 }
 
 /* Misc helper text styles
    ========================================================================== */
 
 .text-small {
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
 }
 
 .text-medium {
-  font-size: var(--sp-font-size-medium);
+  font-size: var(--pb-font-size-medium);
 }
 
 .text-large {
-  font-size: var(--sp-font-size-large);
+  font-size: var(--pb-font-size-large);
 }
 
 .text-muted {
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
 }
 
 .text-light {
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
 }
 
 .text-error {
-  color: var(--sp-text-error);
+  color: var(--pb-text-error);
 }
 
 .text-bold {

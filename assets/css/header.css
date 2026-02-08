@@ -1,23 +1,23 @@
 /* ==========================================================================
-   Sunporch Header / Navigation Bar
-   The Sunporch top navigation — "Golden Hour" palette.
-   42px tall, warm honey gradient, white text, right-aligned nav links.
+   ParkBench Header / Navigation Bar
+   The ParkBench top navigation — nature palette.
+   42px tall, moss green gradient, white text, right-aligned nav links.
    ========================================================================== */
 
 /* Nav Wrapper
-   Full-width warm honey gradient bar pinned to top.
+   Full-width moss green gradient bar pinned to top.
    ========================================================================== */
 
 .nav-bar {
   width: 100%;
-  height: var(--sp-height-nav);
-  background: linear-gradient(to bottom, #9A7618, #8B6914);
+  height: var(--pb-height-nav);
+  background: linear-gradient(to bottom, #567d4a, #4a6741);
   border-top: 1px solid rgba(255,255,255,0.1);
   border-bottom: none;
-  box-shadow: 0 2px 8px rgba(110,85,40,0.2);
+  box-shadow: 0 2px 8px rgba(60,80,45,0.2);
   position: sticky;
   top: 0;
-  z-index: var(--sp-z-nav);
+  z-index: var(--pb-z-nav);
 }
 
 /* Nav Inner
@@ -25,18 +25,18 @@
    ========================================================================== */
 
 .nav-bar-inner {
-  max-width: var(--sp-width-page);
+  max-width: var(--pb-width-page);
   width: 100%;
   margin: 0 auto;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 var(--sp-spacing-md);
+  padding: 0 var(--pb-spacing-md);
 }
 
 /* Logo
-   "sunporch" in white bold text, left side.
+   "ParkBench" in white bold text, left side.
    ========================================================================== */
 
 .nav-logo {
@@ -51,8 +51,8 @@
   gap: 8px;
   font-size: 24px;
   font-weight: 700;
-  font-family: var(--sp-font-heading);
-  color: var(--sp-text-white);
+  font-family: var(--pb-font-heading);
+  color: var(--pb-text-white);
   text-decoration: none;
   letter-spacing: -0.5px;
   line-height: 1;
@@ -66,7 +66,7 @@
 
 .nav-logo a:hover {
   text-decoration: none;
-  color: var(--sp-text-white);
+  color: var(--pb-text-white);
 }
 
 /* Search
@@ -83,31 +83,31 @@
   width: 240px;
   height: 34px;
   padding: 4px 32px 4px 34px;
-  font-size: var(--sp-font-size-small);
-  font-family: var(--sp-font-body);
-  color: var(--sp-text-primary);
+  font-size: var(--pb-font-size-small);
+  font-family: var(--pb-font-body);
+  color: var(--pb-text-primary);
   background-color: rgba(255,255,255,0.9);
   border: 1px solid rgba(255,255,255,0.95);
-  border-radius: var(--sp-radius-full);
+  border-radius: var(--pb-radius-full);
   outline: none;
   box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
   transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, width 0.2s ease;
 }
 
 .nav-search-input::placeholder {
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
 }
 
 .nav-search-input:focus {
-  background-color: var(--sp-bg-input);
-  border-color: var(--sp-border-input);
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.08), 0 0 0 3px rgba(139,105,20,0.2);
-  color: var(--sp-text-primary);
+  background-color: var(--pb-bg-input);
+  border-color: var(--pb-border-input);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.08), 0 0 0 3px rgba(74,103,65,0.2);
+  color: var(--pb-text-primary);
   width: 280px;
 }
 
 .nav-search-input:focus::placeholder {
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
 }
 
 .nav-search-icon {
@@ -117,7 +117,7 @@
   transform: translateY(-50%);
   width: 14px;
   height: 14px;
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
   pointer-events: none;
 }
 
@@ -135,13 +135,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--sp-text-light);
+  color: var(--pb-text-light);
   font-size: 12px;
   line-height: 1;
 }
 
 .nav-search-btn:hover {
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
 }
 
 /* Navigation Links
@@ -161,12 +161,12 @@
   align-items: center;
   height: auto;
   padding: 6px 12px;
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
   font-weight: 600;
-  color: var(--sp-text-white);
+  color: var(--pb-text-white);
   text-decoration: none;
   white-space: nowrap;
-  border-radius: var(--sp-radius-full);
+  border-radius: var(--pb-radius-full);
   transition: background-color 0.15s ease;
 }
 
@@ -181,7 +181,7 @@ button.nav-link {
 .nav-link:hover {
   background-color: rgba(255, 255, 255, 0.15);
   text-decoration: none;
-  color: var(--sp-text-white);
+  color: var(--pb-text-white);
 }
 
 .nav-link.active {
@@ -221,8 +221,8 @@ button.nav-link {
   min-width: 18px;
   height: 18px;
   padding: 0 4px;
-  background-color: var(--sp-red);
-  color: var(--sp-text-white);
+  background-color: var(--pb-red);
+  color: var(--pb-text-white);
   font-size: 10px;
   font-weight: bold;
   line-height: 18px;
@@ -249,8 +249,8 @@ button.nav-link {
   align-items: center;
   justify-content: center;
   width: 32px;
-  height: var(--sp-height-nav);
-  color: var(--sp-text-white);
+  height: var(--pb-height-nav);
+  color: var(--pb-text-white);
   text-decoration: none;
   font-size: 14px;
   opacity: 0.85;
@@ -261,7 +261,7 @@ button.nav-link {
   opacity: 1;
   background-color: rgba(255, 255, 255, 0.1);
   text-decoration: none;
-  color: var(--sp-text-white);
+  color: var(--pb-text-white);
 }
 
 .nav-icon-link .nav-badge {
@@ -276,7 +276,7 @@ button.nav-link {
 }
 
 .nav-badge {
-  animation: badge-pulse 0.4s var(--sp-ease-bounce);
+  animation: badge-pulse 0.4s var(--pb-ease-bounce);
 }
 
 /* Dropdown menus from nav
@@ -284,14 +284,14 @@ button.nav-link {
 
 .nav-dropdown {
   position: absolute;
-  top: var(--sp-height-nav);
+  top: var(--pb-height-nav);
   right: 0;
   width: 300px;
-  background-color: var(--sp-bg-white);
-  border: 1px solid var(--sp-border);
+  background-color: var(--pb-bg-white);
+  border: 1px solid var(--pb-border);
   border-top: none;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-  z-index: var(--sp-z-dropdown);
+  z-index: var(--pb-z-dropdown);
   display: none;
 }
 
@@ -301,23 +301,23 @@ button.nav-link {
 
 .nav-dropdown-header {
   padding: 8px 10px;
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: bold;
-  color: var(--sp-text-primary);
-  background-color: var(--sp-bg-sidebar-header);
-  border-bottom: 1px solid var(--sp-border);
+  color: var(--pb-text-primary);
+  background-color: var(--pb-bg-sidebar-header);
+  border-bottom: 1px solid var(--pb-border);
 }
 
 .nav-dropdown-footer {
   padding: 6px 10px;
   text-align: center;
-  border-top: 1px solid var(--sp-border);
-  background-color: var(--sp-bg-sidebar-header);
+  border-top: 1px solid var(--pb-border);
+  background-color: var(--pb-bg-sidebar-header);
 }
 
 .nav-dropdown-footer a {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-link);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-link);
 }
 
 .nav-dropdown-item {
@@ -327,7 +327,7 @@ button.nav-link {
   padding: 8px 10px;
   border-bottom: 1px solid #EDE9E0;
   text-decoration: none;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
 }
 
 .nav-dropdown-item:hover {
@@ -336,14 +336,14 @@ button.nav-link {
 }
 
 .nav-dropdown-item.unread {
-  background-color: var(--sp-bg-highlight);
+  background-color: var(--pb-bg-highlight);
 }
 
 .nav-dropdown-empty {
   padding: 20px 10px;
   text-align: center;
-  color: var(--sp-text-light);
-  font-size: var(--sp-font-size-base);
+  color: var(--pb-text-light);
+  font-size: var(--pb-font-size-base);
 }
 
 /* Logged-out header (landing page)
@@ -353,9 +353,9 @@ button.nav-link {
 .nav-bar-landing {
   width: 100%;
   height: auto;
-  min-height: var(--sp-height-nav);
-  background: var(--sp-bg-nav);
-  border-bottom: 1px solid var(--sp-blue-dark);
+  min-height: var(--pb-height-nav);
+  background: var(--pb-bg-nav);
+  border-bottom: 1px solid var(--pb-blue-dark);
   padding: 8px 0;
 }
 
@@ -380,7 +380,7 @@ button.nav-link {
 }
 
 .nav-login-field label {
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
   color: rgba(255, 255, 255, 0.8);
   margin-bottom: 2px;
   font-weight: normal;
@@ -390,32 +390,32 @@ button.nav-link {
   width: 150px;
   height: 24px;
   padding: 2px 6px;
-  font-size: var(--sp-font-size-base);
-  font-family: var(--sp-font-family);
-  border: 1px solid var(--sp-blue-dark);
+  font-size: var(--pb-font-size-base);
+  font-family: var(--pb-font-family);
+  border: 1px solid var(--pb-blue-dark);
   border-radius: 2px;
   outline: none;
 }
 
 .nav-login-field input:focus {
-  border-color: #5A4410;
+  border-color: #2a3d22;
 }
 
 .nav-login-submit {
   height: 24px;
   padding: 0 12px;
-  font-size: var(--sp-font-size-base);
-  font-family: var(--sp-font-family);
+  font-size: var(--pb-font-size-base);
+  font-family: var(--pb-font-family);
   font-weight: bold;
-  color: var(--sp-text-white);
-  background-color: var(--sp-blue-dark);
-  border: 1px solid #4D3A0C;
+  color: var(--pb-text-white);
+  background-color: var(--pb-blue-dark);
+  border: 1px solid #243520;
   border-radius: 2px;
   cursor: pointer;
 }
 
 .nav-login-submit:hover {
-  background-color: #5A4410;
+  background-color: #2a3d22;
 }
 
 .nav-login-extras {
@@ -426,7 +426,7 @@ button.nav-link {
 }
 
 .nav-login-extras label {
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
   color: rgba(255, 255, 255, 0.8);
   display: flex;
   align-items: center;
@@ -435,11 +435,11 @@ button.nav-link {
 }
 
 .nav-login-extras a {
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
   color: rgba(255, 255, 255, 0.8);
 }
 
 .nav-login-extras a:hover {
-  color: var(--sp-text-white);
+  color: var(--pb-text-white);
   text-decoration: underline;
 }

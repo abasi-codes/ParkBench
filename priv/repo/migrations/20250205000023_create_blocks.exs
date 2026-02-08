@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateBlocks do
+defmodule ParkBench.Repo.Migrations.CreateBlocks do
   use Ecto.Migration
 
   def change do

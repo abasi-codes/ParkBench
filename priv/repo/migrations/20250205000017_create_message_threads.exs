@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateMessageThreads do
+defmodule ParkBench.Repo.Migrations.CreateMessageThreads do
   use Ecto.Migration
 
   def change do

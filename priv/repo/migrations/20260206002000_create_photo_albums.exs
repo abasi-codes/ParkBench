@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreatePhotoAlbums do
+defmodule ParkBench.Repo.Migrations.CreatePhotoAlbums do
   use Ecto.Migration
 
   def change do

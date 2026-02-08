@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateWallPosts do
+defmodule ParkBench.Repo.Migrations.CreateWallPosts do
   use Ecto.Migration
 
   def change do
@@ -19,8 +19,8 @@ defmodule Sunporch.Repo.Migrations.CreateWallPosts do
     create index(:wall_posts, [:author_id])
 
     create index(:wall_posts, [:id],
-      where: "deleted_at IS NULL",
-      name: :wall_posts_not_deleted
-    )
+             where: "deleted_at IS NULL",
+             name: :wall_posts_not_deleted
+           )
   end
 end

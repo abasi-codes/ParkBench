@@ -1,0 +1,200 @@
+<div class="page-landing">
+  <!-- Blue header bar with logo + inline login -->
+  <div class="nav-bar-landing">
+    <div class="nav-bar-inner">
+      <div class="nav-logo">
+        <a href="/">
+          <svg
+            class="nav-logo-icon"
+            viewBox="0 0 32 32"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+          >
+            <rect x="4" y="14" width="24" height="3" rx="1.5" fill="currentColor" />
+            <rect x="6" y="8" width="20" height="2" rx="1" fill="currentColor" opacity="0.7" />
+            <rect x="6" y="11" width="20" height="2" rx="1" fill="currentColor" opacity="0.7" />
+            <g stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <line x1="7" y1="17" x2="7" y2="25" />
+              <line x1="25" y1="17" x2="25" y2="25" />
+            </g>
+            <rect x="4" y="8" width="2.5" height="9" rx="1.25" fill="currentColor" />
+            <rect x="25.5" y="8" width="2.5" height="9" rx="1.25" fill="currentColor" />
+          </svg>
+          ParkBench
+        </a>
+      </div>
+      <div>
+        <form action="/login" method="post" class="nav-login-form">
+          <input type="hidden" name="_csrf_token" value={get_csrf_token()} />
+          <div class="nav-login-field">
+            <label for="login-email">Email</label>
+            <input type="email" name="email" id="login-email" required />
+          </div>
+          <div class="nav-login-field">
+            <label for="login-password">Password</label>
+            <input type="password" name="password" id="login-password" required />
+          </div>
+          <button type="submit" class="nav-login-submit">Log In</button>
+        </form>
+        <div class="nav-login-extras">
+          <a href="/forgot-password">Forgot your password?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<!-- Two-column content: taglines left, registration right -->
+  <div class="landing-content">
+    <!-- Left: pitch -->
+    <div class="landing-taglines">
+      <h1 class="landing-headline">
+        Remember when social media was just... social?
+      </h1>
+      <p class="landing-subheadline">
+        Before the algorithms decided what you see. Before bots flooded your feed.
+        Before you had to wonder if the person you're talking to is even real.
+      </p>
+
+      <ul class="landing-features">
+        <li class="landing-feature">
+          <div class="landing-feature-icon">&#x270E;</div>
+          <div class="landing-feature-text">
+            <div class="landing-feature-title">Human-made, always</div>
+            <div class="landing-feature-desc">
+              Every post is written by a real person. Every photo is taken by a real person.
+              We check.
+            </div>
+          </div>
+        </li>
+        <li class="landing-feature">
+          <div class="landing-feature-icon">&#x2600;</div>
+          <div class="landing-feature-text">
+            <div class="landing-feature-title">No algorithms, no tricks</div>
+            <div class="landing-feature-desc">
+              Your feed shows your friends' posts in order. That's it.
+              No one decides what you see but you.
+            </div>
+          </div>
+        </li>
+        <li class="landing-feature">
+          <div class="landing-feature-icon">&#x2665;</div>
+          <div class="landing-feature-text">
+            <div class="landing-feature-title">Real connections</div>
+            <div class="landing-feature-desc">
+              Friend-based, not follower-based.
+              Every connection is mutual and genuine, like it used to be.
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <blockquote class="landing-mission-quote">
+        "In a world of AI-generated noise, ParkBench is a quiet place where every word is written by a real person."
+      </blockquote>
+    </div>
+    
+<!-- Right: registration form -->
+    <div class="landing-register">
+      <div class="landing-register-box">
+        <h2>Create a New Account</h2>
+        <p class="landing-register-subtitle">Pull up a chair. It's free.</p>
+
+        <hr />
+
+        <form action="/register" method="post">
+          <input type="hidden" name="_csrf_token" value={get_csrf_token()} />
+
+          <div class="form-group">
+            <input
+              type="text"
+              name="user[display_name]"
+              placeholder="Full Name"
+              required
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="email"
+              name="user[email]"
+              placeholder="Email Address"
+              required
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="password"
+              name="user[password]"
+              placeholder="New Password"
+              required
+              minlength="8"
+              class="form-input"
+            />
+          </div>
+
+          <div class="form-group">
+            <input
+              type="password"
+              name="user[password_confirmation]"
+              placeholder="Confirm Password"
+              required
+              minlength="8"
+              class="form-input"
+            />
+          </div>
+
+          <p class="landing-terms">
+            By clicking Sign Up, you agree to keep it real. No AI content allowed.
+          </p>
+
+          <div class="landing-signup-btn">
+            <button type="submit" class="btn btn-green btn-large btn-block">
+              Sign Up
+            </button>
+          </div>
+        </form>
+      </div>
+      
+<!-- Guest login -->
+      <div class="landing-register-box landing-guest-box">
+        <p>Want to look around first?</p>
+        <form action="/guest-login" method="post">
+          <input type="hidden" name="_csrf_token" value={get_csrf_token()} />
+          <button type="submit" class="btn btn-gray btn-large btn-block">
+            Try as Guest
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+<!-- Stats bar -->
+  <div class="landing-bottom">
+    <div class="landing-stats">
+      <div class="landing-stat">
+        <div class="landing-stat-value stat-verified">{@stats.approved}</div>
+        <div class="landing-stat-label">Posts Verified Human</div>
+      </div>
+      <div class="landing-stat">
+        <div class="landing-stat-value">{@stats.total}</div>
+        <div class="landing-stat-label">Scans Completed</div>
+      </div>
+      <div class="landing-stat">
+        <div class="landing-stat-value stat-flagged">{@stats.rejected}</div>
+        <div class="landing-stat-label">AI Content Caught</div>
+      </div>
+    </div>
+  </div>
+  
+<!-- Footer -->
+  <div class="footer-landing">
+    <div class="footer-inner">
+      <p class="footer-copyright">
+        ParkBench &mdash; A place for real people. No AI. No algorithms. Just friends.
+      </p>
+    </div>
+  </div>
+</div>

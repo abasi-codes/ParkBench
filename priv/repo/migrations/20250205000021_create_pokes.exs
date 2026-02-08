@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreatePokes do
+defmodule ParkBench.Repo.Migrations.CreatePokes do
   use Ecto.Migration
 
   def change do

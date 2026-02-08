@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateProfilePhotos do
+defmodule ParkBench.Repo.Migrations.CreateProfilePhotos do
   use Ecto.Migration
 
   def change do
@@ -19,8 +19,8 @@ defmodule Sunporch.Repo.Migrations.CreateProfilePhotos do
     create index(:profile_photos, [:user_id])
 
     create unique_index(:profile_photos, [:user_id],
-      where: "is_current = true",
-      name: :profile_photos_user_id_current_unique
-    )
+             where: "is_current = true",
+             name: :profile_photos_user_id_current_unique
+           )
   end
 end

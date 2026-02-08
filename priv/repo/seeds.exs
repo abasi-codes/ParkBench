@@ -2,17 +2,17 @@
 #
 #     mix run priv/repo/seeds.exs
 
-alias Sunporch.Repo
-alias Sunporch.Accounts
-alias Sunporch.Accounts.{User, UserProfile}
-alias Sunporch.Social
-alias Sunporch.Timeline
-alias Sunporch.Messaging
-alias Sunporch.Notifications.Notification
-alias Sunporch.Privacy.PrivacySetting
+alias ParkBench.Repo
+alias ParkBench.Accounts
+alias ParkBench.Accounts.{User, UserProfile}
+alias ParkBench.Social
+alias ParkBench.Timeline
+alias ParkBench.Messaging
+alias ParkBench.Notifications.Notification
+alias ParkBench.Privacy.PrivacySetting
 import Ecto.Query
 
-IO.puts("Seeding Sunporch database...")
+IO.puts("Seeding ParkBench database...")
 
 # Create 10 test users
 users =
@@ -20,11 +20,22 @@ users =
     {:ok, user} =
       Accounts.register_user(%{
         "email" => "user#{i}@example.com",
-        "display_name" => Enum.at([
-          "Alice Johnson", "Bob Smith", "Carol Davis", "David Wilson",
-          "Eve Martinez", "Frank Brown", "Grace Lee", "Henry Taylor",
-          "Ivy Anderson", "Jack Thomas"
-        ], i - 1),
+        "display_name" =>
+          Enum.at(
+            [
+              "Alice Johnson",
+              "Bob Smith",
+              "Carol Davis",
+              "David Wilson",
+              "Eve Martinez",
+              "Frank Brown",
+              "Grace Lee",
+              "Henry Taylor",
+              "Ivy Anderson",
+              "Jack Thomas"
+            ],
+            i - 1
+          ),
         "password" => "password123!",
         "password_confirmation" => "password123!"
       })
@@ -42,44 +53,88 @@ users =
     # Create profile
     Repo.insert!(%UserProfile{
       user_id: user.id,
-      bio: Enum.at([
-        "Hello! I love authentic human connections.",
-        "Software engineer by day, musician by night.",
-        "Bookworm and coffee addict. Always up for a good conversation.",
-        "Outdoor enthusiast. If I'm not at my desk, I'm on a trail.",
-        "Foodie, traveler, and amateur photographer.",
-        "Just here to connect with real people.",
-        "Teacher, learner, and lifelong reader.",
-        "Sports fan and weekend warrior.",
-        "Creative soul with a passion for art and design.",
-        "Dog parent, pizza lover, and trivia champion."
-      ], i - 1),
-      interests: Enum.at([
-        "reading, hiking, photography",
-        "coding, guitar, board games",
-        "cooking, travel, yoga",
-        "cycling, camping, woodworking",
-        "baking, languages, vintage films",
-        "fishing, grilling, football",
-        "painting, pottery, volunteering",
-        "running, basketball, podcasts",
-        "drawing, music production, gardening",
-        "gaming, astronomy, trivia"
-      ], i - 1),
-      hometown: Enum.at([
-        "New York, NY", "Los Angeles, CA", "Chicago, IL", "Houston, TX", "Phoenix, AZ",
-        "Philadelphia, PA", "San Antonio, TX", "San Diego, CA", "Dallas, TX", "Austin, TX"
-      ], i - 1),
-      current_city: Enum.at([
-        "San Francisco, CA", "Seattle, WA", "Boston, MA", "Denver, CO", "Portland, OR",
-        "Nashville, TN", "Minneapolis, MN", "Atlanta, GA", "Raleigh, NC", "Salt Lake City, UT"
-      ], i - 1),
+      bio:
+        Enum.at(
+          [
+            "Hello! I love authentic human connections.",
+            "Software engineer by day, musician by night.",
+            "Bookworm and coffee addict. Always up for a good conversation.",
+            "Outdoor enthusiast. If I'm not at my desk, I'm on a trail.",
+            "Foodie, traveler, and amateur photographer.",
+            "Just here to connect with real people.",
+            "Teacher, learner, and lifelong reader.",
+            "Sports fan and weekend warrior.",
+            "Creative soul with a passion for art and design.",
+            "Dog parent, pizza lover, and trivia champion."
+          ],
+          i - 1
+        ),
+      interests:
+        Enum.at(
+          [
+            "reading, hiking, photography",
+            "coding, guitar, board games",
+            "cooking, travel, yoga",
+            "cycling, camping, woodworking",
+            "baking, languages, vintage films",
+            "fishing, grilling, football",
+            "painting, pottery, volunteering",
+            "running, basketball, podcasts",
+            "drawing, music production, gardening",
+            "gaming, astronomy, trivia"
+          ],
+          i - 1
+        ),
+      hometown:
+        Enum.at(
+          [
+            "New York, NY",
+            "Los Angeles, CA",
+            "Chicago, IL",
+            "Houston, TX",
+            "Phoenix, AZ",
+            "Philadelphia, PA",
+            "San Antonio, TX",
+            "San Diego, CA",
+            "Dallas, TX",
+            "Austin, TX"
+          ],
+          i - 1
+        ),
+      current_city:
+        Enum.at(
+          [
+            "San Francisco, CA",
+            "Seattle, WA",
+            "Boston, MA",
+            "Denver, CO",
+            "Portland, OR",
+            "Nashville, TN",
+            "Minneapolis, MN",
+            "Atlanta, GA",
+            "Raleigh, NC",
+            "Salt Lake City, UT"
+          ],
+          i - 1
+        ),
       birthday: Date.new!(1990 + rem(i, 10), rem(i, 12) + 1, rem(i * 3, 28) + 1),
       gender: if(rem(i, 2) == 0, do: "Male", else: "Female"),
-      relationship_status: Enum.at([
-        "Single", "In a Relationship", "Married", "Single", "It's Complicated",
-        "In a Relationship", "Single", "Married", "Single", "In a Relationship"
-      ], i - 1)
+      relationship_status:
+        Enum.at(
+          [
+            "Single",
+            "In a Relationship",
+            "Married",
+            "Single",
+            "It's Complicated",
+            "In a Relationship",
+            "Single",
+            "Married",
+            "Single",
+            "In a Relationship"
+          ],
+          i - 1
+        )
     })
 
     IO.puts("  Created user: #{user.email}")
@@ -89,7 +144,7 @@ users =
 # Create an admin user
 {:ok, admin} =
   Accounts.register_user(%{
-    "email" => "admin@sunporch.app",
+    "email" => "admin@parkbench.app",
     "display_name" => "Admin User",
     "password" => "admin123!admin",
     "password_confirmation" => "admin123!admin"
@@ -103,8 +158,8 @@ admin
 |> User.admin_changeset(%{role: "admin"})
 |> Repo.update!()
 
-Repo.insert!(%UserProfile{user_id: admin.id, bio: "Sunporch administrator"})
-IO.puts("  Created admin: admin@sunporch.app")
+Repo.insert!(%UserProfile{user_id: admin.id, bio: "ParkBench administrator"})
+IO.puts("  Created admin: admin@parkbench.app")
 
 # ── Privacy Settings ──────────────────────────────────────────────
 # Varied settings: user3 (Carol) has friends-only profile, user7 (Grace) has only_me on some fields
@@ -119,6 +174,7 @@ for {user, i} <- Enum.with_index(users, 1) do
           friend_list_visibility: "friends",
           wall_posting: "friends"
         }
+
       # Grace: only_me on several fields
       i == 7 ->
         %PrivacySetting{
@@ -129,6 +185,7 @@ for {user, i} <- Enum.with_index(users, 1) do
           relationship_visibility: "only_me",
           wall_posting: "friends"
         }
+
       # Eve: friends-only friend list
       i == 5 ->
         %PrivacySetting{
@@ -137,6 +194,7 @@ for {user, i} <- Enum.with_index(users, 1) do
           friend_list_visibility: "friends",
           wall_posting: "everyone"
         }
+
       true ->
         %PrivacySetting{user_id: user.id}
     end
@@ -149,22 +207,37 @@ IO.puts("  Created privacy settings (varied)")
 
 # ── Friendships ───────────────────────────────────────────────────
 friendship_pairs = [
-  {0, 1}, {0, 2}, {0, 3}, {0, 4},
-  {1, 2}, {1, 3}, {1, 5},
-  {2, 3}, {2, 4}, {2, 6},
-  {3, 4}, {3, 5}, {3, 7},
-  {4, 5}, {4, 8},
-  {5, 6}, {5, 9},
-  {6, 7}, {7, 8}, {8, 9},
+  {0, 1},
+  {0, 2},
+  {0, 3},
+  {0, 4},
+  {1, 2},
+  {1, 3},
+  {1, 5},
+  {2, 3},
+  {2, 4},
+  {2, 6},
+  {3, 4},
+  {3, 5},
+  {3, 7},
+  {4, 5},
+  {4, 8},
+  {5, 6},
+  {5, 9},
+  {6, 7},
+  {7, 8},
+  {8, 9},
   {0, 9}
 ]
 
 for {i, j} <- friendship_pairs do
   user_a = Enum.at(users, i)
   user_b = Enum.at(users, j)
-  {low_id, high_id} = if user_a.id < user_b.id, do: {user_a.id, user_b.id}, else: {user_b.id, user_a.id}
 
-  Repo.insert!(%Sunporch.Social.Friendship{
+  {low_id, high_id} =
+    if user_a.id < user_b.id, do: {user_a.id, user_b.id}, else: {user_b.id, user_a.id}
+
+  Repo.insert!(%ParkBench.Social.Friendship{
     user_id: low_id,
     friend_id: high_id
   })
@@ -175,7 +248,7 @@ for i <- [0, 1, 2, 3, 4] do
   other = Enum.at(users, i)
   {low_id, high_id} = if admin.id < other.id, do: {admin.id, other.id}, else: {other.id, admin.id}
 
-  Repo.insert!(%Sunporch.Social.Friendship{
+  Repo.insert!(%ParkBench.Social.Friendship{
     user_id: low_id,
     friend_id: high_id
   })
@@ -185,7 +258,7 @@ IO.puts("  Created #{length(friendship_pairs) + 5} friendships")
 
 # ── Wall Posts ────────────────────────────────────────────────────
 post_texts = [
-  "Just joined Sunporch! Excited to connect with real people.",
+  "Just joined ParkBench! Excited to connect with real people.",
   "Beautiful day outside. Who wants to go for a hike this weekend?",
   "Just finished reading an amazing book. Highly recommend 'The Midnight Library'!",
   "Cooking experiment tonight — wish me luck!",
@@ -201,11 +274,12 @@ wall_posts =
   for i <- 0..9 do
     author = Enum.at(users, i)
 
-    {:ok, post} = Timeline.create_wall_post(%{
-      author_id: author.id,
-      wall_owner_id: author.id,
-      body: Enum.at(post_texts, i)
-    })
+    {:ok, post} =
+      Timeline.create_wall_post(%{
+        author_id: author.id,
+        wall_owner_id: author.id,
+        body: Enum.at(post_texts, i)
+      })
 
     post
   end
@@ -224,11 +298,12 @@ extra_posts =
     author = Enum.at(users, author_idx)
     wall_owner = Enum.at(users, wall_idx)
 
-    {:ok, post} = Timeline.create_wall_post(%{
-      author_id: author.id,
-      wall_owner_id: wall_owner.id,
-      body: body
-    })
+    {:ok, post} =
+      Timeline.create_wall_post(%{
+        author_id: author.id,
+        wall_owner_id: wall_owner.id,
+        body: body
+      })
 
     post
   end
@@ -238,11 +313,22 @@ IO.puts("  Created #{length(all_posts)} wall posts")
 
 # Set varied AI detection statuses on posts
 # ~60% approved, ~25% pending, ~15% soft_rejected
-ai_statuses = ["approved", "approved", "approved", "approved", "approved", "approved",
-               "pending", "pending", "soft_rejected", "soft_rejected"]
+ai_statuses = [
+  "approved",
+  "approved",
+  "approved",
+  "approved",
+  "approved",
+  "approved",
+  "pending",
+  "pending",
+  "soft_rejected",
+  "soft_rejected"
+]
 
 for {post, i} <- Enum.with_index(all_posts) do
   status = Enum.at(ai_statuses, rem(i, length(ai_statuses)))
+
   Repo.update_all(
     from(p in "wall_posts", where: p.id == type(^post.id, Ecto.UUID)),
     set: [ai_detection_status: status]
@@ -253,12 +339,26 @@ IO.puts("  Set AI detection statuses on wall posts")
 
 # ── Comments ──────────────────────────────────────────────────────
 comment_texts = [
-  "Love this!", "So true!", "Great post!", "Couldn't agree more.",
-  "Haha, this is awesome!", "Thanks for sharing!", "Welcome to Sunporch!",
-  "I've been meaning to try that.", "Count me in!", "That's incredible!",
-  "Miss you!", "So jealous!", "We should definitely do this again.",
-  "You're the best!", "This made my day.", "Can't wait!",
-  "LOL, classic!", "Wow, really?", "That's so cool.", "Congrats!"
+  "Love this!",
+  "So true!",
+  "Great post!",
+  "Couldn't agree more.",
+  "Haha, this is awesome!",
+  "Thanks for sharing!",
+  "Welcome to ParkBench!",
+  "I've been meaning to try that.",
+  "Count me in!",
+  "That's incredible!",
+  "Miss you!",
+  "So jealous!",
+  "We should definitely do this again.",
+  "You're the best!",
+  "This made my day.",
+  "Can't wait!",
+  "LOL, classic!",
+  "Wow, really?",
+  "That's so cool.",
+  "Congrats!"
 ]
 
 comment_count = 0
@@ -272,24 +372,37 @@ for post <- Enum.take(all_posts, 10) do
     commenter_idx = rem(j + :erlang.phash2(post.id), 10)
     commenter = Enum.at(users, commenter_idx)
 
-    {:ok, _comment} = Timeline.create_comment(%{
-      author_id: commenter.id,
-      commentable_type: "WallPost",
-      commentable_id: post.id,
-      body: Enum.at(comment_texts, rem(j + :erlang.phash2(post.id, 20), 20))
-    })
+    {:ok, _comment} =
+      Timeline.create_comment(%{
+        author_id: commenter.id,
+        commentable_type: "WallPost",
+        commentable_id: post.id,
+        body: Enum.at(comment_texts, rem(j + :erlang.phash2(post.id, 20), 20))
+      })
   end
 end
 
 IO.puts("  Created comments on wall posts")
 
 # Set varied AI detection statuses on comments
-comment_statuses = ["approved", "approved", "approved", "approved", "approved",
-                    "approved", "approved", "pending", "pending", "soft_rejected"]
+comment_statuses = [
+  "approved",
+  "approved",
+  "approved",
+  "approved",
+  "approved",
+  "approved",
+  "approved",
+  "pending",
+  "pending",
+  "soft_rejected"
+]
 
 all_comment_ids = Repo.all(from(c in "comments", select: c.id))
+
 for {comment_id, i} <- Enum.with_index(all_comment_ids) do
   status = Enum.at(comment_statuses, rem(i, length(comment_statuses)))
+
   Repo.update_all(
     from(c in "comments", where: c.id == type(^comment_id, Ecto.UUID)),
     set: [ai_detection_status: status]
@@ -321,11 +434,24 @@ IO.puts("  Created status updates")
 
 # ── Likes ─────────────────────────────────────────────────────────
 like_pairs = [
-  {1, 0}, {2, 0}, {3, 0}, {4, 0}, {5, 0},  # Alice's post gets lots of likes
-  {0, 1}, {2, 1},                             # Bob's post
-  {0, 2}, {1, 2}, {3, 2},                     # Carol's post
-  {0, 3}, {4, 3},                             # David's post
-  {1, 4}                                       # Eve's post
+  # Alice's post gets lots of likes
+  {1, 0},
+  {2, 0},
+  {3, 0},
+  {4, 0},
+  {5, 0},
+  # Bob's post
+  {0, 1},
+  {2, 1},
+  # Carol's post
+  {0, 2},
+  {1, 2},
+  {3, 2},
+  # David's post
+  {0, 3},
+  {4, 3},
+  # Eve's post
+  {1, 4}
 ]
 
 for {liker_idx, post_idx} <- like_pairs do
@@ -338,8 +464,16 @@ IO.puts("  Created #{length(like_pairs)} likes")
 
 # ── Pokes ─────────────────────────────────────────────────────────
 poke_pairs = [
-  {0, 1}, {1, 2}, {2, 3}, {3, 4}, {4, 5},
-  {5, 6}, {6, 7}, {7, 8}, {8, 9}, {9, 0}
+  {0, 1},
+  {1, 2},
+  {2, 3},
+  {3, 4},
+  {4, 5},
+  {5, 6},
+  {6, 7},
+  {7, 8},
+  {8, 9},
+  {9, 0}
 ]
 
 for {poker_idx, pokee_idx} <- poke_pairs do
@@ -353,10 +487,21 @@ IO.puts("  Created #{length(poke_pairs)} pokes")
 # ── Friend Requests (pending) ────────────────────────────────────
 # Users who are NOT already friends send requests
 pending_requests = [
-  {0, 5}, {0, 6}, {0, 7}, {0, 8},
-  {1, 4}, {1, 6}, {1, 7}, {1, 8}, {1, 9},
-  {2, 5}, {2, 7}, {2, 8}, {2, 9},
-  {4, 6}, {4, 7}
+  {0, 5},
+  {0, 6},
+  {0, 7},
+  {0, 8},
+  {1, 4},
+  {1, 6},
+  {1, 7},
+  {1, 8},
+  {1, 9},
+  {2, 5},
+  {2, 7},
+  {2, 8},
+  {2, 9},
+  {4, 6},
+  {4, 7}
 ]
 
 request_count = 0
@@ -367,7 +512,7 @@ for {sender_idx, receiver_idx} <- pending_requests do
 
   # Only create if they aren't already friends
   unless Social.friends?(sender.id, receiver.id) do
-    Repo.insert!(%Sunporch.Social.FriendRequest{
+    Repo.insert!(%ParkBench.Social.FriendRequest{
       sender_id: sender.id,
       receiver_id: receiver.id,
       status: "pending"
@@ -379,33 +524,38 @@ IO.puts("  Created pending friend requests")
 
 # ── Message Threads ───────────────────────────────────────────────
 thread_conversations = [
-  {0, 1, "Weekend plans?", [
-    "Hey Bob, want to grab lunch this Saturday?",
-    "Sure! How about that new place downtown?",
-    "Perfect, let's do noon.",
-    "Sounds great! See you there."
-  ]},
-  {2, 3, "Book club", [
-    "David, have you finished the chapter yet?",
-    "Almost! Just a few pages left.",
-    "Great, we're meeting Thursday to discuss."
-  ]},
-  {4, 5, "Basketball game", [
-    "Frank, are you coming to the game on Sunday?",
-    "Wouldn't miss it! What time?",
-    "Starts at 3pm. I'll save you a seat.",
-    "Awesome, thanks Eve!",
-    "No problem. Go team!"
-  ]},
-  {0, 2, "Project update", [
-    "Carol, wanted to give you a quick update on the project.",
-    "Sure, what's the latest?"
-  ]},
-  {6, 7, "Art show", [
-    "Henry, there's an art show this weekend. Interested?",
-    "Absolutely! What time does it open?",
-    "10am. I'll meet you at the entrance."
-  ]}
+  {0, 1, "Weekend plans?",
+   [
+     "Hey Bob, want to grab lunch this Saturday?",
+     "Sure! How about that new place downtown?",
+     "Perfect, let's do noon.",
+     "Sounds great! See you there."
+   ]},
+  {2, 3, "Book club",
+   [
+     "David, have you finished the chapter yet?",
+     "Almost! Just a few pages left.",
+     "Great, we're meeting Thursday to discuss."
+   ]},
+  {4, 5, "Basketball game",
+   [
+     "Frank, are you coming to the game on Sunday?",
+     "Wouldn't miss it! What time?",
+     "Starts at 3pm. I'll save you a seat.",
+     "Awesome, thanks Eve!",
+     "No problem. Go team!"
+   ]},
+  {0, 2, "Project update",
+   [
+     "Carol, wanted to give you a quick update on the project.",
+     "Sure, what's the latest?"
+   ]},
+  {6, 7, "Art show",
+   [
+     "Henry, there's an art show this weekend. Interested?",
+     "Absolutely! What time does it open?",
+     "10am. I'll meet you at the entrance."
+   ]}
 ]
 
 for {sender_idx, recipient_idx, subject, messages} <- thread_conversations do
@@ -454,7 +604,7 @@ notification_data = [
   {0, 1, "new_message", "message_thread"},
   {2, 3, "new_message", "message_thread"},
   {4, 5, "new_message", "message_thread"},
-  {6, 7, "new_message", "message_thread"},
+  {6, 7, "new_message", "message_thread"}
 ]
 
 for {user_idx, actor_idx, type, target_type} <- notification_data do
@@ -475,7 +625,7 @@ IO.puts("  Created #{length(notification_data)} notifications")
 
 IO.puts("\nSeeding complete!")
 IO.puts("Login with: user1@example.com / password123!")
-IO.puts("Admin login: admin@sunporch.app / admin123!admin")
+IO.puts("Admin login: admin@parkbench.app / admin123!admin")
 IO.puts("")
 IO.puts("Privacy notes:")
 IO.puts("  - user3 (Carol Davis) has friends-only profile")

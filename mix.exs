@@ -1,9 +1,9 @@
-defmodule Sunporch.MixProject do
+defmodule ParkBench.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :sunporch,
+      app: :park_bench,
       version: "0.1.0",
       elixir: "~> 1.15",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -18,7 +18,7 @@ defmodule Sunporch.MixProject do
 
   def application do
     [
-      mod: {Sunporch.Application, []},
+      mod: {ParkBench.Application, []},
       extra_applications: [:logger, :runtime_tools, :crypto]
     ]
   end
@@ -99,10 +99,10 @@ defmodule Sunporch.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["esbuild.install --if-missing"],
-      "assets.build": ["esbuild sunporch", "esbuild sunporch_css"],
+      "assets.build": ["esbuild park_bench", "esbuild park_bench_css"],
       "assets.deploy": [
-        "esbuild sunporch --minify",
-        "esbuild sunporch_css --minify",
+        "esbuild park_bench --minify",
+        "esbuild park_bench_css --minify",
         "phx.digest"
       ],
       precommit: ["compile --warnings-as-errors", "deps.unlock --unused", "format", "test"]

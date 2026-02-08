@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Sunporch Profile
+   ParkBench Profile
    Profile header, tab navigation, info tab, friends grid, mini feed,
    and the two-column profile layout (300px sidebar + 620px main).
    ========================================================================== */
@@ -12,9 +12,9 @@
 .profile-cover {
   width: 100%;
   height: 280px;
-  border-radius: var(--sp-radius-lg) var(--sp-radius-lg) 0 0;
+  border-radius: var(--pb-radius-lg) var(--pb-radius-lg) 0 0;
   overflow: hidden;
-  background: linear-gradient(135deg, #C49A2B 0%, #E8B62C 30%, #F0C850 60%, #C49A2B 100%);
+  background: linear-gradient(135deg, #4a6741 0%, #6b8f5e 30%, #8ab87a 60%, #4a6741 100%);
   position: relative;
 }
 
@@ -42,10 +42,10 @@
    ========================================================================== */
 
 .profile-header {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
   border-top: none;
-  border-radius: 0 0 var(--sp-radius) var(--sp-radius);
+  border-radius: 0 0 var(--pb-radius) var(--pb-radius);
   padding: 20px 24px;
   display: flex;
   align-items: flex-start;
@@ -53,7 +53,7 @@
   margin-bottom: 0;
   margin-top: -60px;
   position: relative;
-  box-shadow: var(--sp-shadow-sm);
+  box-shadow: var(--pb-shadow-sm);
 }
 
 /* Profile photo */
@@ -61,11 +61,11 @@
   width: 168px;
   height: 168px;
   flex-shrink: 0;
-  border: 4px solid var(--sp-bg-white);
+  border: 4px solid var(--pb-bg-white);
   border-radius: 50%;
   overflow: hidden;
   background-color: #EDE9E0;
-  box-shadow: var(--sp-shadow-md);
+  box-shadow: var(--pb-shadow-md);
 }
 
 .profile-photo img {
@@ -77,7 +77,7 @@
 
 .profile-photo:hover,
 .profile-photo-edit:hover > img {
-  box-shadow: var(--sp-shadow-md), 0 0 0 4px rgba(232,182,44,0.3);
+  box-shadow: var(--pb-shadow-md), 0 0 0 4px rgba(74,103,65,0.3);
 }
 
 /* Profile photo edit overlay (own profile) */
@@ -91,8 +91,8 @@
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.6);
-  color: var(--sp-text-white);
-  font-size: var(--sp-font-size-small);
+  color: var(--pb-text-white);
+  font-size: var(--pb-font-size-small);
   text-align: center;
   padding: 4px;
   cursor: pointer;
@@ -110,22 +110,22 @@
 }
 
 .profile-name {
-  font-size: var(--sp-font-size-h1);
+  font-size: var(--pb-font-size-h1);
   font-weight: 700;
-  font-family: var(--sp-font-heading);
-  color: var(--sp-text-primary);
+  font-family: var(--pb-font-heading);
+  color: var(--pb-text-primary);
   line-height: 1.2;
   margin-bottom: 4px;
 }
 
 .profile-network {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   margin-bottom: 8px;
 }
 
 .profile-network a {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 /* Quick info rows (relationship status, birthday, etc.) */
@@ -134,13 +134,13 @@
 }
 
 .profile-quick-info-row {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   line-height: 1.6;
 }
 
 .profile-quick-info-row strong {
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
 }
 
 /* Action buttons (Add Friend, Send Message, Poke, etc.) */
@@ -154,8 +154,8 @@
 
 /* Friend status text */
 .profile-friend-status {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   margin-top: 8px;
   display: flex;
   align-items: center;
@@ -163,18 +163,18 @@
 }
 
 .profile-friend-status .icon {
-  color: var(--sp-btn-green);
+  color: var(--pb-btn-green);
 }
 
 /* Mutual friends count */
 .profile-mutual-friends {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-secondary);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-secondary);
   margin-top: 6px;
 }
 
 .profile-mutual-friends a {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 /* ==========================================================================
@@ -188,7 +188,7 @@
   display: flex;
   align-items: center;
   padding: 8px 0;
-  margin-bottom: var(--sp-spacing-md);
+  margin-bottom: var(--pb-spacing-md);
   gap: 8px;
 }
 
@@ -196,12 +196,12 @@
   display: flex;
   align-items: center;
   padding: 8px 20px;
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: 600;
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
   text-decoration: none;
   border: none;
-  border-radius: var(--sp-radius-full);
+  border-radius: var(--pb-radius-full);
   white-space: nowrap;
   cursor: pointer;
   transition: color 0.15s ease, background-color 0.15s ease;
@@ -209,14 +209,14 @@
 
 .profile-tab:hover {
   text-decoration: none;
-  color: var(--sp-text-primary);
-  background-color: rgba(139,105,20,0.08);
+  color: var(--pb-text-primary);
+  background-color: rgba(74,103,65,0.08);
 }
 
 .profile-tab.active {
-  background-color: var(--sp-blue);
-  color: var(--sp-text-white);
-  border-radius: var(--sp-radius-full);
+  background-color: var(--pb-blue);
+  color: var(--pb-text-white);
+  border-radius: var(--pb-radius-full);
 }
 
 .profile-tab .badge {
@@ -226,9 +226,9 @@
 /* "Edit My Profile" link in tab bar */
 .profile-tab-edit {
   margin-left: auto;
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
   font-weight: normal;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -267,22 +267,22 @@
    ========================================================================== */
 
 .profile-info-section {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
-  margin-bottom: var(--sp-spacing-md);
+  border-radius: var(--pb-radius);
+  margin-bottom: var(--pb-spacing-md);
   overflow: hidden;
-  box-shadow: var(--sp-shadow-sm);
+  box-shadow: var(--pb-shadow-sm);
 }
 
 .profile-info-section-header {
   padding: 12px 16px 8px 16px;
   background-color: transparent;
-  border-bottom: 2px solid var(--sp-accent-gold);
-  font-size: var(--sp-font-size-base);
+  border-bottom: 2px solid var(--pb-accent-gold);
+  font-size: var(--pb-font-size-base);
   font-weight: 700;
-  font-family: var(--sp-font-heading);
-  color: var(--sp-text-primary);
+  font-family: var(--pb-font-heading);
+  color: var(--pb-text-primary);
 }
 
 .profile-info-row {
@@ -290,8 +290,8 @@
   align-items: flex-start;
   padding: 6px 10px;
   border-bottom: 1px solid #EDE9E0;
-  font-size: var(--sp-font-size-base);
-  line-height: var(--sp-line-height);
+  font-size: var(--pb-font-size-base);
+  line-height: var(--pb-line-height);
 }
 
 .profile-info-row:last-child {
@@ -303,26 +303,26 @@
   min-width: 140px;
   flex-shrink: 0;
   font-weight: bold;
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
   padding-right: 10px;
 }
 
 .profile-info-value {
   flex: 1;
   min-width: 0;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
   word-wrap: break-word;
 }
 
 .profile-info-value a {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 /* Empty info state */
 .profile-info-empty {
   padding: 10px;
-  color: var(--sp-text-light);
-  font-size: var(--sp-font-size-base);
+  color: var(--pb-text-light);
+  font-size: var(--pb-font-size-base);
   text-align: center;
   font-style: italic;
 }
@@ -330,9 +330,9 @@
 /* Edit info link */
 .profile-info-edit {
   float: right;
-  font-size: var(--sp-font-size-small);
+  font-size: var(--pb-font-size-small);
   font-weight: normal;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
 }
 
 /* ==========================================================================
@@ -341,38 +341,38 @@
    ========================================================================== */
 
 .profile-friends-box {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
-  margin-bottom: var(--sp-spacing-md);
+  border-radius: var(--pb-radius);
+  margin-bottom: var(--pb-spacing-md);
   overflow: hidden;
-  box-shadow: var(--sp-shadow-sm);
+  box-shadow: var(--pb-shadow-sm);
 }
 
 .profile-friends-header {
   padding: 12px 16px 8px 16px;
   background-color: transparent;
-  border-bottom: 2px solid var(--sp-accent-gold);
+  border-bottom: 2px solid var(--pb-accent-gold);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .profile-friends-header-title {
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: bold;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
 }
 
 .profile-friends-header-count {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
   font-weight: normal;
 }
 
 .profile-friends-header a {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-link);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-link);
   font-weight: normal;
 }
 
@@ -404,7 +404,7 @@
 }
 
 .profile-friend-item:hover .profile-friend-thumb {
-  box-shadow: 0 0 0 3px rgba(139,105,20,0.2);
+  box-shadow: 0 0 0 3px rgba(74,103,65,0.2);
 }
 
 .profile-friend-thumb img {
@@ -415,8 +415,8 @@
 }
 
 .profile-friend-name {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-link);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-link);
   line-height: 1.2;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -433,22 +433,22 @@
    ========================================================================== */
 
 .mini-feed {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
-  margin-bottom: var(--sp-spacing-md);
+  border-radius: var(--pb-radius);
+  margin-bottom: var(--pb-spacing-md);
   overflow: hidden;
-  box-shadow: var(--sp-shadow-sm);
+  box-shadow: var(--pb-shadow-sm);
 }
 
 .mini-feed-header {
   padding: 12px 16px 8px 16px;
   background-color: transparent;
-  border-bottom: 2px solid var(--sp-accent-gold);
-  font-size: var(--sp-font-size-base);
+  border-bottom: 2px solid var(--pb-accent-gold);
+  font-size: var(--pb-font-size-base);
   font-weight: 700;
-  font-family: var(--sp-font-heading);
-  color: var(--sp-text-primary);
+  font-family: var(--pb-font-heading);
+  color: var(--pb-text-primary);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -460,8 +460,8 @@
   gap: 6px;
   padding: 6px 8px;
   border-bottom: 1px solid #EDE9E0;
-  font-size: var(--sp-font-size-base);
-  line-height: var(--sp-line-height);
+  font-size: var(--pb-font-size-base);
+  line-height: var(--pb-line-height);
 }
 
 .mini-feed-item:last-child {
@@ -482,13 +482,13 @@
 }
 
 .mini-feed-item-content a {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   font-weight: bold;
 }
 
 .mini-feed-item-time {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
   margin-top: 1px;
 }
 
@@ -497,27 +497,27 @@
    ========================================================================== */
 
 .profile-photos-box {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
-  margin-bottom: var(--sp-spacing-md);
+  border-radius: var(--pb-radius);
+  margin-bottom: var(--pb-spacing-md);
   overflow: hidden;
-  box-shadow: var(--sp-shadow-sm);
+  box-shadow: var(--pb-shadow-sm);
 }
 
 .profile-photos-header {
   padding: 12px 16px 8px 16px;
   background-color: transparent;
-  border-bottom: 2px solid var(--sp-accent-gold);
+  border-bottom: 2px solid var(--pb-accent-gold);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .profile-photos-header-title {
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: bold;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
 }
 
 .profile-photos-grid {
@@ -529,7 +529,7 @@
 
 .profile-photo-thumb {
   aspect-ratio: 1;
-  border-radius: var(--sp-radius-sm);
+  border-radius: var(--pb-radius-sm);
   overflow: hidden;
   background-color: #EDE9E0;
   cursor: pointer;
@@ -538,9 +538,9 @@
 }
 
 .profile-photo-thumb:hover {
-  border-color: var(--sp-blue-light);
+  border-color: var(--pb-blue-light);
   transform: scale(1.03);
-  box-shadow: var(--sp-shadow-md);
+  box-shadow: var(--pb-shadow-md);
 }
 
 .profile-photo-thumb img {
@@ -555,21 +555,21 @@
    ========================================================================== */
 
 .profile-edit {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
+  border-radius: var(--pb-radius);
   padding: 24px;
-  margin-bottom: var(--sp-spacing-md);
-  box-shadow: var(--sp-shadow-sm);
+  margin-bottom: var(--pb-spacing-md);
+  box-shadow: var(--pb-shadow-sm);
 }
 
 .profile-edit h2 {
-  font-size: var(--sp-font-size-h2);
+  font-size: var(--pb-font-size-h2);
   font-weight: bold;
-  color: var(--sp-text-primary);
-  margin-bottom: var(--sp-spacing-md);
-  padding-bottom: var(--sp-spacing-sm);
-  border-bottom: 1px solid var(--sp-border);
+  color: var(--pb-text-primary);
+  margin-bottom: var(--pb-spacing-md);
+  padding-bottom: var(--pb-spacing-sm);
+  border-bottom: 1px solid var(--pb-border);
 }
 
 .profile-edit .form-group {
@@ -595,19 +595,19 @@
    ========================================================================== */
 
 .poke-notification {
-  background-color: var(--sp-bg-highlight);
+  background-color: var(--pb-bg-highlight);
   border: 1px solid #e0c97f;
-  border-radius: var(--sp-radius);
+  border-radius: var(--pb-radius);
   padding: 8px 10px;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
 }
 
 .poke-notification a {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   font-weight: bold;
 }
 
@@ -620,13 +620,13 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: var(--sp-btn-green);
+  background-color: var(--pb-btn-green);
   margin-right: 4px;
   vertical-align: middle;
 }
 
 .online-status.offline {
-  background-color: var(--sp-text-light);
+  background-color: var(--pb-text-light);
 }
 
 /* ==========================================================================
@@ -645,8 +645,8 @@
   padding: 6px 14px;
   background-color: rgba(0, 0, 0, 0.55);
   color: #fff;
-  font-size: var(--sp-font-size-small);
-  border-radius: var(--sp-radius);
+  font-size: var(--pb-font-size-small);
+  border-radius: var(--pb-radius);
   cursor: pointer;
   transition: background-color 0.15s ease;
 }
@@ -663,9 +663,9 @@
   position: absolute;
   bottom: 40px;
   right: 0;
-  background: var(--sp-bg-white);
-  border-radius: var(--sp-radius);
-  box-shadow: var(--sp-shadow-md);
+  background: var(--pb-bg-white);
+  border-radius: var(--pb-radius);
+  box-shadow: var(--pb-shadow-md);
   padding: 4px;
 }
 
@@ -674,7 +674,7 @@
   width: 200px;
   height: 100px;
   object-fit: cover;
-  border-radius: var(--sp-radius-sm);
+  border-radius: var(--pb-radius-sm);
   background-color: #EDE9E0;
 }
 
@@ -702,7 +702,7 @@
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--sp-accent-gold);
+  border: 2px solid var(--pb-accent-gold);
   background-color: #EDE9E0;
 }
 
@@ -729,7 +729,7 @@
    ========================================================================== */
 
 .profile-page {
-  max-width: var(--sp-width-page);
+  max-width: var(--pb-width-page);
 }
 
 /* ==========================================================================
@@ -737,21 +737,21 @@
    ========================================================================== */
 
 .profile-info-tab h2 {
-  font-family: var(--sp-font-heading);
-  font-size: var(--sp-font-size-h2);
+  font-family: var(--pb-font-heading);
+  font-size: var(--pb-font-size-h2);
   font-weight: 700;
-  color: var(--sp-text-primary);
-  margin-bottom: var(--sp-spacing-md);
-  padding-bottom: var(--sp-spacing-sm);
-  border-bottom: 2px solid var(--sp-accent-gold);
+  color: var(--pb-text-primary);
+  margin-bottom: var(--pb-spacing-md);
+  padding-bottom: var(--pb-spacing-sm);
+  border-bottom: 2px solid var(--pb-accent-gold);
 }
 
 .info-section {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
+  border-radius: var(--pb-radius);
   overflow: hidden;
-  box-shadow: var(--sp-shadow-sm);
+  box-shadow: var(--pb-shadow-sm);
 }
 
 .info-row {
@@ -759,8 +759,8 @@
   align-items: flex-start;
   padding: 10px 16px;
   border-bottom: 1px solid #EDE9E0;
-  font-size: var(--sp-font-size-base);
-  line-height: var(--sp-line-height);
+  font-size: var(--pb-font-size-base);
+  line-height: var(--pb-line-height);
 }
 
 .info-row:last-child {
@@ -772,7 +772,7 @@
   min-width: 140px;
   flex-shrink: 0;
   font-weight: 600;
-  color: var(--sp-text-secondary);
+  color: var(--pb-text-secondary);
 }
 
 /* ==========================================================================
@@ -783,14 +783,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--sp-spacing-md);
+  margin-bottom: var(--pb-spacing-md);
 }
 
 .photos-tab-header h2 {
-  font-family: var(--sp-font-heading);
-  font-size: var(--sp-font-size-h2);
+  font-family: var(--pb-font-heading);
+  font-size: var(--pb-font-size-h2);
   font-weight: 700;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
 }
 
 /* ==========================================================================
@@ -800,22 +800,22 @@
 .album-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-spacing-md);
+  gap: var(--pb-spacing-md);
 }
 
 .album-card {
   display: block;
   text-decoration: none;
-  background: var(--sp-bg-white);
+  background: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
+  border-radius: var(--pb-radius);
   overflow: hidden;
-  box-shadow: var(--sp-shadow-sm);
+  box-shadow: var(--pb-shadow-sm);
   transition: box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .album-card:hover {
-  box-shadow: var(--sp-shadow-md);
+  box-shadow: var(--pb-shadow-md);
   transform: translateY(-2px);
 }
 
@@ -836,8 +836,8 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  color: var(--sp-text-light);
-  font-size: var(--sp-font-size-small);
+  color: var(--pb-text-light);
+  font-size: var(--pb-font-size-small);
 }
 
 .album-card-info {
@@ -847,14 +847,14 @@
 .album-title {
   display: block;
   font-weight: 600;
-  color: var(--sp-text-primary);
-  font-size: var(--sp-font-size-base);
+  color: var(--pb-text-primary);
+  font-size: var(--pb-font-size-base);
   margin-bottom: 2px;
 }
 
 .album-count {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
 }
 
 .sr-only {

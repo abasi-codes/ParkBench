@@ -1,31 +1,31 @@
 import Config
 
-config :sunporch, Sunporch.Repo,
+config :park_bench, ParkBench.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "sunporch_test#{System.get_env("MIX_TEST_PARTITION")}",
+  database: "park_bench_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: System.schedulers_online() * 2
 
-config :sunporch, SunporchWeb.Endpoint,
+config :park_bench, ParkBenchWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "S/Q0DSG2GfrUk1NQ8t1LGQ4qX7ExaUpviA/CRWHtqjOTIOwkGOFJPhTaPfapcy6I",
   server: false
 
 # Disable Oban during tests
-config :sunporch, Oban, testing: :manual
+config :park_bench, Oban, testing: :manual
 
 # Use test adapters for AI detection
-config :sunporch, :ai_detection,
-  text_provider: Sunporch.AIDetection.Clients.MockText,
-  image_provider: Sunporch.AIDetection.Clients.MockImage
+config :park_bench, :ai_detection,
+  text_provider: ParkBench.AIDetection.Clients.MockText,
+  image_provider: ParkBench.AIDetection.Clients.MockImage
 
 # Test encryption key (exactly 32 bytes)
-config :sunporch, :message_encryption_key, "test-key-must-be-exactly-32-by!"
+config :park_bench, :message_encryption_key, "test-key-must-be-exactly-32-by!"
 
 # Swoosh test adapter
-config :sunporch, Sunporch.Mailer, adapter: Swoosh.Adapters.Test
+config :park_bench, ParkBench.Mailer, adapter: Swoosh.Adapters.Test
 
 config :logger, level: :warning
 

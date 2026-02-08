@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.AddFullTextSearchIndexes do
+defmodule ParkBench.Repo.Migrations.AddFullTextSearchIndexes do
   use Ecto.Migration
 
   def up do

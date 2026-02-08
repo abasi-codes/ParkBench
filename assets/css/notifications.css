@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Sunporch Notifications
+   ParkBench Notifications
    Notification badge pills, notification list rows, unread/read states,
    and the notifications page layout.
    ========================================================================== */
@@ -14,8 +14,8 @@
   min-width: 18px;
   height: 18px;
   padding: 0 5px;
-  background-color: var(--sp-red);
-  color: var(--sp-text-white);
+  background-color: var(--pb-red);
+  color: var(--pb-text-white);
   font-size: 10px;
   font-weight: bold;
   line-height: 18px;
@@ -63,15 +63,15 @@
 }
 
 .notifications-page-header h1 {
-  font-size: var(--sp-font-size-h1);
+  font-size: var(--pb-font-size-h1);
   font-weight: bold;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
   margin: 0;
 }
 
 .notifications-mark-read {
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-link);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-link);
   cursor: pointer;
 }
 
@@ -84,9 +84,9 @@
    ========================================================================== */
 
 .notification-list {
-  background-color: var(--sp-bg-white);
-  border: 1px solid var(--sp-border-box);
-  border-radius: var(--sp-radius);
+  background-color: var(--pb-bg-white);
+  border: 1px solid var(--pb-border-box);
+  border-radius: var(--pb-radius);
   overflow: hidden;
 }
 
@@ -102,7 +102,7 @@
   padding: 10px 12px;
   border-bottom: 1px solid #EDE9E0;
   text-decoration: none;
-  color: var(--sp-text-primary);
+  color: var(--pb-text-primary);
   cursor: pointer;
   transition: background-color 0.1s ease;
 }
@@ -118,7 +118,7 @@
 
 /* Unread notification — highlight background */
 .notification-row.unread {
-  background-color: var(--sp-bg-highlight);
+  background-color: var(--pb-bg-highlight);
 }
 
 .notification-row.unread:hover {
@@ -127,7 +127,7 @@
 
 /* Read notification — normal background */
 .notification-row.read {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
 }
 
 /* Unread indicator dot */
@@ -137,7 +137,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--sp-blue);
+  background-color: var(--pb-blue);
   flex-shrink: 0;
   margin-top: 6px;
 }
@@ -158,15 +158,15 @@
 
 /* Notification text / message */
 .notification-text {
-  font-size: var(--sp-font-size-base);
-  line-height: var(--sp-line-height);
-  color: var(--sp-text-primary);
+  font-size: var(--pb-font-size-base);
+  line-height: var(--pb-line-height);
+  color: var(--pb-text-primary);
   word-wrap: break-word;
 }
 
 .notification-text a,
 .notification-text strong {
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   font-weight: bold;
 }
 
@@ -176,8 +176,8 @@
 
 /* Notification timestamp */
 .notification-time {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
   margin-top: 2px;
   line-height: 1.2;
 }
@@ -203,23 +203,23 @@
   border-radius: 50%;
   flex-shrink: 0;
   font-size: 14px;
-  color: var(--sp-text-white);
+  color: var(--pb-text-white);
 }
 
 .notification-icon-friend {
-  background-color: var(--sp-blue);
+  background-color: var(--pb-blue);
 }
 
 .notification-icon-like {
-  background-color: var(--sp-blue-light);
+  background-color: var(--pb-blue-light);
 }
 
 .notification-icon-comment {
-  background-color: var(--sp-btn-green);
+  background-color: var(--pb-btn-green);
 }
 
 .notification-icon-wall {
-  background-color: var(--sp-accent-gold);
+  background-color: var(--pb-accent-gold);
 }
 
 .notification-icon-tag {
@@ -231,7 +231,7 @@
 }
 
 .notification-icon-group {
-  background-color: var(--sp-blue-dark);
+  background-color: var(--pb-blue-dark);
 }
 
 /* ==========================================================================
@@ -263,9 +263,9 @@
 }
 
 .friend-request-name {
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
   font-weight: bold;
-  color: var(--sp-text-link);
+  color: var(--pb-text-link);
   display: block;
   margin-bottom: 2px;
 }
@@ -275,8 +275,8 @@
 }
 
 .friend-request-mutual {
-  font-size: var(--sp-font-size-small);
-  color: var(--sp-text-light);
+  font-size: var(--pb-font-size-small);
+  color: var(--pb-text-light);
   margin-bottom: 6px;
 }
 
@@ -294,10 +294,10 @@
   display: block;
   padding: 8px 12px;
   text-align: center;
-  font-size: var(--sp-font-size-base);
-  color: var(--sp-text-link);
-  border-top: 1px solid var(--sp-border-box);
-  background-color: var(--sp-bg-sidebar-header);
+  font-size: var(--pb-font-size-base);
+  color: var(--pb-text-link);
+  border-top: 1px solid var(--pb-border-box);
+  background-color: var(--pb-bg-sidebar-header);
 }
 
 .notification-settings-link:hover {
@@ -311,8 +311,8 @@
 .notifications-empty {
   text-align: center;
   padding: 40px 20px;
-  color: var(--sp-text-light);
-  font-size: var(--sp-font-size-base);
+  color: var(--pb-text-light);
+  font-size: var(--pb-font-size-base);
 }
 
 .notifications-empty p {
@@ -337,7 +337,7 @@
 }
 
 .notification-dropdown .notification-text {
-  font-size: var(--sp-font-size-base);
+  font-size: var(--pb-font-size-base);
 }
 
 .notification-dropdown .notification-time {
@@ -358,7 +358,7 @@
   width: 24px;
   height: 24px;
   border-radius: 2px;
-  border: 2px solid var(--sp-bg-white);
+  border: 2px solid var(--pb-bg-white);
   margin-left: -8px;
 }
 

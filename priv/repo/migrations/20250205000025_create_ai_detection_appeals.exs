@@ -1,10 +1,13 @@
-defmodule Sunporch.Repo.Migrations.CreateAiDetectionAppeals do
+defmodule ParkBench.Repo.Migrations.CreateAiDetectionAppeals do
   use Ecto.Migration
 
   def change do
     create table(:ai_detection_appeals, primary_key: false) do
       add :id, :uuid, primary_key: true, default: fragment("gen_random_uuid()")
-      add :detection_result_id, references(:ai_detection_results, type: :uuid, on_delete: :delete_all), null: false
+
+      add :detection_result_id,
+          references(:ai_detection_results, type: :uuid, on_delete: :delete_all), null: false
+
       add :user_id, references(:users, type: :uuid, on_delete: :delete_all), null: false
       add :explanation, :text, null: false
       add :tools_used, :text

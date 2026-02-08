@@ -1,11 +1,11 @@
-defmodule Sunporch.Factory do
+defmodule ParkBench.Factory do
   @moduledoc """
-  ExMachina factories for all Sunporch schemas.
+  ExMachina factories for all ParkBench schemas.
   """
 
-  use ExMachina.Ecto, repo: Sunporch.Repo
+  use ExMachina.Ecto, repo: ParkBench.Repo
 
-  alias Sunporch.Accounts.{
+  alias ParkBench.Accounts.{
     User,
     Session,
     EmailVerificationToken,
@@ -16,25 +16,27 @@ defmodule Sunporch.Factory do
     WorkEntry
   }
 
-  alias Sunporch.Social.{Friendship, FriendRequest, Poke}
+  alias ParkBench.Social.{Friendship, FriendRequest, Poke}
 
-  alias Sunporch.Timeline.{WallPost, Comment, Like, StatusUpdate, FeedItem}
+  alias ParkBench.Timeline.{WallPost, Comment, Like, StatusUpdate, FeedItem}
 
-  alias Sunporch.Messaging.{MessageThread, MessageThreadParticipant, Message}
+  alias ParkBench.Messaging.{MessageThread, MessageThreadParticipant, Message}
 
-  alias Sunporch.Notifications.Notification
+  alias ParkBench.Notifications.Notification
 
-  alias Sunporch.Privacy.{PrivacySetting, Block}
+  alias ParkBench.Privacy.{PrivacySetting, Block}
 
-  alias Sunporch.Media.{PhotoAlbum, Photo}
+  alias ParkBench.Media.{PhotoAlbum, Photo}
 
-  alias Sunporch.AIDetection.{DetectionResult, DetectionAppeal}
+  alias ParkBench.AIDetection.{DetectionResult, DetectionAppeal}
 
   # ── Accounts ──────────────────────────────────────────────────────────
 
   def user_factory do
     display_name = sequence(:display_name, &"Test User #{&1}")
-    slug = "#{display_name |> String.downcase() |> String.replace(~r/[^a-z0-9]+/, "-")}-#{:crypto.strong_rand_bytes(4) |> Base.encode16(case: :lower)}"
+
+    slug =
+      "#{display_name |> String.downcase() |> String.replace(~r/[^a-z0-9]+/, "-")}-#{:crypto.strong_rand_bytes(4) |> Base.encode16(case: :lower)}"
 
     %User{
       email: sequence(:email, &"user#{&1}@example.com"),
@@ -58,7 +60,8 @@ defmodule Sunporch.Factory do
       ip_address: "127.0.0.1",
       user_agent: "ExUnit/1.0",
       last_active_at: DateTime.utc_now() |> DateTime.truncate(:second),
-      expires_at: DateTime.utc_now() |> DateTime.add(86_400, :second) |> DateTime.truncate(:second),
+      expires_at:
+        DateTime.utc_now() |> DateTime.add(86_400, :second) |> DateTime.truncate(:second),
       user: build(:user)
     }
   end
@@ -66,7 +69,8 @@ defmodule Sunporch.Factory do
   def email_verification_token_factory do
     %EmailVerificationToken{
       token: :crypto.strong_rand_bytes(32) |> Base.url_encode64(padding: false),
-      expires_at: DateTime.utc_now() |> DateTime.add(86_400, :second) |> DateTime.truncate(:second),
+      expires_at:
+        DateTime.utc_now() |> DateTime.add(86_400, :second) |> DateTime.truncate(:second),
       used_at: nil,
       user: build(:user)
     }
@@ -75,7 +79,8 @@ defmodule Sunporch.Factory do
   def password_reset_token_factory do
     %PasswordResetToken{
       token: :crypto.strong_rand_bytes(32) |> Base.url_encode64(padding: false),
-      expires_at: DateTime.utc_now() |> DateTime.add(86_400, :second) |> DateTime.truncate(:second),
+      expires_at:
+        DateTime.utc_now() |> DateTime.add(86_400, :second) |> DateTime.truncate(:second),
       used_at: nil,
       user: build(:user)
     }
@@ -101,7 +106,8 @@ defmodule Sunporch.Factory do
   def profile_photo_factory do
     %ProfilePhoto{
       original_url: sequence(:original_url, &"https://cdn.example.com/photos/original_#{&1}.jpg"),
-      thumb_200_url: sequence(:thumb_200_url, &"https://cdn.example.com/photos/thumb200_#{&1}.jpg"),
+      thumb_200_url:
+        sequence(:thumb_200_url, &"https://cdn.example.com/photos/thumb200_#{&1}.jpg"),
       thumb_50_url: sequence(:thumb_50_url, &"https://cdn.example.com/photos/thumb50_#{&1}.jpg"),
       is_current: false,
       ai_detection_status: "pending",
@@ -320,8 +326,10 @@ defmodule Sunporch.Factory do
   def photo_factory do
     %Photo{
       original_url: sequence(:photo_url, &"https://cdn.example.com/photos/album_photo_#{&1}.jpg"),
-      thumb_200_url: sequence(:photo_thumb_200, &"https://cdn.example.com/photos/album_thumb200_#{&1}.jpg"),
-      thumb_50_url: sequence(:photo_thumb_50, &"https://cdn.example.com/photos/album_thumb50_#{&1}.jpg"),
+      thumb_200_url:
+        sequence(:photo_thumb_200, &"https://cdn.example.com/photos/album_thumb200_#{&1}.jpg"),
+      thumb_50_url:
+        sequence(:photo_thumb_50, &"https://cdn.example.com/photos/album_thumb50_#{&1}.jpg"),
       caption: "A photo",
       position: 0,
       ai_detection_status: "pending",

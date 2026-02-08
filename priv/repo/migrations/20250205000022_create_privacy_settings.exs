@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreatePrivacySettings do
+defmodule ParkBench.Repo.Migrations.CreatePrivacySettings do
   use Ecto.Migration
 
   def change do

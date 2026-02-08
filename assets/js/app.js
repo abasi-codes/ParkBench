@@ -151,7 +151,7 @@ liveSocket.connect()
 window.liveSocket = liveSocket
 
 // Initialize chat if user is logged in
-if (document.getElementById("sp-chat-config")) {
+if (document.getElementById("pb-chat-config")) {
   window.__spChat = new Chat();
 }
 

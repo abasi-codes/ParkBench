@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreatePasswordResetTokens do
+defmodule ParkBench.Repo.Migrations.CreatePasswordResetTokens do
   use Ecto.Migration
 
   def change do

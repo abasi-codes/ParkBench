@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateFriendships do
+defmodule ParkBench.Repo.Migrations.CreateFriendships do
   use Ecto.Migration
 
   def change do
@@ -13,8 +13,6 @@ defmodule Sunporch.Repo.Migrations.CreateFriendships do
     create unique_index(:friendships, [:user_id, :friend_id])
     create index(:friendships, [:friend_id])
 
-    create constraint(:friendships, :user_id_less_than_friend_id,
-      check: "user_id < friend_id"
-    )
+    create constraint(:friendships, :user_id_less_than_friend_id, check: "user_id < friend_id")
   end
 end

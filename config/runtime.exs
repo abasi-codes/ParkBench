@@ -1,10 +1,10 @@
 import Config
 
 if System.get_env("PHX_SERVER") do
-  config :sunporch, SunporchWeb.Endpoint, server: true
+  config :park_bench, ParkBenchWeb.Endpoint, server: true
 end
 
-config :sunporch, SunporchWeb.Endpoint,
+config :park_bench, ParkBenchWeb.Endpoint,
   http: [port: String.to_integer(System.get_env("PORT", "4000"))]
 
 if config_env() == :prod do
@@ -17,7 +17,7 @@ if config_env() == :prod do
 
   maybe_ipv6 = if System.get_env("ECTO_IPV6") in ~w(true 1), do: [:inet6], else: []
 
-  config :sunporch, Sunporch.Repo,
+  config :park_bench, ParkBench.Repo,
     url: database_url,
     pool_size: String.to_integer(System.get_env("POOL_SIZE") || "20"),
     socket_options: maybe_ipv6
@@ -29,11 +29,11 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  host = System.get_env("PHX_HOST") || "sunporch.app"
+  host = System.get_env("PHX_HOST") || "parkbench.app"
 
-  config :sunporch, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
+  config :park_bench, :dns_cluster_query, System.get_env("DNS_CLUSTER_QUERY")
 
-  config :sunporch, SunporchWeb.Endpoint,
+  config :park_bench, ParkBenchWeb.Endpoint,
     url: [host: host, port: 443, scheme: "https"],
     http: [ip: {0, 0, 0, 0, 0, 0, 0, 0}],
     secret_key_base: secret_key_base
@@ -43,7 +43,7 @@ if config_env() == :prod do
     System.get_env("MESSAGE_ENCRYPTION_KEY") ||
       raise "environment variable MESSAGE_ENCRYPTION_KEY is missing (32-byte key)"
 
-  config :sunporch, :message_encryption_key, message_key
+  config :park_bench, :message_encryption_key, message_key
 
   # S3 configuration
   config :ex_aws,
@@ -51,15 +51,15 @@ if config_env() == :prod do
     secret_access_key: System.get_env("AWS_SECRET_ACCESS_KEY"),
     region: System.get_env("AWS_REGION", "us-east-1")
 
-  config :sunporch, :s3_bucket, System.get_env("S3_BUCKET", "sunporch-uploads")
+  config :park_bench, :s3_bucket, System.get_env("S3_BUCKET", "park-bench-uploads")
 
   # AI Detection API keys
-  config :sunporch, :ai_detection,
+  config :park_bench, :ai_detection,
     gptzero_api_key: System.get_env("GPTZERO_API_KEY"),
     hive_api_key: System.get_env("HIVE_API_KEY")
 
   # Swoosh / SES email
-  config :sunporch, Sunporch.Mailer,
+  config :park_bench, ParkBench.Mailer,
     adapter: Swoosh.Adapters.AmazonSES,
     region: System.get_env("AWS_REGION", "us-east-1"),
     access_key: System.get_env("AWS_ACCESS_KEY_ID"),

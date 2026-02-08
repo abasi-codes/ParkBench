@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Sunporch Layout
+   ParkBench Layout
    Page wrappers, column systems, and structural layouts.
    960px fixed-width, centered — the 2008 way.
    ========================================================================== */
@@ -9,11 +9,11 @@
    ========================================================================== */
 
 .page-wrapper {
-  max-width: var(--sp-width-page);
+  max-width: var(--pb-width-page);
   width: 100%;
   margin: 0 auto;
-  min-height: calc(100vh - var(--sp-height-nav) - var(--sp-height-footer));
-  padding: var(--sp-spacing-lg) var(--sp-spacing-md);
+  min-height: calc(100vh - var(--pb-height-nav) - var(--pb-height-footer));
+  padding: var(--pb-spacing-lg) var(--pb-spacing-md);
 }
 
 /* Three-Column Layout
@@ -27,8 +27,8 @@
 }
 
 .three-column .col-left {
-  width: var(--sp-width-sidebar-left);
-  min-width: var(--sp-width-sidebar-left);
+  width: var(--pb-width-sidebar-left);
+  min-width: var(--pb-width-sidebar-left);
   flex-shrink: 0;
 }
 
@@ -38,8 +38,8 @@
 }
 
 .three-column .col-right {
-  width: var(--sp-width-sidebar-right);
-  min-width: var(--sp-width-sidebar-right);
+  width: var(--pb-width-sidebar-right);
+  min-width: var(--pb-width-sidebar-right);
   flex-shrink: 0;
 }
 
@@ -54,8 +54,8 @@
 }
 
 .two-column .col-left {
-  width: var(--sp-width-sidebar-left);
-  min-width: var(--sp-width-sidebar-left);
+  width: var(--pb-width-sidebar-left);
+  min-width: var(--pb-width-sidebar-left);
   flex-shrink: 0;
 }
 
@@ -80,8 +80,8 @@
 }
 
 .two-column-right .col-right {
-  width: var(--sp-width-sidebar-right);
-  min-width: var(--sp-width-sidebar-right);
+  width: var(--pb-width-sidebar-right);
+  min-width: var(--pb-width-sidebar-right);
   flex-shrink: 0;
 }
 
@@ -111,7 +111,7 @@
    ========================================================================== */
 
 .single-column {
-  max-width: var(--sp-width-page);
+  max-width: var(--pb-width-page);
   width: 100%;
 }
 
@@ -120,10 +120,10 @@
    ========================================================================== */
 
 .landing-wrapper {
-  max-width: var(--sp-width-landing);
+  max-width: var(--pb-width-landing);
   width: 100%;
   margin: 0 auto;
-  padding: 0 var(--sp-spacing-md);
+  padding: 0 var(--pb-spacing-md);
 }
 
 /* Landing Page Two-Column Split
@@ -153,28 +153,28 @@
    ========================================================================== */
 
 .content-box {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
-  margin-bottom: var(--sp-spacing-md);
-  box-shadow: var(--sp-shadow-sm);
+  border-radius: var(--pb-radius);
+  margin-bottom: var(--pb-spacing-md);
+  box-shadow: var(--pb-shadow-sm);
 }
 
 .content-box-padded {
-  background-color: var(--sp-bg-white);
+  background-color: var(--pb-bg-white);
   border: 1px solid rgba(0,0,0,0.04);
-  border-radius: var(--sp-radius);
-  padding: var(--sp-spacing-lg);
-  margin-bottom: var(--sp-spacing-md);
-  box-shadow: var(--sp-shadow-sm);
+  border-radius: var(--pb-radius);
+  padding: var(--pb-spacing-lg);
+  margin-bottom: var(--pb-spacing-md);
+  box-shadow: var(--pb-shadow-sm);
 }
 
 /* Section dividers
    ========================================================================== */
 
 .section-divider {
-  border-top: 1px solid var(--sp-border);
-  margin: var(--sp-spacing-md) 0;
+  border-top: 1px solid var(--pb-border);
+  margin: var(--pb-spacing-md) 0;
 }
 
 /* Inline layout helpers
@@ -183,7 +183,7 @@
 .inline-row {
   display: flex;
   align-items: center;
-  gap: var(--sp-spacing-sm);
+  gap: var(--pb-spacing-sm);
 }
 
 .inline-row-spread {
@@ -195,7 +195,7 @@
 .stack {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-spacing-sm);
+  gap: var(--pb-spacing-sm);
 }
 
 /* Float-based fallback layout (2008 authenticity)
@@ -217,22 +217,22 @@
    ========================================================================== */
 
 .mt-0 { margin-top: 0; }
-.mt-xs { margin-top: var(--sp-spacing-xs); }
-.mt-sm { margin-top: var(--sp-spacing-sm); }
-.mt-md { margin-top: var(--sp-spacing-md); }
-.mt-lg { margin-top: var(--sp-spacing-lg); }
-.mt-xl { margin-top: var(--sp-spacing-xl); }
+.mt-xs { margin-top: var(--pb-spacing-xs); }
+.mt-sm { margin-top: var(--pb-spacing-sm); }
+.mt-md { margin-top: var(--pb-spacing-md); }
+.mt-lg { margin-top: var(--pb-spacing-lg); }
+.mt-xl { margin-top: var(--pb-spacing-xl); }
 
 .mb-0 { margin-bottom: 0; }
-.mb-xs { margin-bottom: var(--sp-spacing-xs); }
-.mb-sm { margin-bottom: var(--sp-spacing-sm); }
-.mb-md { margin-bottom: var(--sp-spacing-md); }
-.mb-lg { margin-bottom: var(--sp-spacing-lg); }
-.mb-xl { margin-bottom: var(--sp-spacing-xl); }
+.mb-xs { margin-bottom: var(--pb-spacing-xs); }
+.mb-sm { margin-bottom: var(--pb-spacing-sm); }
+.mb-md { margin-bottom: var(--pb-spacing-md); }
+.mb-lg { margin-bottom: var(--pb-spacing-lg); }
+.mb-xl { margin-bottom: var(--pb-spacing-xl); }
 
 .p-0 { padding: 0; }
-.p-xs { padding: var(--sp-spacing-xs); }
-.p-sm { padding: var(--sp-spacing-sm); }
-.p-md { padding: var(--sp-spacing-md); }
-.p-lg { padding: var(--sp-spacing-lg); }
-.p-xl { padding: var(--sp-spacing-xl); }
+.p-xs { padding: var(--pb-spacing-xs); }
+.p-sm { padding: var(--pb-spacing-sm); }
+.p-md { padding: var(--pb-spacing-md); }
+.p-lg { padding: var(--pb-spacing-lg); }
+.p-xl { padding: var(--pb-spacing-xl); }

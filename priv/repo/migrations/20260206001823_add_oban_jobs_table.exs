@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.AddObanJobsTable do
+defmodule ParkBench.Repo.Migrations.AddObanJobsTable do
   use Ecto.Migration
 
   def up do

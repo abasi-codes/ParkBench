@@ -1,4 +1,4 @@
-defmodule SunporchWeb.ConnCase do
+defmodule ParkBenchWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -11,7 +11,7 @@ defmodule SunporchWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use SunporchWeb.ConnCase, async: true`, although
+  by setting `use ParkBenchWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -20,21 +20,21 @@ defmodule SunporchWeb.ConnCase do
   using do
     quote do
       # The default endpoint for testing
-      @endpoint SunporchWeb.Endpoint
+      @endpoint ParkBenchWeb.Endpoint
 
-      use SunporchWeb, :verified_routes
+      use ParkBenchWeb, :verified_routes
 
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import SunporchWeb.ConnCase
-      import Sunporch.Factory
-      import SunporchWeb.AuthHelpers
+      import ParkBenchWeb.ConnCase
+      import ParkBench.Factory
+      import ParkBenchWeb.AuthHelpers
     end
   end
 
   setup tags do
-    Sunporch.DataCase.setup_sandbox(tags)
+    ParkBench.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

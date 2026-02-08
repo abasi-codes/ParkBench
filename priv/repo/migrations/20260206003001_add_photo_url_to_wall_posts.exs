@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.AddPhotoUrlToWallPosts do
+defmodule ParkBench.Repo.Migrations.AddPhotoUrlToWallPosts do
   use Ecto.Migration
 
   def change do

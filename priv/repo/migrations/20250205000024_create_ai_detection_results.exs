@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateAiDetectionResults do
+defmodule ParkBench.Repo.Migrations.CreateAiDetectionResults do
   use Ecto.Migration
 
   def change do
@@ -21,8 +21,8 @@ defmodule Sunporch.Repo.Migrations.CreateAiDetectionResults do
     create index(:ai_detection_results, [:content_hash])
 
     create index(:ai_detection_results, [:id],
-      where: "status = 'needs_review'",
-      name: :ai_detection_results_needs_review
-    )
+             where: "status = 'needs_review'",
+             name: :ai_detection_results_needs_review
+           )
   end
 end

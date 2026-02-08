@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateStatusUpdates do
+defmodule ParkBench.Repo.Migrations.CreateStatusUpdates do
   use Ecto.Migration
 
   def change do

@@ -1,8 +1,8 @@
-defmodule SunporchWeb.AuthHelpers do
+defmodule ParkBenchWeb.AuthHelpers do
   @moduledoc "Test helpers for authentication in controller and LiveView tests."
 
-  import Sunporch.Factory
-  alias Sunporch.Accounts
+  import ParkBench.Factory
+  alias ParkBench.Accounts
 
   def register_and_log_in_user(%{conn: conn}) do
     user = insert(:user, email_verified_at: DateTime.utc_now() |> DateTime.truncate(:second))

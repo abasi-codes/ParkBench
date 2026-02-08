@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateComments do
+defmodule ParkBench.Repo.Migrations.CreateComments do
   use Ecto.Migration
 
   def change do
@@ -20,8 +20,8 @@ defmodule Sunporch.Repo.Migrations.CreateComments do
     create index(:comments, [:author_id])
 
     create index(:comments, [:id],
-      where: "deleted_at IS NULL",
-      name: :comments_not_deleted
-    )
+             where: "deleted_at IS NULL",
+             name: :comments_not_deleted
+           )
   end
 end

@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateSessions do
+defmodule ParkBench.Repo.Migrations.CreateSessions do
   use Ecto.Migration
 
   def change do

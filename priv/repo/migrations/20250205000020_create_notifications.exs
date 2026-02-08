@@ -1,4 +1,4 @@
-defmodule Sunporch.Repo.Migrations.CreateNotifications do
+defmodule ParkBench.Repo.Migrations.CreateNotifications do
   use Ecto.Migration
 
   def change do
@@ -15,6 +15,9 @@ defmodule Sunporch.Repo.Migrations.CreateNotifications do
     end
 
     create index(:notifications, [:user_id, :read_at])
-    create index(:notifications, [:user_id, :inserted_at], name: :notifications_user_id_inserted_at_desc)
+
+    create index(:notifications, [:user_id, :inserted_at],
+             name: :notifications_user_id_inserted_at_desc
+           )
   end
 end
